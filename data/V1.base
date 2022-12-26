@@ -1,0 +1,450 @@
+PA UNIVERSIDADE DE SÃO PAULO
+   INSTITUTO DE FÍSICA DE SÃO CARLOS
+   PARALELISMO EM VISÃO NATURAL E
+   ARTIFICIAL
+   Odemir Martinez Bruno
+   Tese apresentada ao Instituto de Física de São
+   Carlos, da Universidade de São Paulo, para a
+   obtenção do título de Doutor em Ciências: Física
+   Aplicada (Física Computacional).
+   Orientador: Prof. Dr. Luciano da Fontoura Costa
+   DEPARTAMENTO DE FÍSICA E INFORMÁTICA
+   São Carlos
+   2000
+   Bruno, Odemir Martinez
+   Paralelismo em Visão Natural e Artificial / Odemir
+   Martinez Bruno. São Carlos, 200.
+   391 p.
+   Tese (Doutorado) - Instituto de Física de São Carlos,
+   2000.
+   Orientador: Prof. Dr. Luciano da Fontoura Costa
+   1. Visão Cibernética. 2. Computação Paralela.
+   I. Título
+   À minha esposa Adriana e aos meus
+   pais Orlando e Maria Candida.
+   AGRADECIMENTOS
+   À minha esposa Adriana e aos meus pais Orlando e Maria Candida, pelo
+   incentivo, colaboração, carinho e apoio.
+   Ao Prof. Luciano, pela orientação científica, amizade e pelas valiosas
+   oportunidades de aprendizado.
+   Aos meus amigos, colegas e colaboradores Alan Salvany Felinto e Jander
+   Moreira, pela cooperação nos trabalhos referentes ao sistema Cyvis-1 e pelo
+   auxílio na validação e testes do CVMP, além da convivência pessoal.
+   A Luís Augusto Consularo, pelo trabalho em conjunto, pelo auxílio nos
+   testes do CVMP e pela amizade.
+   A Roberto César Marcondes Junior, pelo trabalho em conjunto no projeto
+   ynergos e convivência pessoal.
+   À Cristina Algodoal Martins, pelas valiosas sugestões em botânica e pela
+   amizade.
+   Ao Prof. Hilton Thadeu Zarate do Couto da ESALQ-USP, pelas indicações e
+   informações referentes aos herbários.
+   À Estação Ecológica de Moji-Guaçu do Instituto Florestal do Estado de S.
+   Paulo, pelo fornecimento de amostras de plantas arbóreas utilizadas neste
+   trabalho. Em especial a Eduardo Amaral Batista, pesquisador chefe da unidade e
+   José Carlos de Lima, auxiliar de apoio à pesquisa.
+   À Wladerez A. G. Caiado, por sua competência e constante bom humor,
+   nos auxiliando ao longo desses anos nas questões burocráticas.
+   Ao pessoal da biblioteca do Instituto de Física de São Carlos, pela
+   competência e presteza.
+   A todos os colegas do Grupo de Pesquisa em Visão Cibernética pela
+   amizade, fraternidade, cooperação e pelas produtivas discussões.
+
+   DADOS........................................................................................................................................287
+   FIG. - 7.34 - TAXA DE DESEMPENHO EM FUNÇÃO DO NÚMERO DE PROCESSADORES. ...........................287
+   FIG. - 7.35 - RESULTADOS DA TÉCNICA DE RESTAURAÇÃO - (A) IMAGEM ORIGINAL 100X100
+   CORROMPIDA POR UM RUÍDO GAUSSIANO COM 2=0,5. OS RESULTADOS SÃO RESPECTIVOS A
+   =0,3 (B), =0,5 (C), =0,7 (D) E =0,9 (E). ............................................................................291
+   FIG. - 7.36 - ESTRATÉGIA BÁSICA DE PARALELISMO DA TÉCNICA MRF...............................................292
+   FIG. - 7.37 - ESTRATÉGIA BÁSICA DE PARALELISMO DA TÉCNICA MRF...............................................293
+   FIG. - 7.38 - DIAGRAMA DE TRANSFERÊNCIA DAS ESTRUTURAS DE ATUALIZAÇÃO..............................293
+   FIG. - 7.39 - DIAGRAMA DE TRANSFERÊNCIA DAS ESTRUTURAS DE ATUALIZAÇÃO PARA 6 (A) E 9 (B)
+   ELEMENTOS DE PROCESSAMENTO...............................................................................................294
+   xvii
+   FIG. - 7.40 - EXEMPLOS DE BALANCEAMENTO DE CARGA, COM 3 ELEMENTOS DE PROCESSAMENTO
+   HETEROGÊNEOS. ........................................................................................................................ 295
+   FIG. - 7.41 - DIAGRAMA DE EXECUÇÃO DO ALGORITMO MRF PARALELO, PARA QUATRO ELEMENTOS DE
+   PROCESSAMENTO....................................................................................................................... 296
+   FIG. - 7.42 - DIAGRAMA DE EXECUÇÃO DO ALGORITMO MRF PARALELO EM UM SISTEMA
+   HETEROGÊNEO........................................................................................................................... 297
+   FIG. - 7.43 - DIAGRAMA DA TROCA DE MENSAGENS. .......................................................................... 298
+   FIG. - 7.44 - COMPARAÇÕES DE PERFORMANCE ENTRE A VERSÃO PARALELA E SEQÜENCIAL. (A)
+   GRÁFICO DO TEMPO DE EXECUÇÃO EM FUNÇÃO DO TAMANHO DE IMAGEM. (B) GRÁFICO DA TAXA
+   DE DESEMPENHO EM FUNÇÃO DO TAMANHO DE IMAGEM........................................................... 299
+   FIG. - 7.45 - DOIS EXEMPLOS DE FRACTAIS, TRINGULO DE SIERPINSKI (A) E MANDELBROT (B). ...... 300
+   FIG. - 7.46 - DIAGRAMA DE EXECUÇÃO PARA 4 MÁQUINAS. ............................................................... 302
+   FIG. - 8.1 - SISTEMA DE INTEGRAÇÃO ENTRE COR E ESTÉREO, SEGUNDO SUA ESTRUTURA MODULAR
+   [MOREIRA, 1999]. ..................................................................................................................... 308
+   FIG. - 8.2 - MODELO DE ARESTAS DOS OBJETOS QUE CONSTITUEM O UNIVERSO DE RECONHECIMENTO DO
+   SISTEMA (CUBO, TETRAEDRO E PRISMA). ................................................................................... 310
+   FIG. - 8.3 - EXEMPLOS DE CENAS REAIS, NAS QUAIS O SISTEMA REALIZOU A IDENTIFICAÇÃO DOS
+   OBJETOS [MOREIRA, 1999]........................................................................................................ 311
+   FIG. - 8.4 - MODELO DE ARESTAS DOS OBJETOS QUE CONSTITUEM O UNIVERSO DE RECONHECIMENTO DO
+   SISTEMA (CUBO, TETRAEDRO E PRISMA). ................................................................................... 313
+   FIG. - 8.5 - EXEMPLOS DE SEGMENTAÇÃO DO MÓDULO COR. (A) IMAGEM DIREITA DO PAR ESTÉREO,
+   ADQUIRIDA PELO MÓDULO DE AQUISIÇÃO. (B) RESULTADO DA SEGMENTAÇÃO DO MÓDULO COR
+   (MAPAS AUTO-ORGANIZÁVEIS). (C) SEGMENTAÇÃO POR SOBEL COM FINALIDADE COMPARATIVA.
+   .................................................................................................................................................. 315
+   FIG. - 8.6 - SEGMENTOS DE RETAS DETECTADOS EM DIFERENTES PONTOS DE VISTAS DE UMA MESMA
+   CENA (FIGURA A ESQUERDA). .................................................................................................... 316
+   FIG. - 8.7 - EXEMPLOS DE RECONHECIMENTO DE OBJETOS. NA COLUNA ESQUERDA É APRESENTADA A
+   IMAGEM DIREITA DO PAR ESTÉREO E NA COLUNA DIREITA, O MODELO OBTIDO DO OBJETO
+   SOBREPOSTO AO MODELO RECONHECIDO DO BANCO DE DADOS. ............................................... 317
+   FIG. - 8.8 - EXEMPLO DE PIPELINE DE 5 ESTÁGIOS ENTRE OS MÓDULOS DO SISTEMA (AQUISIÇÃO, COR,
+   FORMA, ESTÉREO E RECONHECIMENTO). ................................................................................... 319
+   FIG. - 8.9 - DIAGRAMA APRESENTADO AS INTERAÇÕES DO WEBWORM. ............................................ 324
+   FIG. - 8.10 - EXEMPLO DE NAVEGAÇÃO DO WEBWORM. .................................................................... 325
+   FIG. - 8.11 - DIAGRAMA ILUSTRATIVO DA ESTRATÉGIA DE PARALELISMO DO ALGORITMO GENÉTICO
+   DISTRIBUÍDO COM ARQUITETURA CVMP PROCESSOR FARM. .................................................... 329
+   FIG. - 8.12 - RESULTADOS DA CORRELAÇÃO DO ALGORITMO GENÉTICO PARA OS MODELOS DE
+   COMPLEXIDADE UTILIZADOS. REFERENTE A COMBINAÇÃO LINEAR (A) E LOGARÍTMICA (B). ... 329
+   FIG. - 8.13 - GRÁFICOS APRESENTANDO O TEMPO DE EXECUÇÃO DA IMPLEMENTAÇÃO PARALELA DO
+
+   Interface - Link
+   LINK 2 Entrada
+   LINK 2 S aída
+   ProcClockOut
+   LINK 3 Entrada
+   NotMemS0-4
+   Interface - Link
+   LINK 3 S aída
+   NotM emWrB0-3
+   Interface
+   NotMemRd
+   NotMemRf
+   Memória
+   MemWait
+   Externa
+   MemConfig
+   Memória
+   MemReq
+   MemGranted
+   Fig. - 2.15 – Diagrama em blocos do processador Transputer IMS T800.
+   As máquinas MIMD de memória distribuída, obtiveram uma atenção maior a
+   partir da metade da década de 80. A arquitetura MIMD de memória distribuída,
+   praticamente começou com um projeto Cosmic Cube da Caltech. Esse projeto
+   introduziu toda a pesquisa em torno de redes de conexão de processadores
+   (hipercubos) [Almasi & Gottlieb, 1994]. O Cosmic Cube foi uma máquina baseada
+   no processador 8086 e seu coprocessador de ponto flutuante 8087 (famosos devido
+   aos microcomputadores pessoais), que integrava 64 pares de processadores (8086
+   e 8087), conectados com arquitetura de hipercubo [Hockney & Jesshope, 1988]. A
+   partir de 1985, com o lançamento do Transputer (Inmos), um processador
+   destinado ao desenvolvimento de arquiteturas paralelas, houve uma grande difusão
+   da pesquisa e utilização de arquitetura MIMD. Devido ao fato de ser
+   especificamente voltado ao desenvolvimento de sistemas paralelos, o Transputer
+   tornava os projetos paralelos simples e com custos competitivos. Além de contar
+   com uma série de ferramentas e linguagens que realizavam o suporte de
+   programação. A Figura 2.15 apresenta o diagrama do processador Transputer
+   35
+   CAPÍTULO 2
+   [Inmos, 1988].
+   Dentre o universo das máquinas MIMD distribuídas podemos citar:
+   Intel iPSC, Intel Paragon, Cray T3E, Avalon A12, nCUBE 2S, As máquinas
+   baseadas em Transputer (ex: IBM – Victor), IBM 9076 SP2, etc.
+   2.5.5 – COMPUTAÇÃO DISTRIBUÍDA
+   No final da década de 80, devido ao desenvolvimento e proliferação da
+   tecnologia de redes de computadores e do mesmo modo à diminuição do custo dos
+   microcomputadores, surgiu uma nova arquitetura paralela denominada de
+   Computação Distribuída. Ao invés de desenvolver hardware específico, o conceito
+   de Computação Distribuída utiliza computadores padrão (ou não) conectados por
+   rede de computadores (ethernet ou outra), ficando todo o mecanismo de
+   paralelização sob a responsabilidade das camadas de software [Tanenbaum, 1990],
+PA sendo essa em nível de sistema operacional, através de sistemas operacionais
+   distribuídos [Tanenbaum, 1995], ou ainda através de ferramentas de troca de
+   mensagens tais como PVM [Geist et al., 1996], MPI [Pacheco, 1997] ou ainda
+   CVMP apresentada nesta tese.
+   Embora a velocidade de comunicação das redes de computadores seja
+   muito mais lenta do que através dos mecanismos desenvolvidos em hardware, a
+   simplicidade e baixo custo fizeram com que os Sistemas Distribuídos viessem a se
+   tornar a mais difundida utilização de arquiteturas paralelas, somando a utilização
+   comercial e científica [Almasi & Gottlieb, 1994].
+   Segundo a classificação de Flynn [Flynn. 1972], a Computação Distribuída é
+   considerada MIMD de memória distribuída [Almasi & Gottlieb, 1994], seguindo a
+   mesma heurística de arquitetura e software. Assim como ocorrem em algumas
+   máquinas de arquitetura MIMD, que podem ser compostas por elementos de
+   processamento com arquiteturas paralelas diferentes, como por exemplo o CRAY –
+   J90 (MIMD com processadores SIMD), os sistemas distribuídos podem integrar um
+   único sistema e possuir diversas arquiteturas paralelas diferentes, trabalhando
+   juntas. Além de possuir tal característica heterogênea, os Sistemas Distribuídos
+   ainda podem possuir um número de unidades de processamento variáveis,
+   caracterizando sua utilização em sistemas tolerantes a falha. Para caracterizar um
+   aglomerado de estações como Sistema Distribuído (Computação Distribuída), basta
+   que exista um mecanismo de integração das máquinas e que através desse
+   36
+   COMPUTAÇÃO PARALELA - HARDWARE
+   mecanismo de troca de mensagens sejam capazes de realizar uma mesma tarefa
+   (ou diferentes partes de uma mesma tarefa). O número de máquinas (elementos de
+   processamento) de um Sistema Distribuído varia muito, indo desde 2 a mesmo
+   milhares de máquinas. A Figura 2.16 apresenta um diagrama de um Sistema
+   Distribuído heterogêneo, onde juntos podem operar estações de trabalho de
+   diversas plataformas diferentes (PCs, estações de trabalho RISC) assim como
+   supercomputadores MIMD e ou SIMD, conectados por rede.
+   Fig. - 2.16 – Sistema Distribuído Heterogêneo.
+   2.6 – TAXONOMIA DE COMPUTADORES
+   Anteriormente, descrevemos uma série de tecnologias apresentadas com
+   sua evolução no tempo. Obviamente, não abordamos todo o universo das
+   arquiteturas paralelas, apenas traçamos um breve perfil da evolução da
+   computação paralela, com o intuito de formar bases para as noções de arquitetura
+   de computadores requeridas nesta tese.
+   As inúmeras possibilidades de organização dos computadores, assim como
+   a diversidade de processadores, geram a necessidade da classificação dos
+   computadores, a fim de encontrarmos famílias as quais podem ser agrupadas,
+   melhor estudadas e comparadas. Existem inúmeras propostas encontradas na
+   literatura para classificar as diferentes arquiteturas e organização dos
+   37
+   CAPÍTULO 2
+   computadores, podemos citar entre elas: Flynn [Flynn, 1966], Feng [Hwang et al.,
+   1984], Händler [Hwang et al., 1984], Gajski [Amorin et al.,1988], Shore [Hockney &
+   Jesshope, 1988], Estrutural [Hockney & Jesshope, 1988], Kuck [Almasi & Gottlieb,
+   1994], Treleaven [Almasi & Gottlieb, 1994], Duncan [Duncan, 1990], etc. Nesta
+   seção vamos apresentar três delas: classificação de Flynn, taxonomia estrutural de
+   Hockney e classificação de Duncam.
+
+   Único fluxo de Instrução
+   Múltiplo fluxo de Instrução
+   Única unidade
+   de execução
+   Aritmética de
+   Aritmética de
+   MIMD
+   inteiro
+   ponto flutuante
+   (figura 2.24)
+   serial 1-bit
+   Paralelo n-bit
+   Computadores
+   Computadores
+   Computadores
+   seqüenciais de
+   seqüenciais de
+   seqüenciais de
+   bit serial
+   bit paralelo
+   ponto flutuante
+   EDSAC1
+   IBM 701
+   IBM 7090
+   Múltiplas unidades
+   UNIVAC1
+   de execução
+   Pipelined
+   Sem pipeline
+   Computadores
+   matriciais
+   (figura 2.23)
+   Somente instruções
+   Instruções
+   escalares
+   vetoriais
+   Computadores
+   com múltiplas
+   unidades
+   escalares
+   Controle
+   Issue-When-
+   Pipeline
+   Pipeline
+   Horizontal
+   ready
+   Uso específico
+   Uso Geral
+   CDC 6600
+
+   em biologia. No entanto, uma tendência científica atual vem unindo diversas áreas
+   na construção do imenso quebra-cabeça no qual se relacionam este estudo. Assim
+   sendo, o estudo do cérebro está reunindo, concentrando e integrando diversas
+   áreas científicas, possuidoras de caminhos históricos bastante diferentes. Nenhum
+   outro tema científico reuniu áreas tão distintas, e talvez, graças ao desafio de
+   desvendar nosso próprio cérebro, nossa ciência altere seu curso separatista na
+   história.
+   4.4.1 – AS ESPECIALIZAÇÕES FUNCIONAIS CORTICAIS
+   Até o século passado o cérebro era visto como uma caixa preta, dividida
+   apenas em duas partes: áreas de projeção e áreas de associação [Machado, 1993].
+   Na metade do século passado o neurologista francês Pierre Paul Broca, iniciou um
+   estudo que expandiria a divisão dualista do cérebro [Broca, 1861]. Através de um
+   caso clínico de um paciente que perdeu a capacidade de falar e, realizando
+   autopsia após seu óbito, Broca constatou que uma área específica do cérebro era
+   responsável pelo caso clínico, mas foi duramente criticado pelo meio científico de
+   sua época. Porém seu trabalho introduziu a noção de que o córtex cerebral era
+   composto de áreas distintas diferenciadas por sua especialização. No entanto, a
+   crença na dualidade cerebral perduraria, especialmente pela dificuldade de localizar
+   regiões anatomicamente distintas no córtex, assim como a questão da plasticidade
+   cerebral.
+   110
+   OS CAMINHOS PARALELOS DA VISÃO
+   Uma grande diversidade de trabalhos científicos viriam a consolidar a
+   divisão do córtex em áreas distintas classificadas mediante a função, entre eles
+   devemos destacar os trabalhos de Fritsch e Hitzig [Fritsch & Hitzig, 1870], que
+   conseguiram provocar movimentos em determinadas partes do corpo através de
+   estímulos elétricos em áreas específicas no córtex do cão.
+   A divisão do córtex em áreas funcionais possibilitou que a clássica
+   estratégia de dividir e conquistar fosse aplicada à neurociência, permitindo a
+   canalização de diferentes estudos relativos a função de suas áreas determinadas.
+   Com isso, ao estudarmos uma determinada função específica do córtex, podemos
+   concentrar esforços na sua região cortical correspondente.
+   4.4.2 – ANÁLISE MULTI-ESCALA
+   Uma questão muito importante no estudo cortical é a sua complexidade
+   multi-escalar. O córtex deve ser explorado sob diferentes prismas relativos a
+   escala. Deste modo, do ponto de vista multi-escala, podemos dividir a análise
+   cortical em três partes [Costa, 1996]:
+   Microscópica: Dentro dessa abordagem o córtex é estudado em nível
+   celular. São estudadas as células que o compõe: neurônios, fibras e glias. Além do
+   comportamento do estudo histológico dos componentes de cada célula, nessa
+   escala são ainda estudadas as ramificações dendríticas e axonais. As técnicas de
+   estudo nessa escala são histológicas / anatômicas (empregam corantes,
+   dissecações e são feitas in vitro).
+   Intermediária: Nesta classe são estudados grupos de células e suas
+   conexões. O comportamento das árvores dendríticas e como são compostas as
+   redes neurais. São ainda exploradas as conexões neurais dentro de uma região
+   cortical. Um exemplo do estudo cortical nessa escala são as visualizações de redes
+   neurais e de seu comportamento nas regiões V1 e V2 do córtex visual. Através das
+   técnicas de citoarquiteturas, citochromo oxidase e mieloarquiteturas é possível a
+PA visualização das sub-regiões de cataventos em V1 (blobs e inter-blobs) e das sub-
+   regiões em forma de faixas em V2 ("thin stripe", "inter stripe" e "thick stripe") [Zeki, 1993] [Hubel, 1995].
+   Macroscópica: A esta categoria pertence o estudo de regiões inteiras do
+   córtex. Embora essa escala possa ser explorada do ponto de vista anatômico, o
+   maior interesse reside na sua pesquisa fisiológica. A principal característica da
+   111
+   CAPÍTULO 4
+   exploração fisiológica é que esta envolve aspectos funcionais da parte estudada e
+   são executadas in vivo. Assim, temos como exemplo da escala macroscópica os
+   estudos cirúrgicos (como o de Broca), tomografia por ressonância magnética e
+   PET (Positron-Emition Tomography).
+   Devemos lembrar que não existe uma divisão distinta entre as escalas.
+   Ninguém sabe exatamente onde uma escala começa ou termina. Essa
+   classificação tem como único objetivo apresentar as características multi-escala do
+   estudo do córtex.
+   4.4.3 – VISUALIZANDO O CÉREBRO ATRAVÉS DA VISÃO
+   Como vimos anteriormente, o cérebro sempre foi visto como uma caixa
+   preta (em especial o córtex). Do ponto de vista anatômico tradicional, quando
+   analisamos o córtex, este se apresenta como uma estrutura uniforme,
+   diferenciando-se apenas pelas depressões, intituladas sulcos, que delimitam os
+   giros e lobos. Entretanto, a existência dos sulcos não dizem nada em termos da
+   funcionalidade do córtex, eles são apenas uma estratégia utilizada pela natureza
+   que permite aumento da superfície sem grande aumento do volume (no homem,
+   cerca de dois terços do córtex está “escondido” pelos sulcos) [Machado, 1993].
+   Desta forma, o córtex apresenta-se singular: uma única matéria uniforme enrugada
+   (sulcos e giros). Devido a essa característica uniforme, Semir Zeki [Zeki, 1993]
+   sugere que, embora o córtex seja diferenciado pela funcionalidade de cada região,
+   deva existir uma estratégia única ou geral para o seu funcionamento. Deste modo,
+   se explorarmos e desvendarmos o funcionamento de uma região cortical, teremos
+   conhecimentos suficientes para desvendar as demais regiões.
+   Nessas últimas décadas, a visão recebeu uma atenção especial. Nenhum
+   outro sentido ou região cerebral foi mais explorado do que a visão. Embora tenha
+   sido alvo da pesquisa científica, tem revelado muito pouco sobre o seu
+   funcionamento.
+   Assim, o estudo da visão está trazendo evidências de como funciona o
+   cérebro como um todo, e aproveitando o trocadilho proposto pelo título do livro A
+   Vision of the Brain, de Semir Zeki [Zeki, 1993], fornecendo uma poderosa
+   ferramenta de visualização do funcionamento do cérebro.
+   Embora esta subseção seja destinada ao estudo do cérebro, vamos a partir
+   daqui enfocar a visão: o sentido e a região mais explorados do córtex.
+   112
+   OS CAMINHOS PARALELOS DA VISÃO
+   4.4.4 – VISÃO – UMA ÁREA MULTIDISCIPLINAR
+   Dentre as áreas do conhecimento cientifico, talvez a que envolva a maior
+   diversidade de disciplinas seja a visão. É fácil verificar esta suspeita. O estudo da
+   visão pode ser dividido em visão natural e artificial. Em visão natural, os objetos de
+   estudos são os sistemas biológicos de visão, ao passo que no segundo caso,
+   temos as ciências exatas tentando reproduzir artificialmente o processo de
+   interpretação visual do mundo realizado pelos sistemas biológicos. O verdadeiro
+   fascínio dessa ciência ocorre na integração de suas duas partes: visão natural e
+PA artificial, integrando as ciências exatas com as ciências biológicas. Se por um lado
+   a biologia tenta desvendar a arquitetura e funcionamento do cérebro, a cibernética
+   desenvolve modelos baseados nos sistemas biológicos e experimentam sistemas
+   artificiais. Embora aparentemente estejam percorrendo caminhos diversos, a
+   integração ocorre na realimentação do conhecimento científico.
+   No entanto, a visão é muito mais complexa e contém um número maior de
+   áreas de conhecimento envolvidas do que a versão dualista anteriormente
+   apresentada. Para explorar algumas dessas áreas envolvidas, vamos considerar a
+   definição de visão utilizada por David Marr. Segundo Marr [Marr, 1982], visão é o
+   processo de descobrir através de imagens o que está presente em nosso mundo e
+   suas respectivas posições. Seguindo essa abordagem, o primeiro estágio da visão
+   é a aquisição de imagens. Assim, os olhos captam energia eletromagnética na
+   forma de luz e a converte em impulsos nervosos através de células fotorreceptoras.
+   A visão é um mecanismo neurológico, baseado em estímulos do universo físico,
+   necessitando deste modo, para sua compreensão de conhecimentos em ambos
+   universos científicos (compreensão física e neurológica).
+   Nesse patamar a complexidade da questão fica bastante evidente, assim
+   como a diversidade de áreas científicas envolvidas. Num primeiro plano temos as
+   neurociências, através das quais são estudados os mecanismos neurais. O
+   entendimento dos processos de percepção, compete à psicologia, assim como
+   entramos em questões de interesse filosófico quando levantamos a questão da
+   consciência envolvida em todo o processo. Se ponderarmos sobre a questão do
+   comportamento do sistema visual em resposta ao ambiente, assim como do
+   processo evolutivo que levou ao desenvolvimento do sistema de visão natural,
+   devemos considerar a ecologia e o darwinismo. Encerrando o processo do estudo
+   da visão temos a matemática e a física desenvolvendo os modelos formais das
+   113
+   CAPÍTULO 4
+   interpretações encontradas para o processo visual e finalmente a computação
+   auxiliando no desenvolvimento de experimentos, fazendo análises abstratas ou não
+   das simulações e modelagens, e desenvolvendo sistemas artificiais
+   correspondentes (Figura 4.1).
+   Visão
+   Matemática
+   Ecologia
+   -
+   Física
+   Neurociência
+   Ciência da
+   Filosofia
+   Computação
+   Psicologia
+   Fig. - 4.1 – Visão, uma ciência formada pela integração de muitas outras.
+   4.5 – INTRODUÇÃO À NEUROCIÊNCIA
+   Nesta seção iremos discutir sucintamente as bases da neurociência, para
+   que possamos no contexto desse capítulo discorrer sobre o funcionamento do
+   córtex visual. O sistema nervoso é constituído basicamente por dois tipos de
+   células: células neurais ou neurônios e glias ou neuróglias. Enquanto os neurônios
+   são células especializadas na condução e processamento de sinais eletroquímicos,
+   as glias tem como finalidade o revestimento ou isolamento, modulação da atividade
+PA neural e defesa [Machado, 1993]. Nesta seção iremos enfocar nossa discussão nos
+   neurônios, uma vez que estamos nos limitando ao perfil de processamento de
+   informações.
+   4.5.1 – SISTEMA NERVOSO
+   Em termos evolutivos, a complexidade do sistema nervoso dos seres vivos
+   determina sua escala hierárquica. Assim, quanto mais primitivo, mais rudimentar é
+   o seu sistema nervoso, se comparado com o sistema nervoso dos vertebrados e
+   114
+   OS CAMINHOS PARALELOS DA VISÃO
+   mais ainda se compararmos com os representantes do ápice da pirâmide evolutiva,
+   os primatas. No entanto, todos eles possuem uma unidade fundamental, as células
+   neurais ou neurônios [Kovács, 1997]. Os sistemas nervosos são constituídos por
+   aglomerados dessas células (gânglios, núcleos e córtices). Através de seus
+   sistemas nervosos, os seres vivos são capazes de agir e reagir a eventos no
+   ambiente, e muitas vezes até mesmo a modelá-lo.
+   O sistema nervoso dos vertebrados costuma ser dividido em duas porções
+   com características distintas: o sistema nervoso central, localizado dentro do
+   esqueleto axial (cavidade craniana e canal vertebral) e o sistema nervoso periférico
+   localizado fora do esqueleto axial. O sistema nervoso central é formado pelo
+   cérebro, medula espinhal e retina do sistema visual, ao passo que o periférico é
+   composto pelas fibras aferentes e suas conexões com os órgãos sensoriais e pelas
+   fibras eferentes, conexas com os músculos [Machado, 1993] [Costa, 1996]. A
+   Figura 4.2 apresenta um esquema detalhado das divisões do sistema nervoso.
+   Sistema
+   Nervoso
+   Sistema
+   Sistema
+   Nervoso
+   Nervoso
+   Central
+   Periférico
+   Encéfalo
+   Medula
+   Gânglios e
+   Nervos
+   terminações
+   nervosas
+   Cerebelo
+   Cérebro
+   Tronco
+   Espinhais
+   Cranianos
+   Telencéfalo
+   Diencéfalo
+   Ponte
+   Bulbo
+   Mesencéfalo
+   Fig. - 4.2 – Subdivisões do Sistema Nervoso [Costa, 1996].
+   Neste trabalho estaremos mais interessados no cérebro, que é composto
+   pelo diencéfalo e telencéfalo. Na Figura 4.3 encontramos uma ilustração das
