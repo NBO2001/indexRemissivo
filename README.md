@@ -67,9 +67,9 @@ Todos os tipos de hash genericos, usando o memcpy.
 
 ## Funçoes a desevolver
 
-``def _isLetter(letter)``, funçao que retorna verdeiro se a letra é um caractere valido e falso caso contrário.
+``def isLetter(letter)``, funçao que retorna verdeiro se a letra é um caractere valido e falso caso contrário.
 
-``def _cleaningWord(word)``, funçao que limpa uma string tirando todos os caracteres invalidos do inicio e do fim da string.
+``def cleaningWord(word)``, funçao que limpa uma string tirando todos os caracteres invalidos do inicio e do fim da string.
 
 ``def tf(palavra, doc)``, funcao que recebe a recorrecia de uma palavra e divide pela quantidade de palavras do documento.
 
