@@ -1,50 +1,34 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include "destatico.h"
+#include "string.h"
+#include "../../destatico/staticDic.h"
 
-typedef struct aluno{
-    int id;
-    float mf;
-}TAluno;
 
-TAluno* criar_aluno(int id, float mf){
-    TAluno* aluno = malloc(sizeof(TAluno));
-    aluno->id = id;
-    aluno->mf = mf;
-    return aluno;
+int compare(void* c1, void* c2){
+    char* s1 = c1;
+    char* s2 = c2;
+    // printf("%s %s %d\n", s1, s2, strcmp(s1, s2));
+    return strcmp(s1, s2);
 }
-
-void mostrar_aluno(TAluno* aluno){
-    printf("%d\n", aluno->id);
-    printf("%f\n", aluno->mf);
-}
-
 
 int main(){
-    TDestatico* de = criar_destatico(100);
-    // TAluno* aluno = criar_aluno(1, 8.5);
-    // //mostrar_aluno(aluno);
-    // TEntrada entrada  = criar_entrada(404176, aluno);
-    // inserir_destatico(de, entrada);
-    // aluno = buscar_destatico(de, 404176);
-    // mostrar_aluno(aluno);
-    // printf("deu certo!\n");
-    int id;
-    float mf;
-
+    typeStaticDic* de = createStaticDic(3, &compare);
+    char* palavra;
+    char* buscada;
     for(int i=1; i<=3;i++){
-        scanf("%d %f", &id, &mf);
-        TAluno* aluno = criar_aluno(id, mf);
-        TEntrada entrada  = criar_entrada(404177+i, aluno);
-        inserir_destatico(de, entrada);
+        palavra = malloc(sizeof(char)*20);
+        scanf("%[^\n]%*c", palavra);
+        chargeStaticDic(de, palavra);
     }
-    for(int i=1; i<=1000; i++){
-        TAluno* aluno = buscar_destatico(de, 404177+i);
-        if(aluno){
-            mostrar_aluno(aluno);
-        }
-        
+    palavra = malloc(sizeof(char)*20);
+    printf("digite palavra que quer:\n");
+    scanf("%[^\n]%*c", palavra);
+
+    buscada  = searchStaticDic(de, palavra);
+    if(buscada!=NULL){
+        printf("%s\n", buscada);
+    }else{
+        printf("nao encontrei!\n");
     }
     
-
 }
