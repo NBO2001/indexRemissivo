@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <assert.h>
 #include <math.h>
 #include "utils.h"
@@ -142,7 +141,7 @@ typeDocument* * mappingPages(FILE * fp){
 }
 
 const char * lowerCase(char string[]){
-    int size = strlen(string);
+    int size = lenStr(string);
     for (int i = 0; i < size; i++){
         if (string[i] >= 65 && string[i] <= 90 && string[i]){
             string[i] += 32;
