@@ -140,3 +140,13 @@ typeDocument* * mappingPages(FILE * fp){
     return documents;
     
 }
+
+const char * lowerCase(char string[]){
+    int size = strlen(string);
+    for (int i = 0; i < size; i++){
+        if (string[i] >= 65 && string[i] <= 90 && string[i]){
+            string[i] += 32;
+        }
+    }
+    return string;
+}
