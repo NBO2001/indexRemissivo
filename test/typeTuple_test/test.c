@@ -13,7 +13,7 @@ int main(int argc, char * argv[]){
         scanf("%d%*c", &tmpInt);
         scanf("%[^\n]%*c", name);
 
-        typeTuple * tmp = create(sizeof(int),&tmpInt,sizeof(char)*25, name);
+        typeTuple * tmp = CREATE(&tmpInt, name);
         tuples[i] = tmp;
 
     }
