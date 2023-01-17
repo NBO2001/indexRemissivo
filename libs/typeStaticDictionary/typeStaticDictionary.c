@@ -1,16 +1,16 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include "staticDic.h"
+#include "typeStaticDictionary.h"
 
-struct typeStaticDic{
+struct typeStaticDictionary{
     int tam;
     int occupation;
     typeCompare compare;
     void* *values;
 };
 
-typeStaticDic* createStaticDic(int tam, typeCompare compare){
-    typeStaticDic* staticDic = malloc(sizeof(typeStaticDic));
+typeStaticDictionary* createStaticDic(int tam, typeCompare compare){
+    typeStaticDictionary* staticDic = malloc(sizeof(typeStaticDictionary));
     staticDic->tam = tam;
     staticDic->occupation=0;
     staticDic->compare = compare;
@@ -19,12 +19,12 @@ typeStaticDic* createStaticDic(int tam, typeCompare compare){
     return staticDic;
 }
 
-void chargeStaticDic(typeStaticDic* staticDic, void* value){
+void chargeStaticDic(typeStaticDictionary* staticDic, void* value){
     staticDic->values[staticDic->occupation]=value;
     staticDic->occupation++;
 }
 
-void* searchStaticDic(typeStaticDic* staticDic, void* key){
+void* searchStaticDic(typeStaticDictionary* staticDic, void* key){
     int inicio=0, fim=staticDic->occupation-1, meio, status=0;
     void* value;
     while((!status) && (inicio<=fim)){
