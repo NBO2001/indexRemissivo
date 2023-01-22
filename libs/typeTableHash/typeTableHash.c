@@ -24,7 +24,7 @@ int cmp(void* a,void*b){
     
     typeCharge* aa = a;
     typeCharge* bb = b;
-    
+
     return memcmp(aa->key,bb->key,aa->sizeKey);
 }
 
@@ -45,7 +45,8 @@ typeTableHash* createTableHash(unsigned int len){
 
 
 unsigned int MurmurHash2 ( const void * key, int len, unsigned int seed )
-{
+{   
+    
     // Fonte: https://sites.google.com/site/murmurhash/
 	// 'm' and 'r' are mixing constants generated offline.
 	// They're not really 'magic', they just happen to work well.
@@ -77,7 +78,7 @@ unsigned int MurmurHash2 ( const void * key, int len, unsigned int seed )
 	}
 	
 	// Handle the last few bytes of the input array
-
+    
 	switch(len)
 	{
 	case 3: h ^= data[2] << 16;
@@ -95,6 +96,21 @@ unsigned int MurmurHash2 ( const void * key, int len, unsigned int seed )
 
 	return h;
 } 
+
+unsigned int funchash ( const void * key, int len, unsigned int seed ){
+
+    unsigned int acumulador = 0;
+
+    const char * keys = key;
+    int i = 0;
+    while (keys[i])
+    {
+        acumulador += (keys[i]);
+        i++;
+    }
+
+    return acumulador;
+}
 
 static unsigned int hashing(typeTableHash* thash,unsigned int keySize ,void* key){
   return (MurmurHash2(key,keySize,SEED) % thash->len);
@@ -122,7 +138,7 @@ void* seachTable(typeTableHash * thash, void * key,unsigned int sizeKey){
     charge->sizeKey = sizeKey;
 
     typeCharge* aux = seach_in_list(thash->lists[hashing(thash,sizeKey,key)],charge);
-
+    
     free(charge);
 
     if(aux) return aux->value;

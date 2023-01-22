@@ -11,6 +11,7 @@
 
 struct typeIndex{
     typeDynamicDictionary *words;
+    unsigned int totalPages;
 };
 
 
@@ -34,8 +35,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     while(fscanf(fp,"%s", tmp) == 1){
 
         if(strcmp(tmp,"PA") == 0){
-
-
+            
             if(indexDoc >= (tamDocuments-2)){
                 tamDocuments *= 2;
                 documents = realloc(documents, sizeof(typeDocument *)*tamDocuments);
@@ -46,6 +46,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
             setNumPage(documents[indexDoc],indexDoc);
             setLenWords(documents[indexDoc],0);
             indexDoc++;
+            
 
         }else{
 
@@ -55,17 +56,17 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
 
                 setLenWords(documents[indexDoc-1],getLenWords(documents[indexDoc-1])+1);
 
-                tipoPalavra* word = searchDynamicDictionary(index->words,tmp,150);
+                tipoPalavra* word = searchDynamicDictionary(index->words,tmp,strlen(tmp));
                 
                 if(!word){
                     
                     word = criarPalavra();
                     setPalavra(word,tmp);
+                    setPage(word,documents[indexDoc-1],&indexDoc);
                     
-                    insertDynamicDictionary(index->words,tmp,150,word,sizeWord());
+                    insertDynamicDictionary(index->words,tmp,strlen(tmp),word,sizeWord());
                     
                 }else{
-                    
                     setPage(word,documents[indexDoc-1],&indexDoc);
                 }
                 
@@ -76,6 +77,70 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
 
     fclose(fp);
     
+    index->totalPages = indexDoc;
     return index;
+
+}
+
+void calculatorPontuations(typeIndex * index, tipoPalavra * palavra, int tam){
+
+    int i = 0;
+    typeDocument * doc;
+    
+    while (i < tam){
+        doc = getDocument(palavra,i);
+        int recorrencias = getRecorreces(palavra,i);
+        int totWords = getLenWords(doc);
+        unsigned int totDoc = index->totalPages;
+        
+        double pontuation = tfidf(recorrencias,totWords,tam,totDoc);
+        
+        setPontuation(palavra,i,pontuation);
+        
+        i++;
+
+    }
+    sortingPages(palavra);
+
+}
+
+typeElementIndex* consultWord(typeIndex * index, char * key){
+
+    cleaningWord(key);
+
+    tipoPalavra* word = searchDynamicDictionary(index->words,key,strlen(key));
+   
+   
+    if(!word) return NULL;
+
+    int tam = getLenPages(word);
+    calculatorPontuations(index,word,tam);
+
+    typeElementIndex* element = calloc(sizeof(typeElementIndex),1);
+    element->pages = calloc(sizeof(typePagination), 5);
+
+    element->word = calloc(sizeof(char), 150);
+
+    strcpy(element->word,getPalavra(word));
+
+    typePagination tmp;
+    
+    int i=0;
+
+    typeDocument * doc;
+
+    while(i < 5 && i < tam){
+        
+        doc = getDocument(word,i);
+        tmp.page = getNumPage(doc);
+        tmp.pontuation = getPontuation(word, i);
+
+        element->pages[i] = tmp;
+
+        element->lenPages++;
+        i++;
+    }
+
+    return element;
 
 }
