@@ -1,5 +1,5 @@
 #include "typeStopWords.h"
-#include "../../libs/typeStaticDictionary/typeStaticDictionary.h"
+#include "../../libs/typeDynamicDictionary/typeDynamicDictionary.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +7,7 @@
 
 struct typeStopWord{
 
-    typeStaticDictionary * dictionary;
+    typeDynamicDictionary * dictionary;
 
 };
 
@@ -24,7 +24,7 @@ typeStopWord * newTypeStopWord(char * fileName){
 
     typeStopWord * stopWords = malloc(sizeof(typeStopWord));
 
-    stopWords->dictionary = createStaticDic(392,&compare);
+    stopWords->dictionary = newDynamicDictionary(400);
 
     FILE * wordsFile = fopen(fileName, "r");
 
@@ -32,12 +32,11 @@ typeStopWord * newTypeStopWord(char * fileName){
 
     while (fscanf(wordsFile,"%s", word) == 1){
 
-        chargeStaticDic(stopWords->dictionary, word);
+        insertDynamicDictionary(stopWords->dictionary, word, strlen(word), word, strlen(word));
         word = malloc(sizeof(char)*25);
 
     }
     
-
     fclose(wordsFile);
 
     return stopWords;
@@ -45,7 +44,7 @@ typeStopWord * newTypeStopWord(char * fileName){
 
 short isStopWord(typeStopWord * stopWords, char * word){
 
-    if(searchStaticDic(stopWords->dictionary,word)) return 1;
+    if (searchDynamicDictionary(stopWords->dictionary, word,strlen(word))) return 1;
     else return 0;
 
 }
