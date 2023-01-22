@@ -8,34 +8,8 @@
 #include "../tipoPalavra/tipoPalavra.h"
 
 struct typeIndex{
-    TDDinamico *words; 
+    TDDinamico *words;
 };
-
-void insertElDocs(
-    typeDocument* *docs, 
-    int *tamDocuments, 
-    int *indexDoc,
-    long int *startPage,
-    long int *previus,
-    long int *contWords,
-    FILE * fp){
-
-    typeDocument * tm = tpDocument();
-
-    assert(tm != NULL);
-    
-    docs[(*indexDoc)] = tm;
-    setNumPage(docs[(*indexDoc)], (*indexDoc));
-    setStartP(docs[(*indexDoc)], (*startPage));
-    setEndP(docs[(*indexDoc)], (*previus));
-    setLenWords(docs[(*indexDoc)], (*contWords));
-
-    (*indexDoc)++;
-
-    (*startPage) = ftell(fp);
-    (*contWords) = 0;
-
-}
 
 
 
@@ -45,9 +19,8 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     typeIndex * index = malloc(sizeof(typeIndex));
     int tamDocuments = 2;
     int indexDoc = 0;
-    long int startPage = 0;
-    long int previus = 0;
     long int contWords = 0;
+
     typeDocument* *documents = malloc(sizeof(typeDocument *)*tamDocuments);
 
     FILE * fp = fopen(documentName,"r");
@@ -60,8 +33,6 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     char tmp[150];
 
     while(fscanf(fp,"%s", tmp) == 1){
-        
-        previus = ftell(fp) - strlen(tmp);
 
         if(strcmp(tmp,"PA") == 0){
 
@@ -91,7 +62,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
                     setPalavra(word,tmp);
                     inserir_DD(index->words,tmp,word);
                 }else{
-                    setPage(word,documents[indexDoc]);
+                    setPage(word,documents[indexDoc],&indexDoc);
                 }
                 
             }

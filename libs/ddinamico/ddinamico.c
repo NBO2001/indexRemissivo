@@ -133,7 +133,7 @@ TDDinamico* criar_DD(int fator_carga, int tamanho, unsigned int keyLen){
 
 }
 
-void inserir_DD(TDDinamico *dd, int chave, void* info){
+void inserir_DD(TDDinamico *dd, void* chave, void* info){
     unsigned int k = hashing(dd, chave);
     TListaSE* l = dd->entradas[k];
     inserirInicioLSE(l, criar_entrada_DD(chave,info));

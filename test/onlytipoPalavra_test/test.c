@@ -25,6 +25,8 @@ void showPagesInOrder(tipoPalavra * palavra, int tam){
 
 int main(int argc, char * argv[]){
 
+    printf("TEtsete\n");
+
     tipoPalavra** palavras = calloc(sizeof(tipoPalavra*),14000);
     
     unsigned int totDocs = 0;
@@ -36,13 +38,14 @@ int main(int argc, char * argv[]){
     int i = 0;
 
     FILE * fp = fopen(argv[1],"r");
+    
 
     while (fscanf(fp,"%s", tmpWord)==1){
         
         palavras[i] = criarPalavra();
 
         setPalavra(palavras[i], tmpWord);
-        
+    
         i++;
     }
 

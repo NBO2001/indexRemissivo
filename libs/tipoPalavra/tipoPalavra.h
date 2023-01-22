@@ -25,6 +25,5 @@ unsigned int * getDocTot(tipoPalavra* p, int index);
 
 void sortingPages(tipoPalavra* p);
 
-unsigned int sizeTypePage();
 
 #endif

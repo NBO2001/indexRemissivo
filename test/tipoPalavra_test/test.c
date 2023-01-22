@@ -43,7 +43,7 @@ void calculatorPontuations(tipoPalavra * palavra, int tam){
         i++;
 
     }
-    //sortingPages(palavra);
+    sortingPages(palavra);
     
 
 }
@@ -72,7 +72,7 @@ void showVector(tipoPalavra * * palavras){
 }
 int main(int argc, char * argv[]){
 
-    int tam = 14000;
+    int tam = 20000;
     char tmpWord[150];
     int tolPages = 0;
     int indexPage = 0;
@@ -85,7 +85,7 @@ int main(int argc, char * argv[]){
 
     while (fscanf(fp,"%s", tmpWord)==1){
         if(strcmp(tmpWord,"PA") == 0){
-            doc = malloc(sizeof(typeDocument*));
+            
             doc = tpDocument();
             setNumPage(doc,tolPages);
             setLenWords(doc,0);
@@ -111,8 +111,6 @@ int main(int argc, char * argv[]){
                 
                 palavras[indexPage] = criarPalavra();
                 setPalavra(palavras[indexPage],tmpWord);
-                
-                assert(strcmp(getPalavra(palavras[indexPage]), tmpWord) == 0);
 
                 setPage(palavras[indexPage],doc, &tolPages);
 
@@ -125,13 +123,13 @@ int main(int argc, char * argv[]){
     
     fclose(fp);
 
-    // i=0;
-    // while (palavras[i] != NULL){
-    //     printf("*-*-* I: %d **-*-*-*-*\n", i);
-    //     wdMostre(palavras[i]);
-    //     i++;
-    // }
+    i=0;
+    while (palavras[i] != NULL){
+        printf("*-*-* I: %d **-*-*-*-*\n", i);
+        wdMostre(palavras[i]);
+        i++;
+    }
     
-    wdMostre(palavras[1]);
+    // wdMostre(palavras[40]);
 
 }

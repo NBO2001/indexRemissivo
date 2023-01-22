@@ -1,9 +1,9 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "tipoPalavra.h"
-#include "string.h"
-#include "assert.h"
-#include "../../libs/selectionSort/selectionSort.h"
+#include <assert.h>
+#include <string.h>
+#include "../../libs/quick_sort_generico/quick_sort.h"
 
 struct typePage{
     void * document;
@@ -11,7 +11,6 @@ struct typePage{
     unsigned long int recorrences;
     unsigned int * totDocs;
 };
-
 
 struct tipoPalavra{
     char* palavra;  
@@ -75,7 +74,7 @@ void setPontuation(tipoPalavra* p, int index, double pontuation){
 
 void setPalavra(tipoPalavra*p, char* palavra){
 
-    p->palavra = malloc(sizeof(char)*strlen(palavra));
+    p->palavra = malloc(sizeof(char)*150);
 
     strcpy(p->palavra,palavra);
     
@@ -99,17 +98,20 @@ int _comparatorPages(void * pageA,void * pageB){
 
     typePage* pageAA = pageA;
     typePage* pageBB = pageB;
+    if(pageAA->pontuation < pageBB->pontuation){
+        return -1;
+    }else if(pageAA->pontuation > pageBB->pontuation){
+        return 1;
+    }else{
+        return 0;
+    }
     
-    return memcmp(&pageAA->pontuation,&pageBB->pontuation, sizeof(double));
 }
 
 
 void sortingPages(tipoPalavra* p){
 
-    qsort(p->pages,p->ocupation,sizeof(typePage),&_comparatorPages);
+    sort(p->pages,p->ocupation,sizeof(typePage),&_comparatorPages);
     
 }
 
-unsigned int sizeTypePage(){
-    return sizeof(typePage);
-}
