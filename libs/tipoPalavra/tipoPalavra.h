@@ -25,5 +25,8 @@ unsigned int * getDocTot(tipoPalavra* p, int index);
 
 void sortingPages(tipoPalavra* p);
 
+void showTmp(tipoPalavra* p, char * comet);
+
+unsigned int sizeWord();
 
 #endif

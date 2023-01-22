@@ -1,8 +1,8 @@
+#include <string.h>
+#include <assert.h>
 #include "stdio.h"
 #include "stdlib.h"
 #include "tipoPalavra.h"
-#include <assert.h>
-#include <string.h>
 #include "../../libs/quick_sort_generico/quick_sort.h"
 
 struct typePage{
@@ -22,7 +22,9 @@ struct tipoPalavra{
 tipoPalavra* criarPalavra(){
     tipoPalavra* p = malloc(sizeof(tipoPalavra));
     p->lenght = 2;
-    p->pages = calloc(sizeof(typePage), p->lenght);
+    p->pages = malloc(sizeof(typePage) * p->lenght);
+    assert(p->pages != NULL);
+    
     p->ocupation = 0;
     return p;
 }
@@ -40,11 +42,15 @@ typePage _createPage(void* documentPage, unsigned int * totDocs){
 
 void setPage(tipoPalavra*p, void* documentPage,  unsigned int * totDocs){
 
+    assert(p->pages != NULL);
+    
     if((p->ocupation != 0 ) && (memcmp(p->pages[p->ocupation - 1].document,documentPage, sizeof(int)) == 0) ){
+        
         p->pages[p->ocupation - 1].recorrences++;
     }else{
         
         if(p->ocupation >= p->lenght){
+            
             p->lenght = p->lenght * 2;
             p->pages = realloc(p->pages,sizeof(typePage)*p->lenght);
             
@@ -115,3 +121,9 @@ void sortingPages(tipoPalavra* p){
     
 }
 
+void showTmp(tipoPalavra* p, char * comet){
+
+    printf("%s %p\n", comet, p->pages);
+}
+
+unsigned int sizeWord(){ return sizeof(tipoPalavra); }

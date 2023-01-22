@@ -125,7 +125,7 @@ void* seachTable(typeTableHash * thash, void * key,unsigned int sizeKey){
 
     free(charge);
 
-    if(aux) return aux->key;
+    if(aux) return aux->value;
     else return NULL;
 
 }
