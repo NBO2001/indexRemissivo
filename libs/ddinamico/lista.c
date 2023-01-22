@@ -10,19 +10,21 @@ typedef struct elementoLSE{
 struct lista{
   TElementoLSE* inicio;
   int tamanho;
+  unsigned int keyLen;
 
   TImprimirLSE imprimir;
   TCompararLSE comparar;
 };
 
-TListaSE* criarLSE(TImprimirLSE imprimir, TCompararLSE comparar){
+TListaSE* criarLSE(TImprimirLSE print, TCompararLSE cmpFuc, unsigned int lenKeys){
   TListaSE* lista = malloc(sizeof(TListaSE));
 
   lista->inicio = NULL;
   lista->tamanho = 0;
 
-  lista->imprimir = imprimir;
-  lista->comparar = comparar;
+  lista->imprimir = print;
+  lista->comparar = cmpFuc;
+  lista->keyLen = lenKeys;
   return lista;
 }
 
@@ -153,7 +155,7 @@ void imprimirLSE(TListaSE* l){
 void* buscarConteudoLSE(TListaSE* l, void* chaveBusca){
   TElementoLSE *cam = l->inicio;
 
-  while ((cam!=NULL) && ( l->comparar(cam->cargautil, chaveBusca) !=0 ) ){
+  while ((cam!=NULL) && ( l->comparar(cam->cargautil, chaveBusca, l->keyLen) !=0 ) ){
     cam = cam->proximo;
   }
   if (cam == NULL)
@@ -165,7 +167,7 @@ void* buscarConteudoLSE(TListaSE* l, void* chaveBusca){
 void* removerConteudoLSE(TListaSE* l, void* chaveBusca){
   TElementoLSE *cam = l->inicio;
   TElementoLSE *ant=NULL;
-  while ((cam!=NULL) && (l->comparar(cam->cargautil, chaveBusca)!=0) ){
+  while ((cam!=NULL) && (l->comparar(cam->cargautil, chaveBusca, l->keyLen)!=0) ){
     ant = cam;
     cam = cam->proximo;
   }
@@ -191,7 +193,7 @@ void inserirConteudoLSE(TListaSE* l, void* carga){
   TElementoLSE* ant=NULL;
   TElementoLSE *novo = criarElementoLSE(carga);
 
-  while( (cam != NULL) && (l->comparar(cam->cargautil, carga ) >= 0) ){
+  while( (cam != NULL) && (l->comparar(cam->cargautil, carga, l->keyLen) >= 0) ){
     ant = cam;
     cam = cam->proximo;
   }

@@ -1,9 +1,9 @@
 typedef struct lista TListaSE;
 
 typedef void (* TImprimirLSE)(void*);
-typedef int (* TCompararLSE)(void*, void*);
+typedef int (* TCompararLSE)(void*, void*, unsigned int lenKeys);
 
-TListaSE* criarLSE();
+TListaSE* criarLSE(TImprimirLSE print, TCompararLSE cmpFuc, unsigned int lenKeys);
 
 // Operações baseadas em posição
 
