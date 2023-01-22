@@ -8,6 +8,8 @@
 
 int main(int argc, char * argv[]){
 
+    assert(argc == 3);
+
     typeStopWord * stWord = newTypeStopWord(argv[1]);
     typeIndex * indiceRemissivo = newTypeIndex(argv[2],stWord);
 
@@ -26,6 +28,6 @@ int main(int argc, char * argv[]){
         }
 
     }
-    
+
 
 }
