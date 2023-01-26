@@ -4,6 +4,7 @@
 #include <assert.h>
 #include "../../libs/typeIndex/typeIndex.h"
 #include "../../libs/typeStopWords/typeStopWords.h"
+#include "../../libs/utils/utils.h"
 
 
 int main(int argc, char * argv[]){
@@ -16,7 +17,7 @@ int main(int argc, char * argv[]){
     char tmp[150];
 
     while(scanf("%s", tmp) == 1){
-
+        lowerCase(tmp);
         typeElementIndex * elem = consultWord(indiceRemissivo,tmp);
 
         if(elem == NULL) printf("Nao Existe\n");

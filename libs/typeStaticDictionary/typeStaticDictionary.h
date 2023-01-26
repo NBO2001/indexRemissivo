@@ -3,11 +3,11 @@
 
 typedef struct typeStaticDictionary typeStaticDictionary;
 
-typedef int (*typeCompare)(void*, void*);
 
-typeStaticDictionary* createStaticDic(int tam, typeCompare compare);
-void chargeStaticDic(typeStaticDictionary* staticDic, void* value);
-void* searchStaticDic(typeStaticDictionary* staticDic, void* key);
+
+typeStaticDictionary* createStaticDic(int tam);
+void chargeStaticDic(typeStaticDictionary* staticDic, void* value, unsigned int sizeValue);
+void* searchStaticDic(typeStaticDictionary* staticDic, void* key, unsigned int sizeKey);
 
 
 

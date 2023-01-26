@@ -51,6 +51,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
         }else{
 
             cleaningWord(tmp);
+            lowerCase(tmp);
             
             if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 0)){
 
