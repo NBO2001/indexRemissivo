@@ -97,20 +97,6 @@ unsigned int MurmurHash2 ( const void * key, int len, unsigned int seed )
 	return h;
 } 
 
-unsigned int funchash ( const void * key, int len, unsigned int seed ){
-
-    unsigned int acumulador = 0;
-
-    const char * keys = key;
-    int i = 0;
-    while (keys[i])
-    {
-        acumulador += (keys[i]);
-        i++;
-    }
-
-    return acumulador;
-}
 
 static unsigned int hashing(typeTableHash* thash,unsigned int keySize ,void* key){
   return (MurmurHash2(key,keySize,SEED) % thash->len);
