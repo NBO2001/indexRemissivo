@@ -6,6 +6,13 @@
 #include "../../libs/typeStopWords/typeStopWords.h"
 #include "../../libs/utils/utils.h"
 
+const int cmpStr(const void * a, const void * b){
+
+    const char * aa = a;
+    const char * bb = b;
+
+    return strcmp(bb,aa);
+}
 
 int main(int argc, char * argv[]){
 
@@ -16,19 +23,26 @@ int main(int argc, char * argv[]){
 
     char tmp[150];
 
-    while(scanf("%s", tmp) == 1){
-        lowerCase(tmp);
-        typeElementIndex * elem = consultWord(indiceRemissivo,tmp);
+    char** wordsV = getWordsSeach(indiceRemissivo);
 
-        if(elem == NULL) printf("Nao Existe\n");
-        else{
-            printf("{palavra: %s; totalPaginas: %d}\n",elem->word, elem->lenPages);
-            for(int i=0; i < elem->lenPages; i++){
-                printf("\tPage %d; Pontuation: %lf\n", elem->pages[i].page, elem->pages[i].pontuation);
-            }
-        }
+    unsigned int n = getTamWordsSeach(indiceRemissivo);
 
+    unsigned int i = 0;
+
+    while (i < n){
+
+        typeElementIndex * elem = consultWord(indiceRemissivo,wordsV[i]);
+
+        assert(elem != NULL);
+
+        printf("{ %s; ",elem->word);
+
+        for(int i=0; i < elem->lenPages; i++) printf("%d, ", elem->pages[i].page);
+
+        printf("}\n");
+
+        i++;
     }
-
+    
 
 }

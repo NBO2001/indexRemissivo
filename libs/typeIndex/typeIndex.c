@@ -11,6 +11,8 @@
 
 struct typeIndex{
     typeDynamicDictionary *words;
+    char* *wordsForSeach;
+    unsigned int totalWordsForSeach;
     unsigned int totalPages;
 };
 
@@ -23,6 +25,10 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     int tamDocuments = 40;
     int indexDoc = 0;
     long int contWords = 0;
+
+    unsigned int indexWordsFSeach = 0;
+    index->totalWordsForSeach = 2;
+    index->wordsForSeach = calloc(sizeof(char*),index->totalWordsForSeach);
 
     typeDocument* *documents = malloc(sizeof(typeDocument *)*tamDocuments);
 
@@ -60,9 +66,19 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
                 tipoPalavra* word = searchDynamicDictionary(index->words,tmp,strlen(tmp));
                 
                 if(!word){
+
+                    if(indexWordsFSeach >= index->totalWordsForSeach){
+                        index->totalWordsForSeach *= 2;
+                        index->wordsForSeach = realloc(index->wordsForSeach,sizeof(char*)*index->totalWordsForSeach);
+                    }
                     
                     word = criarPalavra();
                     setPalavra(word,tmp);
+                    
+                    index->wordsForSeach[indexWordsFSeach] = malloc(sizeof(char*)*strlen(tmp));
+                    memcpy(index->wordsForSeach[indexWordsFSeach],tmp,sizeof(char*)*strlen(tmp));
+                    indexWordsFSeach++;
+
                     setPage(word,documents[indexDoc-1],&indexDoc);
                     
                     insertDynamicDictionary(index->words,tmp,strlen(tmp),word,sizeWord());
@@ -79,6 +95,8 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     fclose(fp);
     
     index->totalPages = indexDoc;
+    index->totalWordsForSeach = indexWordsFSeach;
+
     return index;
 
 }
@@ -145,3 +163,6 @@ typeElementIndex* consultWord(typeIndex * index, char * key){
     return element;
 
 }
+
+char* *getWordsSeach(typeIndex * index){ return index->wordsForSeach; }
+unsigned int getTamWordsSeach(typeIndex * index){ return index->totalWordsForSeach; }

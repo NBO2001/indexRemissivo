@@ -26,4 +26,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData);
 typeElementIndex* consultWord(typeIndex * index, char * key);
 
 
+char* *getWordsSeach(typeIndex * index);
+unsigned int getTamWordsSeach(typeIndex * index);
+
 #endif
