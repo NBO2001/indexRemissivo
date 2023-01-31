@@ -10,28 +10,30 @@ int cmp(void* a,void*b){
 
 int main(int argc, char * argv[]){
 
-    typeList * list = newLinkedList(&cmp,150);
+    char * * strings = malloc(sizeof(char*)*20000);
+    int index = 0;
+    
+    typeList * list = newLinkedList(&cmp,sizeof(char*));
 
     assert(list != NULL);
+    
 
-    char* tmp = malloc(150);
+    FILE * fp = fopen("./data/Aventuras.base","r");
 
-    scanf("%s", tmp);
+    assert(fp != NULL);
 
-    insert_start(list,tmp);
+    char * tmpCaracte = malloc(sizeof(char)*50);
 
-    assert(seach_in_list(list, tmp) != NULL);
-
-    scanf("%s", tmp);
-
-    insert_start(list,tmp);
-
-    assert(seach_in_list(list, tmp) != NULL);
-
-    scanf("%s", tmp);
-
-    insert_start(list,tmp);
-
-    assert(seach_in_list(list, tmp) != NULL);
+    while (fscanf(fp,"%s", tmpCaracte) == 1){
+    
+        insert(list,tmpCaracte,strlen(tmpCaracte),tmpCaracte,strlen(tmpCaracte));
+        
+        strings[index]=tmpCaracte;
+        index++;
+        tmpCaracte = malloc(sizeof(char)*50);
+      
+    }
+    
+    fclose(fp);
 
 }

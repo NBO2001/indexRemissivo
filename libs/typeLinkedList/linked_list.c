@@ -212,3 +212,7 @@ unsigned int getTamList(typeList * list){ return list->ocupation; }
 void deleteList(typeList * list){ free(list); }
 
 double getTotalComparations(typeList * list){ return (double) list->totalComparation/list->totalBuscas; }
+
+void insert_with_value(typeList * list, void* data){
+	
+}
