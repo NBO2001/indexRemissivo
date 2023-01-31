@@ -6,78 +6,47 @@
 
 int main(int argc, char * argv[]){
 
-    typeTableHash * table = createTableHash(14000);
+   
+    
+    char * * strings = malloc(sizeof(char*)*20000);
+    int index = 0;
+    
+    typeTableHash * table = createTableHash(.tam=18131,.factorCharge=12);
+
     assert(table != NULL);
-
-    char * key = malloc(sizeof(char)*150);
-
-    scanf("%s",key);
-
-    insertTable(table,key, 150, key, 150);
-
-    char * ret = seachTable(table,key,150);
-
-    assert(ret != NULL);
-
-    printf("%s\n", ret);
-
-      scanf("%s",key);
-
-    insertTable(table,key, 150, key, 150);
-
-    ret = seachTable(table,key,150);
-
-    assert(ret != NULL);
     
-    printf("%s\n", ret);
 
+    FILE * fp = fopen("./data/Aventuras.base","r");
 
-    scanf("%s",key);
+    assert(fp != NULL);
 
-    insertTable(table,key, 150, key, 150);
+    char * tmpCaracte = malloc(sizeof(char)*50);
 
-    ret = seachTable(table,key,150);
+    while (fscanf(fp,"%s", tmpCaracte) == 1){
+      if(seachTable(table,tmpCaracte,strlen(tmpCaracte)) == NULL ){
 
-    assert(ret != NULL);
+        insertTable(table,tmpCaracte,strlen(tmpCaracte),tmpCaracte,strlen(tmpCaracte));
+        
+        strings[index]=tmpCaracte;
+        index++;
+        tmpCaracte = malloc(sizeof(char)*50);
+      
+      }
+    }
     
-    printf("%s\n", ret);
+    fclose(fp);
 
-    scanf("%s",key);
+    char * tmpRetorno;
 
-    insertTable(table,key, 150, key, 150);
+    for(int i = 0; i < index; i++){
+      tmpRetorno = seachTable(table,strings[i],strlen(strings[i]));
+      assert(tmpRetorno != NULL);
+    }
 
-    ret = seachTable(table,key,150);
+    analyticalData data = getAnalicalData(table);
+    printf("Tam Table: %d, chargeFactor: %d, totalElements: %d, reHashingRealized: %u, biggerL: %u\n ", 
+    data.tam, data.factorCharge, data.totalElements, data.reHashingRealizade, data.biggerLinkedList);
 
-    assert(ret != NULL);
-    
-    printf("%s\n", ret);
-
-    printf(" *- *- *- *- \n");
-
-    scanf("%s",key);
-
-    ret = seachTable(table,key,150);
-
-    assert(ret != NULL);
-    
-    printf("%s\n", ret);
-
-    scanf("%s",key);
-
-    ret = seachTable(table,key,150);
-
-    assert(ret != NULL);
-    
-    printf("%s\n", ret);
-
-
-    scanf("%s",key);
-
-    ret = seachTable(table,key,150);
-
-    assert(ret != NULL);
-    
-    printf("%s\n", ret);
-
-
+    printf("Total de s: %d, CMPS: %lf, Media: %lf\n ", 
+    data.seachTotal, data.totalCmp, (double) data.totalCmp/data.seachTotal);
 }

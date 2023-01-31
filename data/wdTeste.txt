@@ -1,0 +1,461 @@
+   As informações transmitidas pelo LGN são enviadas para a área 17 de
+   Broadmann, também conhecida como córtex visual primário, ou ainda V1, de onde
+   prosseguem para as demais regiões corticais que constituem o córtex visual. As
+   regiões do córtex visual apresentam uma modularização hierárquica. Entre as
+   teorias a respeito da modularidade do córtex visual destaca-se a teoria da
+   especialização funcional do córtex visual de Zeki e Shipp [Zeki & Shipp, 1988],
+   segundo a qual o córtex visual é dividido em módulos, que são responsáveis por
+   atributos específicos ou seja, especializados e agregados segundo a função que
+   exercem no processamento visual. Estaremos especialmente interessados na teoria
+   da especialização funcional do córtex visual. Também a levaremos em conta como
+   inspiração biológica para alguns modelos apresentados futuramente neste trabalho.
+   Tom. Tom solucionou o problema
+   aconselhando Jim a esfregar alho nos olhos.
+   Prometeu-lhe arranjar alguns dentes, que
+   viriam na caneca de café, pela manhã. Jim
+   protestou que nesse caso melhor seria que
+   pusessem fumo picado no café, e tanto
+   resmungou sobre as obrigações que lhe
+   eram impostas, as quais vinham agravar a
+   sua condição de prisioneiro e tanto se
+   queixou dos bichos, que Tom quase perdeu
+   a paciência. Acabou dizendo-lhe, sem mais
+   rodeios, que assim tivessem todos
+   As informações transmitidas pelo LGN são enviadas para a área 17 de
+   Broadmann, também conhecida como córtex visual primário, ou ainda V1, de onde
+   prosseguem para as demais regiões corticais que constituem o córtex visual. As
+   regiões do córtex visual apresentam uma modularização hierárquica. Entre as
+   teorias a respeito da modularidade do córtex visual destaca-se a teoria da
+   especialização funcional do córtex visual de Zeki e Shipp [Zeki & Shipp, 1988],
+   segundo a qual o córtex visual é dividido em módulos, que são responsáveis por
+   atributos específicos ou seja, especializados e agregados segundo a função que
+   exercem no processamento visual. Estaremos especialmente interessados na teoria
+   da especialização funcional do córtex visual. Também a levaremos em conta como
+   inspiração biológica para alguns modelos apresentados futuramente neste trabalho.
+   4.7.2 – NÍVEIS DE PARALELISMO
+   Antes de avançarmos no caminho visual discorrendo sobre a organização
+   do córtex visual comentaremos um pouco a respeito dos prováveis níveis de
+   paralelismo cortical. Conforme veremos, não apenas o córtex visual, mas todo o
+   córtex é massivamente paralelo. Conforme mostrado na Figura 4.20, o paralelismo
+   do córtex visual se apresenta em múltiplas escalas. Na micro escala, ocorre
+   paralelismo entre os neurônios; na escala intermediária entre regiões e sub-regiões
+   corticais; e no topo da escala o macro paralelismo ocorre entre os dois hemisférios
+   vamos apresentar futuramente as áreas V1 e V2 apresentam um forte perfil de
+   segregação, separando sinais de diferentes atributos e enviando para as regiões
+   mais especializadas (V3,V4 e V5). Esse tipo de estrutura sugere a existência de
+   uma arquitetura estilo “pipeline” entre as áreas de segregação V1 e V2 e as mais
+   especializadas (V3, V4 e V5), devido a dependência de dados. Devemos observar
+   entretanto, que a comunicação no córtex visual é extremamente complexa, e ainda
+   pouco sabemos a respeito de sua arquitetura. Existem comunicações entre as sub-
+   regiões de uma mesma área, assim como entre áreas, de forma a favorecer a
+   integração e segregação da informação dos diferentes atributos visuais. Além disso,
+   devemos observar também que não existe um caminho unidirecional. As
+   informações transitam em ambos sentidos de forma que as camadas superiores da
+   hierarquia visual realimentam as primeiras camadas do processo.
+   Nas próximas seções estaremos discutindo a organização, as conexões e o
+   funcionamento do córtex visual, consequentemente explorando seu provável
+   paralelismo. Para concluirmos esta seção, devemos lembrar a forte correlação
+   existente entre a distribuição da informação e o paralelismo. Desta forma, a busca
+   pelo paralelismo no processamento biológico implica na procura pela distribuição e
+   replicação de sinas. Uma vez que todas as áreas corticais possuem saídas
+      O estrondo dessas montanhas de água que se quebravam, o estampido da torrente, os trôos do
+   embate desses rochedos movediços, que se pulverizavam enchendo o espaço de neblina
+   espessa, formavam um concerto horrível, digno do drama majestoso que se representava no
+   grande cenário.
+   As trevas envolviam o quadro e apenas deixavam ver os reflexos prateados da espuma e a
+   muralha negra que cingia esse vasto recinto, onde um dos elementos reinava como soberano.
+   Cecília, apoiada ao ombro de seu amigo, assistia horrorizada a esse espetáculo pavoroso; Peri
+   sentia o seu corpinho estremecer; mas os lábios da menina não soltaram uma só queixa, um só
+   grito de susto.
+   Em face desses transes solenes, desses grandes cataclismas da natureza, a alma humana
+   sente-se tão pequena, aniquila-se tanto, que se esquece da existência; o receio é substituído
+   pelo pavor, pelo respeito, pela emoção que emudece e paralisa.
+   O sol, dissipando as trevas da noite, assomou no oriente; seu aspecto majestoso iluminou o
+   deserto; as ondas de sua luz brilhante derramaram-se em cascatas sobre um lago imenso, sem
+   horizontes.
+   Tudo era água e céu.
+   A inundação tinha coberto as margens do rio até onde a vista podia alcançar; as grandes
+PA massas de água, que o temporal durante uma noite inteira vertera sobre as cabeceiras dos
+   confluentes do Paraíba, desceram das serranias, e, de torrente em torrente, haviam formado
+   essa tromba gigantesca que se abatera sobre a várzea.
+   A tempestade continuava ainda ao longo de toda a cordilheira, que aparecia coberta por um
+   nevoeiro escuro; mas o céu, azul e límpido, sorria mirando-se no espelho das águas.
+   A inundação crescia sempre; o leito do rio elevava-se gradualmente; as árvores pequenas
+   desapareciam; e a folhagem dos soberbos jacarandás sobrenadava já como grandes moitas de
+   arbustos.
+   A cúpula da palmeira, em que se achavam Peri e Cecília, parecia uma ilha de verdura
+   banhando-se nas águas da corrente; as palmas que se abriam formavam no centro um berço
+   mimoso, onde os dois amigos, estreitando-se, pediam ao céu para ambos uma só morte, pois
+   uma só era a sua vida.
+   Cecília esperava o seu último momento com a sublime resignação evangélica, que só dá a
+   religião do Cristo; morria feliz; Peri tinha confundido as suas almas na derradeira prece que
+   expirara dos seus lábios.
+   — Podemos morrer, meu amigo! disse ela com uma expressão sublime. Peri estremeceu;
+   ainda nessa hora suprema seu espírito revoltava-se contra aquela idéia, e não podia conceber
+   que a vida de sua senhora tivesse de perecer como a de um simples mortal.
+   — Não! exclamou ele. Tu não podes morrer.
+   A menina sorriu docemente.
+   — Olha! disse ela com a sua voz maviosa, a água sobe, sobe...
+   — Que importa! Peri vencerá a água, como venceu a todos os teus inimigos.
+   — Se fosse um inimigo, tu o vencerias, Peri. Mas é Deus... É o seu poder infinito!
+   — Tu não sabes? disse o índio como inspirado pelo seu amor ardente, o Senhor do céu manda
+   às vezes àqueles a quem ama um bom pensamento.
+   E o índio ergueu os olhos com uma expressão inefável de reconhecimento.
+   Falou com um tom solene:
+   “Foi longe, bem longe dos tempos de agora. As águas caíram, e começaram a cobrir toda a
+   terra. Os homens subiram ao alto dos montes; um só ficou na várzea com sua esposa.
+   “Era Tamandaré; forte entre os fortes; sabia mais que todos. O Senhor falava-lhe de noite; e
+   de dia ele ensinava aos filhos da tribo o que aprendia do céu.
+   “Quando todos subiram aos montes ele disse:
+   ‘Ficai comigo; fazei como eu, e deixai que venha a água.’
+   “Os outros não o escutaram; e foram para o alto; e deixaram ele só na várzea com sua
+   companheira, que não o abandonou.
+   “Tamandaré tomou sua mulher nos braços e subiu com ela ao olho da palmeira; ai esperou
+   que a água viesse e passasse; a palmeira dava frutos que o alimentavam.
+   “A água veio, subiu e cresceu; o sol mergulhou e surgiu uma, duas e três vezes. A terra
+   desapareceu; a árvore desapareceu; a montanha desapareceu.
+   “A água tocou o céu; e o Senhor mandou então que parasse. O sol olhando só viu céu e água,
+   e entre a água e o céu, a palmeira que boiava levando Tamandaré e sua companheira.
+   “A corrente cavou a terra; cavando a terra, arrancou a palmeira; arrancando a palmeira, subiu
+   com ela; subiu acima do vale, acima da árvore, acima da montanha.
+   “Todos morreram. A água tocou o céu três sóis com três noites; depois baixou; baixou até que
+   descobriu a terra.
+   “Quando veio o dia, Tamandaré viu que a palmeira estava plantada no meio da várzea; e
+   ouviu a avezinha do céu, o guanumbi, que batia as asas.
+   “Desceu com a sua companheira, e povoou a terra.”
+   Peri tinha falado com o tom inspirado que dão as crenças profundas; com o entusiasmo das
+   almas ricas de poesia e sentimento.
+PA Cecília o ouvia sorrindo, e bebia uma a uma as suas palavras, como se fossem as partículas do
+   ar que respirava; parecia-lhe que a alma de seu amigo, essa alma nobre e bela, se desprendia
+   do seu corpo em cada uma das frases solenes, e vinha embeber-se no seu coração, que se abria
+   para recebê-la.
+   A água subindo molhou as pontas das largas folhas da palmeira, e uma gota, resvalando pelo
+   leque, foi embeber-se na alva cambraia das roupas de Cecília.
+   A menina, por um movimento instintivo de terror, conchegou-se ao seu amigo; e nesse
+   momento supremo, em que a inundação abria a fauce enorme para tragá-los, murmurou
+   docemente:
+   — Meu Deus!... Peri!...
+   Então passou-se sobre esse vasto deserto de água e céu uma cena estupenda, heróica,
+   sobre-humana; um espetáculo grandioso, uma sublime loucura.
+   Peri alucinado suspendeu-se aos cipós que se entrelaçavam pelos ramos das árvores já
+   cobertas de água, e com esforço desesperado cingindo o tronco da palmeira no seus braços
+   hirtos, abalou-o até as raízes.
+   Três vezes os seus músculos de aço, estorcendo-se, inclinaram a haste robusta; e três vezes o
+   seu corpo vergou, cedendo a retração violenta da árvore, que voltava ao lugar que a natureza
+   lhe havia marcado.
+   Luta terrível, espantosa, louca, esvairada: luta da vida contra a matéria; lata do homem contra
+   a terra; lata da força contra a imobilidade.
+   Houve um momento de respouso em que o homem, concentrando todo o seu poder,
+   estorceu-se de novo contra a árvore; o ímpeto foi terrível; e pareceu que o corpo ia
+   despedaçar-se nessa distensão horrível:
+   Ambos, árvore e homem, embalançaram-se no seio das águas: a haste oscilou; as raízes
+   desprenderam-se da terra já minada profundamente pela torrente.
+   A cúpula da palmeira, embalançando-se graciosamente, resvalou pela flor da água como um
+   ninho de garças ou alguma ilha flutuante, formada pelas vegetações aquáticas.
+   Peri estava de novo sentado junto de sua senhora quase inanimada: e, tomando-a nos braços,
+   disse-lhe com um acento de ventura suprema:
+   — Tu viverás!...
+   Cecília abriu os olhos, e vendo seu amigo junto dela, ouvindo ainda suas palavras, sentiu o
+   enlevo que deve ser o gozo da vida eterna.
+   — Sim?... murmurou ela: viveremos!... lá no céu, no seio de Deus, junto daqueles que
+   amamos!...
+   O anjo espanejava-se para remontar ao berço.
+   — Sobre aquele azul que tu vês, continuou ela, Deus mora no seu trono, rodeado dos que o
+   adoram. Nós iremos lá, Peri! Tu viverás com tua irmã, sempre...!
+   Ela embebeu os olhos nos olhos de seu amigo, e lânguida reclinou a loura fronte.
+   O hálito ardente de Peri bafejou-lhe a face.
+   Fez-se no semblante da virgem um ninho de castos rubores e límpidos sorrisos: os lábios
+   abriram como as asas purpúreas de um beijo soltando o vôo.
+   A palmeira arrastada pela torrente impetuosa fugia...
+   E sumiu-se no horizonte.
+   185 9244
+   enquanto saímos em busca de aranhas, o
+   pequeno Tomaz Franklin Benjamim Jefferson
+   Alexandre Phelps descobriu-a e a primeira
+   coisa que fez foi abrir a portinhola para ver
+   se os ratos escapavam. Só sei que ao
+   voltarmos demos com a tia Sally de pé sobre
+   a cama, com a rataria a correr pelo quarto à
+   procura de saída. Levamos uma severa
+   repreensão e tivemos de gastar mais de
+   duas horas para* apanharmos outras
+   ratazanas, que não chegavam aos pés do
+   primeiro lote, composto do que havia de
+   melhor no bando.
+   Também colhemos um bom e variado
+   sortimento de aranhas, baratas, rãs,
+   taturanas, etc. Muito desejávamos obter
+   uma casa de marimbondos; infelizmente,
+   não foi possível. As vespas não nos deram
+   oportunidade. Por mais que esperássemos
+   nada conseguimos — dir-se-ia que elas
+   adivinhavam o nosso pensamento e não
+   abandonavam a casa. Desistimos do intento
+   e pusemo-nos à caça de cobras. Apanhamos
+   umas vinte, de certa variedade não
+   venenosa e muito abundante nas
+   redondezas. Trancafiamo-las num saco e
+   levamo-lo para o nosso quarto. Nisto chegou
+   a hora de jantar. Terminada a refeição
+   corremos ao quarto e vimos que, não
+   ficando bem amarrada a boca do saco, as
+   cobras haviam fugido. Felizmente ainda
+   estavam dentro de casa, o que nos permitiu
+   recapturar algumas. Era espetáculo digno de
+   ver-se, aquelas inofensivas serpentes, de
+   colorido brilhante, deslizando pelo assoalho
+   ou subindo aos móveis. A tia Sally, porém,
+   não pensava assim, pois tinha verdadeiro
+   horror a serpentes, venenosas ou não. Pôs-
+   se a gritar, correndo pela casa que nem
+   possessa. Que mulher! Nunca vi coisa igual
+   em minha vida. De tal modo atormentou o
+   marido que este chegou a desejar que não
+   houvesse cobras no mundo. E uma semana
+   depois de havermos recapturado todas as
+   serpentes, tia Sally ainda não sarara do
+   susto. Quando se sentava, pensando
+   nalguma coisa, uma pena que lhe roçasse a
+PA perna era o bastante para que desse um
+   pulo, acompanhado de um berro de ser
+   ouvido em Jericó. Era curioso! Mas Tom
+   afirmou que todas as mulheres são assim —
+   que foram feitas assim, embora ele não
+   soubesse por que motivo.
+   Levávamos umas chineladas, cada vez
+   que uma das nossas cobras surgia diante de
+   tia Sally; e chegou ela a ameaçar-nos com
+   uma boa tunda se tornássemos a botar
+   serpentes em casa. O que nos fez evitar isso
+   não foi a perspectiva das chineladas, que
+   não doíam e sim o desejo de evitar novo
+   escarcéu.
+   Por fim, depois de muito susto,
+   transportamos toda a bicharada para a
+   cabana de Jim. Era muito de ver-se aquela
+   multidão de cobras, aranhas, rãs, baratas e
+   uma infinidade de insetos de todos os
+   tamanhos e feitios a ouvirem Jim tocar
+   berimbau. negro não gostava das aranhas,
+   nem estas dele, o que o fazia estar sempre
+   de olho aberto, com medo de uma
+   ferrotoada. Queixou-se ele de que as cobras,
+   os ratos e a pedra de amolar lhe tomavam
+   toda a cama; e quando a muito custo
+   obtinha um cantinho para encolher-se, não
+   podia conciliar o sono, porque os bichos não
+   dormiam todos a um tempo e sim cada
+   grupo por sua vez. Assim, quando as
+   serpentes iam repousar, os ratos ficavam de
+   guarda, e revezavam-se de tal modo que
+   havia sempre um grupo desperto a
+   atormentá-lo. E se, porventura, tentava
+   mudar de posição, as aranhas não perdiam
+   oportunidade de uma arremetida. Também
+   jurou que se viesse a recuperar novamente
+   a liberdade nunca mais voltaria a ser
+   prisioneiro nem por um decreto.
+   Ao cabo de três semanas tudo corria às
+   mil maravilhas. A camisa fora ter às mãos de
+   Jim, dentro de uma segunda torta, e todas
+   as vezes que um rato o mordia ele lançava
+   algumas linhas do seu diário para aproveitar
+   o sangue. As canetas ou buris ficaram
+   prontos e as inscrições foram gravadas no
+   rebolo; cortamos o pé da cama em duas
+   partes, e como engolíssemos a serragem,
+   não gosto de relembrar a dor de estômago
+   que isso nos trouxe. Foi de tirar a vida a um
+PA mortal! Chegamos a pensar que íamos
+   morrer. Mas não morremos. Ainda estou por
+   conhecer serragem tão indigesta — e Tom é
+   da mesma opinião.
+   Mas, como ia dizendo, estava já tudo
+   preparado para a fuga. Sentiamo-nos
+   exaustos, tanto havia sido o trabalho. Tio
+   Silas escrevera duas vezes para a fazenda
+   da qual Jim fugira, sem con468tudo obter
+   resposta, pois a tal fazenda não existia. Em
+   vista disso decidiu anunciar Jim nos jornais
+   de New-Orleans e St. Louis. Ao ouvir isto, um
+   arrepio percorreu-me a espinha. Não
+   tínhamos tempo a perder. Foi quando Tom
+   veio com a história das cartas anônimas.
+   — Que vem a ser isso? indaguei.
+   — Um aviso às pessoas de que algo se
+   passa. Às vezes faz-se de um modo, outras
+   vezes faz-se de outro,- mas há sempre
+   alguém de atalaia, pronto para avisar o
+   comandante da fortaleza. Quando Luís XVI ia
+   fugir das Tulherias foi uma criadinha quem
+   deu o alarma, prevenindo deste modo a fuga
+   do rei. Tanto os avisos como as cartas
+   anônimas dão excelentes resultados.
+   Usaremos ambos os meios. Também é muito
+   comum que à mãe do prisioneiro venha
+   visitá-lo e troque de roupas com ele, ficando
+   em seu lugar e permitindo-lhe evadir-se.
+   Poderemos fazer isso.
+   — Mas, escute aqui Tom: para que
+   avisar a alguém que algo se passa? Deixe
+   que descubram por si mesmos. É o mais
+   natural.
+   — Bem sei, mas não podemos contar
+   com eles, como você está vendo desde o
+   princípio. Deixam que façamos tudo.
+   Confiam de tal modo em si próprios que não
+   dão por coisa alguma. E isto não pode ficar
+   assim, Huck. Se nós não os avisarmos, não
+   teremos quem se interponha, nos nossos
+   planos. E depois de tanto trabalho e tantos
+   desgostos, fugiríamos sem que eles dessem
+   pela coisa.
+   — Pois é justamente o que desejo,
+   Tom.
+   — Coitado! exclamou Tom com ar de
+   comiseração, obrigando-me a voltar atrás do
+   que havia dito.
+   — Mas não estou a queixar-me, Tom. O
+PA que você achar bom também eu acharei.
+   Qual a sua idéia sobre a criadinha?
+   — Penso que você deve desempenhar
+   esse papel. Para isso trate esta noite de
+   surripiar o vestido da mulatinha.
+   — Mas teremos encrenca pela manhã,
+   Tom. Provavelmente ela só tem aquele
+   vestido.
+   — Sei disso, Huck; mas você irá
+   necessitá-lo apenas durante uns quinze
+   minutos, o tempo preciso para levar a carta
+   anônima e colocá-la debaixo da porta.
+   — Bem, seja como você quer, mas
+   saiba que faria esse serviço com a minha
+   roupa.
+   — Sim, mas desse modo não se
+   assemelharia a uma criada.
+   — Concordo, mas lembre-se que não
+   haverá ninguém para me ver.
+   — Isso não vem ao caso. Temos que
+   cumprir a nossa obrigação, sem discutir se
+   vão ver-nos ou não. Você não tem
+   princípios...
+   — Está encerrada a discussão — serei a
+   criadinha. Mas quem vai fazer de mãe de
+   Jim?
+   — Eu, com um vestido de tia Sally.
+   — E ficará na cabana enquanto eu e Jim
+   fugimos?
+   — Não, senhor. Encherei com a palha a
+   roupa de Jim e a estenderei na cama —
+   representando assim a mãe dele disfarçada.
+   Jim envergará o vestido de tia Sally e
+   fugiremos todos os três. Quando um
+   prisioneiro importante escapa, diz-se que se
+   evadiu. Um rei não foge — evade-se. E o
+   mesmo se dá com um descendente real,
+   seja filho natural ou não.
+   E sem mais delongas escreveu Tom o
+   aviso que eu, vestido com a saia da
+   criadinha, enfiei por baixo da porta da
+   frente. Dizia o seguinte:
+   “Cuidado, muito cuidado! Algo
+   pavoroso está para acontecer. Alerta!”
+   “Um amigo desconhecido.”
+   No dia seguinte deixei na porta um
+   desenho de Tom — uma caveira com dois
+   ossos cruzados; na terceira noite, outro
+   desenho representando um ataúde, este
+   porém, na porta do quintal. A família foi
+PA tomada de verdadeiro pavor. Não ficariam
+   mais amedrontados se a casa estivesse
+   cheia de fantasmas, com assombrações a
+   surgirem debaixo da cama, de trás das
+   portas e dos cantos escuros. Se batia uma
+   porta, tia Sally soltava um grito e quase
+   desmaiava de susto, o mesmo acontecendo
+   com o barulho da queda de um objeto, ou
+   quando se lhe tocava no corpo, estando
+   distraída. A todo instante olhava para trás,
+   temerosa de ser atacada pelas costas; tinha
+   receio de dormir e não ousava ficar de pé.
+   Tom rejubilava-se dizendo que a coisa vinha
+   saindo melhor do que pensara; e isso porque
+   tudo fora feito seguindo-se à risca as
+   normas.
+   Afinal resolveu dar o golpe de
+   misericórdia. Na madrugada seguinte
+   escrevemos outra carta, mas ficamos
+   indecisos ouvindo tio Silas dizer que ia
+   colocar um preto de sentinela em cada
+   porta. Descendo à noite pelo cabo do pára-
+   raios, Tom observou que o escravo que
+   montava guarda à porta dos fundos dormia
+   a bom dormir; sem perda de um minuto
+   atou-lhe a carta ao pescoço e voltou ao
+   quarto.
+   Continha ela os seguintes dizeres:
+   “Sou vosso amigo. Uma quadrilha
+   de bandidos, que infesta o território
+   dos índios, planeja raptar, esta noite o
+   escravo que se encontra preso. Já
+   fizeram várias tentativas com o intento
+   de semear o pavor no seio da vossa
+   família, para que possam agir
+   sossegadamente. Pertenço a essa
+   quadrilha, mas desejo converter-me e
+   abandoná-la, para levar vida honrada;
+   eis porque venho revelar o plano
+   infernal dessa malta de salteadores.
+   Hoje à meia-noite em ponto,
+   pretendem eles penetrar na cabana
+   com uma chave falsa e apoderar-se do
+   negro. Eu fui designado para servir de
+   vendeta e devo tocar uma buzina ao
+   primeiro sinal de perigo. Mas, em vez
+   disto, balirei como carneiro quando os
+   bandidos entrarem na casinhola; deste
+   modo, enquanto estiverem cortando a
+   corrente do prisioneiro, podereis
+PA trancar a porta e depois matá-los a
+   todo cômodo. Segui à risca o que
+   indico; de outra forma eles poderão
+   suspeitar, e então toda vossa família
+   morrerá trucidada. Só desejo um
+   prêmio: saber que cumpri um dever de
+   consciência”.
+   “Um amigo desconhecido”.
+   CAPÍTULO XL
+   Depois do “breakfast” aprontamos uma
+   merenda e fomos pescar de canoa.
+   Passamos um dia distraído, tendo chegado
+   até à balsa, que se achava bem oculta no
+   mesmo ponto em que eu a deixara, e474
+   voltamos para casa à hora do jantar. Fomos
+   encontrar toda a família num deplorável
+   estado de desassossego. Logo após a
+   refeição mandaram-nos dormir, sem nada
+   dizer do que se passava. Já íamos subindo a
+   escada quando tia Sally nos deu as costas;
+   corremos então ao guarda-comida e
+   preparamos um bom lanche, que levamos
+   para o quarto. Deitamo-nos. Às onze e meia
+   pulamos da cama. Tom já prestes a descer
+   pelo pára-raios, metido numa saia de tia
+   Sally, perguntou-me:
+   — E a manteiga?
+   — Passei-a num pedaço de pão,
+   respondi.
+   — Mas deixou lá embaixo, porque aqui
+   não está.
+   — E não poderemos passar sem
+   manteiga?
+   — Absolutamente não, e por isso desça
+   e vá buscá-la. Volte logo, que o espero na
+   cabana. Vou encher com palha a roupa de
+   Jim. Logo que você chegar teremos apenas
+   de balir e dar o fora.
+   Enquanto Tom saía pela janela eu fui à
+   despensa. Lá chegando a primeira coisa que
+   vi foi o naco de pão com manteiga. Apanhei-
+   o, apaguei a vela, e já estava em meio da
+

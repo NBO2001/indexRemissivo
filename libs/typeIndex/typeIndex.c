@@ -36,7 +36,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     
     char tmp[150];
 
-    index->words = newDynamicDictionary(14000);
+    index->words = newDynamicDictionary(.tam=14000);
 
     while(fscanf(fp,"%s", tmp) == 1){
 
@@ -59,7 +59,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
             cleaningWord(tmp);
             lowerCase(tmp);
             
-            if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 0)){
+            if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 1)){
 
                 setLenWords(documents[indexDoc-1],getLenWords(documents[indexDoc-1])+1);
 

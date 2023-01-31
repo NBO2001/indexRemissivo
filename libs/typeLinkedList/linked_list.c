@@ -16,8 +16,13 @@ struct typeNode{
 struct typeList{
 
 	typeNode * first;
+	unsigned int ocupation;
 	unsigned long int sizeElement;
 	compator cmp;
+
+	// Statistical parameters
+    unsigned int totalComparation;
+	unsigned int totalBuscas;
 
 };
 
@@ -29,7 +34,11 @@ typeList * newLinkedList(compator cmp, unsigned long int sizeElement){
 	typeList * list = malloc(sizeof(typeList));
 	list->first = NULL;
 	list->cmp = cmp;
+	list->ocupation = 0;
 	list->sizeElement = sizeElement;
+
+	list->totalComparation = 0;
+	list->totalBuscas = 0;
 	return list;
 
 }
@@ -65,7 +74,7 @@ void insert_start(typeList * list, void * data){
 		new_nd->next = aux;
 
 	}
-
+	list->ocupation++;
 	list->first = new_nd;
 
 }
@@ -73,21 +82,22 @@ void insert_start(typeList * list, void * data){
 void* remove_start(typeList * list){
 
 	typeNode * aux;
-	void* data = malloc(list->sizeElement);
 
 	aux = list->first;
 
-	if(aux){
-
-		list->first = aux->next;
-
-		list->first->previus = NULL;
+	if(!aux){ return NULL; }
 	
-	}
+	void* data = malloc(list->sizeElement);
+	
+	list->first = aux->next;
 
+	if(list->first) list->first->previus = NULL;
+	
 	memcpy(data, aux->data, list->sizeElement);
 
 	free(aux);
+
+	list->ocupation--;
 
 	return data;
 
@@ -97,10 +107,11 @@ void* remove_start(typeList * list){
 void * seach_in_list(typeList * list, void* key){
 	
 	typeNode * aux;
-
+	list->totalBuscas++;
 	aux = list->first;
 	
 	while( aux && list->cmp(aux->data,key) != 0){
+		list->totalComparation++;
 		aux = aux->next;
 	}
 	
@@ -123,6 +134,7 @@ void* remove_with_key(typeList * list, void* key){
 	aux = list->first;
 
 	while( aux && list->cmp(aux->data,key) != 0){
+		list->totalComparation++;
 		aux = aux->next;
 	}
 
@@ -145,7 +157,7 @@ void* remove_with_key(typeList * list, void* key){
 		}
 		memcpy(data, aux->data, list->sizeElement);
 		free(aux);
-
+		list->ocupation--;
 		return data;
 	}else{
 		return data;
@@ -173,6 +185,7 @@ void insert_end(typeList * list, void * data){
 	}else{
 		list->first = new_nd;
 	}
+	list->ocupation++;
 
 }
 
@@ -193,3 +206,9 @@ void * last_element(typeList * list){
 	}
 
 }
+
+unsigned int getTamList(typeList * list){ return list->ocupation; }
+
+void deleteList(typeList * list){ free(list); }
+
+double getTotalComparations(typeList * list){ return (double) list->totalComparation/list->totalBuscas; }

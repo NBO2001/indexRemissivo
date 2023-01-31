@@ -23,5 +23,10 @@ void* seach_in_list(typeList * list, void* key);
 
 void* remove_with_key(typeList * list, void* key);
 
+unsigned int getTamList(typeList * list);
+
+void deleteList(typeList * list);
+
+double getTotalComparations(typeList * list);
 
 #endif

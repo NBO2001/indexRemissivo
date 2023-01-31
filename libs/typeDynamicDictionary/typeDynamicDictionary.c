@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <math.h>
 #include "../../libs/typeDynamicDictionary/typeDynamicDictionary.h"
 #include "../../libs/typeTableHash/typeTableHash.h"
 
@@ -9,13 +10,15 @@ struct typeDynamicDictionary{
 
 };
 
-typeDynamicDictionary * newDynamicDictionary(unsigned int len){
+typeDynamicDictionary * _newDynamicDictionary(initialValuesDict in){
     
 
     typeDynamicDictionary * dictionary = malloc(sizeof(typeDynamicDictionary));
 
-    dictionary->table = createTableHash(len);
-    dictionary->len = len;
+    dictionary->len = in.tam;
+    unsigned int log = (unsigned int) log2(dictionary->len);
+
+    dictionary->table = createTableHash(.tam=dictionary->len,.factorCharge=log);
 
     return dictionary;
 

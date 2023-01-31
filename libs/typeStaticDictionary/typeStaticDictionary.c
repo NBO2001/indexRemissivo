@@ -13,7 +13,7 @@ typeStaticDictionary* createStaticDic(int tam){
 
     typeStaticDictionary * dictionary = malloc(sizeof(typeStaticDictionary));
 
-    dictionary->table = createTableHash(tam);
+    dictionary->table = createTableHash(.tam=tam);
     dictionary->tam = tam;
 
     return dictionary;
