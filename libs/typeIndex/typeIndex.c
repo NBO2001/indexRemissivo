@@ -8,15 +8,18 @@
 #include "../typeDocument/typeDocument.h"
 #include "../typeStopWords/typeStopWords.h"
 #include "../tipoPalavra/tipoPalavra.h"
+#include "../typeLinkedList/linked_list.h"
 
 struct typeIndex{
     typeDynamicDictionary *words;
-    char* *wordsForSeach;
-    unsigned int totalWordsForSeach;
+
+    typeList *wordsForSeach;
     unsigned int totalPages;
 };
 
-
+int cmpLinkedList(void* a,void*b){
+    return memcmp(a,b,strlen( (char*) a));
+}
 
 typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
 
@@ -26,9 +29,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     int indexDoc = 0;
     long int contWords = 0;
 
-    unsigned int indexWordsFSeach = 0;
-    index->totalWordsForSeach = 2;
-    index->wordsForSeach = calloc(sizeof(char*),index->totalWordsForSeach);
+    index->wordsForSeach = newLinkedList(&cmpLinkedList,sizeof(char)*150);
 
     typeDocument* *documents = malloc(sizeof(typeDocument *)*tamDocuments);
 
@@ -67,17 +68,10 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
                 
                 if(!word){
 
-                    if(indexWordsFSeach >= index->totalWordsForSeach){
-                        index->totalWordsForSeach *= 2;
-                        index->wordsForSeach = realloc(index->wordsForSeach,sizeof(char*)*index->totalWordsForSeach);
-                    }
-                    
                     word = criarPalavra();
                     setPalavra(word,tmp);
-                    
-                    index->wordsForSeach[indexWordsFSeach] = malloc(sizeof(char*)*strlen(tmp));
-                    memcpy(index->wordsForSeach[indexWordsFSeach],tmp,sizeof(char*)*strlen(tmp));
-                    indexWordsFSeach++;
+
+                    insert_with_value(index->wordsForSeach,tmp);
 
                     setPage(word,documents[indexDoc-1],&indexDoc);
                     
@@ -95,7 +89,6 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     fclose(fp);
     
     index->totalPages = indexDoc;
-    index->totalWordsForSeach = indexWordsFSeach;
 
     return index;
 
@@ -164,5 +157,32 @@ typeElementIndex* consultWord(typeIndex * index, char * key){
 
 }
 
-char* *getWordsSeach(typeIndex * index){ return index->wordsForSeach; }
-unsigned int getTamWordsSeach(typeIndex * index){ return index->totalWordsForSeach; }
+void* getWordsSeach(typeIndex * index){ return index->wordsForSeach; }
+
+void _addPoint(int n){ for(int i=0; i < n; i++) printf("."); }
+
+void showIndex(typeIndex * index){
+
+
+    char * tmp = remove_start(index->wordsForSeach);
+
+    while (tmp){
+
+        typeElementIndex * elem = consultWord(index,tmp);
+
+        assert(elem != NULL);
+
+        printf("%s",elem->word);
+        _addPoint(50 - strlen(elem->word));
+        
+        int i;
+        
+        for(i=0; i < elem->lenPages-1; i++) printf("%d, ", elem->pages[i].page+1);
+        printf("%d\n", elem->pages[i].page+1);
+        
+        tmp = remove_start(index->wordsForSeach);
+    }
+    
+
+
+}
