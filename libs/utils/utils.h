@@ -1,13 +1,13 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-char isLetter(char letter);
+char isLetter(unsigned char letter);
 int lenStr(char string[]);
-char * cleaningWord(char * word);
+void cleaningWord(unsigned char * word);
 double tf(int wordOccurrences, int docWord);
 double idf(int docsWords, int docs);
 double tfidf(int palavra, int doc, int qntWords, int docs);
-const char * lowerCase(char string[]);
+const char * lowerCase(unsigned char string[]);
 
 
 #endif

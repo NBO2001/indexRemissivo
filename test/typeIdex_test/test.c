@@ -5,7 +5,7 @@
 #include "../../libs/typeIndex/typeIndex.h"
 #include "../../libs/typeStopWords/typeStopWords.h"
 #include "../../libs/utils/utils.h"
-
+#include "../../libs/typeLinkedList/linked_list.h"
 
 int main(int argc, char * argv[]){
 
@@ -14,21 +14,26 @@ int main(int argc, char * argv[]){
     typeStopWord * stWord = newTypeStopWord(argv[1]);
     typeIndex * indiceRemissivo = newTypeIndex(argv[2],stWord);
 
-    char tmp[150];
+    typeList* wordsV = getWordsSeach(indiceRemissivo);
 
-    while(scanf("%s", tmp) == 1){
-        lowerCase(tmp);
+    unsigned int i = 0;
+
+    char * tmp = remove_start(wordsV);
+
+    while (tmp){
+
         typeElementIndex * elem = consultWord(indiceRemissivo,tmp);
 
-        if(elem == NULL) printf("Nao Existe\n");
-        else{
-            printf("{palavra: %s; totalPaginas: %d}\n",elem->word, elem->lenPages);
-            for(int i=0; i < elem->lenPages; i++){
-                printf("\tPage %d; Pontuation: %lf\n", elem->pages[i].page, elem->pages[i].pontuation);
-            }
-        }
+        assert(elem != NULL);
 
+        printf("{ %s; ",elem->word);
+
+        for(int i=0; i < elem->lenPages; i++) printf("%d, ", elem->pages[i].page);
+
+        printf("}\n");
+        
+        tmp = remove_start(wordsV);
     }
-
+    
 
 }

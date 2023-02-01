@@ -8,13 +8,18 @@
 #include "../typeDocument/typeDocument.h"
 #include "../typeStopWords/typeStopWords.h"
 #include "../tipoPalavra/tipoPalavra.h"
+#include "../typeLinkedList/linked_list.h"
 
 struct typeIndex{
     typeDynamicDictionary *words;
+
+    typeList *wordsForSeach;
     unsigned int totalPages;
 };
 
-
+int cmpLinkedList(void* a,void*b){
+    return memcmp(a,b,strlen( (char*) a));
+}
 
 typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
 
@@ -24,13 +29,15 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     int indexDoc = 0;
     long int contWords = 0;
 
+    index->wordsForSeach = newLinkedList(&cmpLinkedList,sizeof(char)*150);
+
     typeDocument* *documents = malloc(sizeof(typeDocument *)*tamDocuments);
 
     FILE * fp = fopen(documentName,"r");
     
     char tmp[150];
 
-    index->words = newDynamicDictionary(14000);
+    index->words = newDynamicDictionary(.tam=14000);
 
     while(fscanf(fp,"%s", tmp) == 1){
 
@@ -53,16 +60,19 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
             cleaningWord(tmp);
             lowerCase(tmp);
             
-            if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 0)){
+            if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 1)){
 
                 setLenWords(documents[indexDoc-1],getLenWords(documents[indexDoc-1])+1);
 
                 tipoPalavra* word = searchDynamicDictionary(index->words,tmp,strlen(tmp));
                 
                 if(!word){
-                    
+
                     word = criarPalavra();
                     setPalavra(word,tmp);
+
+                    insert_with_value(index->wordsForSeach,tmp);
+
                     setPage(word,documents[indexDoc-1],&indexDoc);
                     
                     insertDynamicDictionary(index->words,tmp,strlen(tmp),word,sizeWord());
@@ -79,6 +89,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     fclose(fp);
     
     index->totalPages = indexDoc;
+
     return index;
 
 }
@@ -143,5 +154,35 @@ typeElementIndex* consultWord(typeIndex * index, char * key){
     }
 
     return element;
+
+}
+
+void* getWordsSeach(typeIndex * index){ return index->wordsForSeach; }
+
+void _addPoint(int n){ for(int i=0; i < n; i++) printf("."); }
+
+void showIndex(typeIndex * index){
+
+
+    char * tmp = remove_start(index->wordsForSeach);
+
+    while (tmp){
+
+        typeElementIndex * elem = consultWord(index,tmp);
+
+        assert(elem != NULL);
+
+        printf("%s",elem->word);
+        _addPoint(50 - strlen(elem->word));
+        
+        int i;
+        
+        for(i=0; i < elem->lenPages-1; i++) printf("%d, ", elem->pages[i].page+1);
+        printf("%d\n", elem->pages[i].page+1);
+        
+        tmp = remove_start(index->wordsForSeach);
+    }
+    
+
 
 }

@@ -13,6 +13,8 @@ void insert_start(typeList * list, void* data);
 // Insert at the end of the list
 void insert_end(typeList * list, void* data);
 
+void insert_with_value(typeList * list, void* data);
+
 // Get the last value from the list
 void* last_element(typeList * list);
 
@@ -23,5 +25,10 @@ void* seach_in_list(typeList * list, void* key);
 
 void* remove_with_key(typeList * list, void* key);
 
+unsigned int getTamList(typeList * list);
+
+void deleteList(typeList * list);
+
+double getTotalComparations(typeList * list);
 
 #endif

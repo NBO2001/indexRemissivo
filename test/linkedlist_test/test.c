@@ -2,36 +2,54 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "../../libs/utils/utils.h"
 #include "../../libs/typeLinkedList/linked_list.h"
 
 int cmp(void* a,void*b){
-    return memcmp(a,b,sizeof(char)*150);
+    return memcmp(a,b,strlen( (char*) a));
 }
 
 int main(int argc, char * argv[]){
 
-    typeList * list = newLinkedList(&cmp,150);
+    char * * strings = malloc(sizeof(char*)*100000);
+    int index = 0;
+    
+    typeList * list = newLinkedList(&cmp,sizeof(char)*150);
 
     assert(list != NULL);
+    
 
-    char* tmp = malloc(150);
+    FILE * fp = fopen("./data/V2.base","r");
 
-    scanf("%s", tmp);
+    assert(fp != NULL);
 
-    insert_start(list,tmp);
+    char * tmpCaracte = malloc(sizeof(char)*150);
 
-    assert(seach_in_list(list, tmp) != NULL);
+    while (fscanf(fp,"%s", tmpCaracte) == 1){
+        
+        cleaningWord(tmpCaracte);
+        lowerCase(tmpCaracte);
+        if(strlen(tmpCaracte) > 0){
 
-    scanf("%s", tmp);
+            printf("Inserindo: %s\n", tmpCaracte);
+            insert_with_value(list,tmpCaracte);
+            
+            strings[index]=tmpCaracte;
+            index++;
+            tmpCaracte = malloc(sizeof(char)*150);
+        
+        }
+      
+    }
+    
+    fclose(fp);
 
-    insert_start(list,tmp);
+    char * tmpRetorno = remove_start(list);
 
-    assert(seach_in_list(list, tmp) != NULL);
-
-    scanf("%s", tmp);
-
-    insert_start(list,tmp);
-
-    assert(seach_in_list(list, tmp) != NULL);
+    while (tmpRetorno){
+        printf("%s\n", tmpRetorno);
+        tmpRetorno = remove_start(list);
+    }
+    
 
 }
