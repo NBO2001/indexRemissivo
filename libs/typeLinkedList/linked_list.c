@@ -9,7 +9,6 @@ struct typeNode{
 
 	void* data;
 	struct typeNode * next;
-	struct typeNode * previus;
 
 };
 
@@ -53,9 +52,9 @@ typeNode * new_node(typeList * list,void * data){
 	node->data = malloc(list->sizeElement);
 	
 	node->next = NULL;
-	node->previus = NULL;
 	
 	memcpy(node->data, data, list->sizeElement);
+	
 	return node;
 
 }
@@ -69,10 +68,7 @@ void insert_start(typeList * list, void * data){
 	aux = list->first;
 
 	if(aux){
-
-		aux->previus = new_nd;
 		new_nd->next = aux;
-
 	}
 	list->ocupation++;
 	list->first = new_nd;
@@ -90,8 +86,6 @@ void* remove_start(typeList * list){
 	void* data = malloc(list->sizeElement);
 	
 	list->first = aux->next;
-
-	if(list->first) list->first->previus = NULL;
 	
 	memcpy(data, aux->data, list->sizeElement);
 
@@ -129,39 +123,29 @@ void * seach_in_list(typeList * list, void* key){
 void* remove_with_key(typeList * list, void* key){
 
 	typeNode* aux;
-	void* data = malloc(list->sizeElement);
-
+	typeNode * previusAddr = aux;
+	
 	aux = list->first;
 
-	while( aux && list->cmp(aux->data,key) != 0){
-		list->totalComparation++;
-		aux = aux->next;
-	}
+	if(!aux) return NULL;
+	
+	void* data = malloc(list->sizeElement);
 
-
-	if(aux){
-		if(aux->previus){
-
-			aux->previus->next = aux->next;
-
-			if(aux->next){
-				aux->next->previus = aux->previus; 
-			}
-			
+	while (aux && list->cmp(aux->data,key) != 0){
 		
-		}else{
-			
-			list->first = aux->next;
-			list->first->previus = NULL;
-
-		}
-		memcpy(data, aux->data, list->sizeElement);
-		free(aux);
-		list->ocupation--;
-		return data;
-	}else{
-		return data;
+		previusAddr = aux;
+		aux = aux->next;
+		list->totalComparation++;
 	}
+	
+	if(aux == previusAddr) list->first = aux->next;
+	else previusAddr->next = aux->next;
+
+	memcpy(data, aux->data, list->sizeElement);
+	free(aux);
+	list->ocupation--;
+	return data;
+	
 
 }
 
@@ -173,18 +157,11 @@ void insert_end(typeList * list, void * data){
 
 	aux = list->first;
 
-	while (aux && aux->next)
-	{
-		aux = aux->next;
-	}
-	if(aux){
+	while (aux && aux->next) aux = aux->next;
 
-		new_nd->previus = aux;
-		aux->next = new_nd;
+	if(aux) aux->next = new_nd;
+	else list->first = new_nd;
 	
-	}else{
-		list->first = new_nd;
-	}
 	list->ocupation++;
 
 }
@@ -214,5 +191,31 @@ void deleteList(typeList * list){ free(list); }
 double getTotalComparations(typeList * list){ return (double) list->totalComparation/list->totalBuscas; }
 
 void insert_with_value(typeList * list, void* data){
+
+	typeNode * new_nd = new_node(list,data);
+	typeNode * aux = list->first;
 	
+	typeNode * previusAddr = aux;
+
+	if(!aux){
+		list->first = new_nd;
+		return;
+	}
+
+	while (aux && list->cmp(aux->data,new_nd->data) <= 0){
+		
+		previusAddr = aux;
+		aux = aux->next;
+	}
+
+	if(aux == previusAddr){
+		new_nd->next = aux;
+		list->first = new_nd;
+		return;
+	}
+
+	new_nd->next = previusAddr->next;
+
+	previusAddr->next = new_nd;
+
 }

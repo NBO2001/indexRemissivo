@@ -11,7 +11,7 @@ int main(int argc, char * argv[]){
     char * * strings = malloc(sizeof(char*)*20000);
     int index = 0;
     
-    typeTableHash * table = createTableHash(.tam=18131,.factorCharge=12);
+    typeTableHash * table = createTableHash();
 
     assert(table != NULL);
     

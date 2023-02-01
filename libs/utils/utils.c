@@ -56,8 +56,8 @@ double tf(int wordOccurrences, int docWord){ return wordOccurrences/(double) doc
 
 double idf(int docsWords, int docs){ 
 
-    docsWords = docsWords > 0? docsWords: 1;
-    double div = docs/ (double) docsWords;
+    docsWords = docsWords > 0 ? docsWords: 1;
+    double div = docs / (double) docsWords;
 
     return log10(div);
 

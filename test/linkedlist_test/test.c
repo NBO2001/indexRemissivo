@@ -2,38 +2,54 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "../../libs/utils/utils.h"
 #include "../../libs/typeLinkedList/linked_list.h"
 
 int cmp(void* a,void*b){
-    return memcmp(a,b,sizeof(char)*150);
+    return memcmp(a,b,strlen( (char*) a));
 }
 
 int main(int argc, char * argv[]){
 
-    char * * strings = malloc(sizeof(char*)*20000);
+    char * * strings = malloc(sizeof(char*)*100000);
     int index = 0;
     
-    typeList * list = newLinkedList(&cmp,sizeof(char*));
+    typeList * list = newLinkedList(&cmp,sizeof(char)*150);
 
     assert(list != NULL);
     
 
-    FILE * fp = fopen("./data/Aventuras.base","r");
+    FILE * fp = fopen("./data/V2.base","r");
 
     assert(fp != NULL);
 
-    char * tmpCaracte = malloc(sizeof(char)*50);
+    char * tmpCaracte = malloc(sizeof(char)*150);
 
     while (fscanf(fp,"%s", tmpCaracte) == 1){
-    
-        insert(list,tmpCaracte,strlen(tmpCaracte),tmpCaracte,strlen(tmpCaracte));
         
-        strings[index]=tmpCaracte;
-        index++;
-        tmpCaracte = malloc(sizeof(char)*50);
+        cleaningWord(tmpCaracte);
+        lowerCase(tmpCaracte);
+        if(strlen(tmpCaracte) > 0){
+
+            printf("Inserindo: %s\n", tmpCaracte);
+            insert_with_value(list,tmpCaracte);
+            
+            strings[index]=tmpCaracte;
+            index++;
+            tmpCaracte = malloc(sizeof(char)*150);
+        
+        }
       
     }
     
     fclose(fp);
+
+    char * tmpRetorno = remove_start(list);
+
+    while (tmpRetorno){
+        printf("%s\n", tmpRetorno);
+        tmpRetorno = remove_start(list);
+    }
+    
 
 }

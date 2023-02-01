@@ -113,7 +113,7 @@ static unsigned int hashing(typeTableHash* thash,unsigned int keySize ,void* key
 
 void _executeReHashing(typeTableHash* thash){
 
-  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.7 * thash->totalElements ));
+  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.5 * thash->totalElements ));
   unsigned int newChargeFactor = (unsigned int) log2(thash->totalElements);
 
   newChargeFactor = newChargeFactor > 2? newChargeFactor - 1: newChargeFactor;
