@@ -1,85 +1,30 @@
-# Plano de desevolvimento
+# Relatório Trabalho Parcial AED2
 
-Index Remissivo.
+## Integrantes
 
-## Organizaçao do projeto
+* Bruno Maciel
+* Girlana Souza
+* Marcelo Cipriano
+* Natanael Oliveira
 
-A ideia é fazer todo o projeto usando a programaçao orientada a objetos, ou o mais proximo disso possivel.
+## Indrodução
 
-Por isso, para cada tipo desevolvido, é necessario criar as funcoes de get e set.
+Um Índice Remissivo é uma lista de termos ou expressões presentes em uma obra escrita juntamente com suas respectivas páginas de referência. É uma ferramenta útil para ajudar o leitor a encontrar informações específicas dentro de um documento grande. O índice remissivo será mais eficiente quando conseguir direcionar o leitor para as ocorrências mais significativas de uma palavra no texto.
 
-Exemplo:
+A presença de *stop words* é uma questão importante a ser considerada durante a implementação do trabalho. *Stop words* são termos comuns, como preposições, artigos, advérbios, números, pronomes e pontuação, que geralmente não são considerados relevantes para um documento.
 
-    struct typePerson{
-        char * name;
-        int age;
-        double height;
-    }
+O conceito de TF-IDF é uma medida estatística que avalia a importância de uma palavra em um documento em relação a uma coleção de documentos. A sigla significa "Frequência do Termo - Inversa da Frequência no Documento" e combina a frequência de um termo (TF) no documento com sua rareza (IDF) na coleção de documentos. O objetivo é identificar as palavras mais informativas e exclusivas do documento, permitindo assim uma melhor compreensão e análise do conteúdo.
 
-    char * getName(typePerson * instance){ return instance->name; }
-    void setName(typePerson * instance, char * name){ 
-        strcpy(instance->name, name); 
-    }
+No contexto de um único documento, o TF-IDF é calculado como o produto da frequência do termo (TF) e a frequência inversa do documento (IDF). A frequência de um termo em um documento (TF) é o número de vezes que o termo aparece no documento, enquanto a frequência inversa do documento (IDF) é calculada como o logaritmo do número total de documentos dividido pelo número de documentos que contêm o termo. No caso, uma *stop word* não possui nível de relevância, dessa forma, sua frequência é desconsiderada na implementação desse trabalho.
 
-    int getAge(typePerson * instance){ return instance->age; }
-    void setAge(typePerson * instance, int age){ 
-         instance->age = age; 
-    }
+obj: contruir um indice remissivo utilizando conceitos de tad
 
-    int getHeight(typePerson * instance){ return instance->height; }
-    void setHeight(typePerson * instance, double Height){
-        instance->height = height;
-    }
+## Métodos
 
-Todas as estrutruras de dados devem estar em pastas.
+## Discussões e Resultados
 
-Exemplo, a estrutura typePerson, tem a pasta typePerson, que dentro tem typePerson.c e typePerson.h
+## Conclusão
 
-## Estruturas a desenvolver
+## Referências
 
-### Tipo documento
-
-Uma estrutura para armazenar o numero da pagina, a posiçao (bytes) inicial e final de um documento, além da quantidades de palavras do documento.
-
-### Tipo livro
-
-Uma estrutura para armazenar uma coleçao de documentos.
-
-### Tipo palavra
-
-Uma estrututura para armazenar uma palavra, a recorrencia total e uma lista de tuplas com sua recorrencia para cada documento em que essa palavra aparece, além do endereço do documento.
-
-### Tuple
-
-Uma estrutura de dados que armazena apenas dois elementos.
-
-Para pegar o primeito elemento de uma tuple tem que ter a funçao fist().
-
-E para pegar o segundo elemento tem que ter a funçao secund().
-
-### Tipo palavras
-
-Uma estrura para amazenar uma colecao de palavras.
-
-### hash genericos
-
-Todos os tipos de hash genericos, usando o memcpy.
-
-## Funçoes a desevolver
-
-``def isLetter(letter)``, funçao que retorna verdeiro se a letra é um caractere valido e falso caso contrário.
-
-``def cleaningWord(word)``, funçao que limpa uma string tirando todos os caracteres invalidos do inicio e do fim da string.
-
-``def tf(palavra, doc)``, funcao que recebe a recorrecia de uma palavra e divide pela quantidade de palavras do documento.
-
-``def idf(qntWords, docs)``, funcao que recebe a quantidade de documentos que a palavra ocorre e divide pelo total de documentos e feito o log no resulto.
-
-``def tfidf(palavra, doc,qntWords, docs)``, funcao que multiplica tf() * idf()
-
-``def _isStopWord(word)``, retorna verdadeiro se uma palavra é uma stop word, falso caso contrário# indexRemissivo
-
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
