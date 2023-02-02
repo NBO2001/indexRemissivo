@@ -280,7 +280,7 @@ analyticalData getAnalicalData(typeTableHash * thash){
   return (analyticalData){.tam=thash->len,
   .factorCharge=thash->chargeFactor,
   .reHashingRealizade = thash->totalReHashingRealized,
-  .totalElements=thash->totalElements,
+  .totalElements=totListsLen,
   .biggerLinkedList=thash->biggerList,
   .seachTotal=thash->seachTotal,
   .totalCmp=thash->totalCmp,
