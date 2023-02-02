@@ -16,5 +16,7 @@ int main(int argc, char * argv[]){
 
     showIndex(indiceRemissivo);
 
+    analiseDataStopWord(stWord);
+
 
 }

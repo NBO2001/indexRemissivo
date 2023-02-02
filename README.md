@@ -78,3 +78,8 @@ Todos os tipos de hash genericos, usando o memcpy.
 ``def tfidf(palavra, doc,qntWords, docs)``, funcao que multiplica tf() * idf()
 
 ``def _isStopWord(word)``, retorna verdadeiro se uma palavra é uma stop word, falso caso contrário# indexRemissivo
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |

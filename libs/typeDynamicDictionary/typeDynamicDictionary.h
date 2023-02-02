@@ -1,5 +1,6 @@
 #ifndef TYPEDYNAMICDICTIONARY_H
 #define TYPEDYNAMICDICTIONARY_H
+#include "../../libs/analyticalData/analyticalData.h"
 
 typedef struct typeDynamicDictionary typeDynamicDictionary; 
 
@@ -14,5 +15,7 @@ typeDynamicDictionary * _newDynamicDictionary(initialValuesDict in);
 void insertDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize, void * value, unsigned int sizeValue);
 void * searchDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize);
 void removeDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize);
+
+analyticalData getAnalicalDataDynanDic(typeDynamicDictionary* dictionary);
 
 #endif

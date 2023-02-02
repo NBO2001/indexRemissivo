@@ -3,7 +3,7 @@
 #include <string.h>
 #include "typeStopWords.h"
 #include "../../libs/typeStaticDictionary/typeStaticDictionary.h"
-
+#include "../utils/utils.h"
 
 struct typeStopWord{
 
@@ -26,6 +26,9 @@ typeStopWord * newTypeStopWord(char * fileName){
     
     fclose(wordsFile);
 
+    analyticalData data = getAnalicalDataStactDic(stopWords->dictionary);    
+    fileAnalyticalData(.data=data,.title="TypeStopWord Dictionary",.outputName="STOPWORD587.md");
+
     return stopWords;
 }
 
@@ -33,5 +36,12 @@ short isStopWord(typeStopWord * stopWords, char * word){
 
     if (searchStaticDic(stopWords->dictionary, word,strlen(word))) return 1;
     else return 0;
+
+}
+
+void analiseDataStopWord(typeStopWord * stopWords){
+
+    analyticalData data = getAnalicalDataStactDic(stopWords->dictionary);    
+    fileAnalyticalData(.data=data,.title="TypeStopWord Dictionary",.outputName="STOPWORD587.md",.createNewFile=0);
 
 }

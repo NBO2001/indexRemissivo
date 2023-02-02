@@ -27,3 +27,4 @@ void* searchStaticDic(typeStaticDictionary* staticDic, void* key, unsigned int s
    return seachTable(staticDic->table,key, sizeKey);
 }
 
+analyticalData getAnalicalDataStactDic(typeStaticDictionary* staticDic){ return getAnalicalData(staticDic->table); }

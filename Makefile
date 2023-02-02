@@ -12,8 +12,7 @@ run:
 
 testa:
 	-@clear
-	-@gcc $(code) -Wall -std=c17 -o ./build/$(PRJ)
-	-@./build/$(PRJ) < ./test/$(f)
+	-@gcc ./libs/*/*.c test/$(code)/*.c -lm -Wall -std=c17 -o $(code).n
 
 .PHONY: clean
 
