@@ -29,6 +29,6 @@ unsigned int getTamList(typeList * list);
 
 void deleteList(typeList * list);
 
-double getTotalComparations(typeList * list);
+unsigned int getTotalComparations(typeList * list);
 
 #endif

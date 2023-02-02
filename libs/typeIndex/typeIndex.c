@@ -26,8 +26,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     typeStopWord * stopWords = stopWordsData;
     typeIndex * index = malloc(sizeof(typeIndex));
     int tamDocuments = 40;
-    int indexDoc = 0;
-    long int contWords = 0;
+    unsigned int indexDoc = 0;
 
     index->wordsForSeach = newLinkedList(&cmpLinkedList,sizeof(char)*150);
 
@@ -37,7 +36,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     
     char tmp[150];
 
-    index->words = newDynamicDictionary(.tam=14000);
+    index->words = newDynamicDictionary();
 
     while(fscanf(fp,"%s", tmp) == 1){
 
@@ -57,10 +56,10 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
 
         }else{
 
-            cleaningWord(tmp);
-            lowerCase(tmp);
+            cleaningWord((unsigned char*) tmp);
+            lowerCase((unsigned char*) tmp);
             
-            if((!isStopWord(stopWords,tmp)) && (lenStr(tmp) > 1)){
+            if((!isStopWord(stopWords,tmp)) && (lenStr((unsigned char*)tmp) > 1)){
 
                 setLenWords(documents[indexDoc-1],getLenWords(documents[indexDoc-1])+1);
 
@@ -90,6 +89,9 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     
     index->totalPages = indexDoc;
 
+    analyticalData data = getAnalicalDataDynanDic(index->words);    
+    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md");
+
     return index;
 
 }
@@ -118,7 +120,7 @@ void calculatorPontuations(typeIndex * index, tipoPalavra * palavra, int tam){
 
 typeElementIndex* consultWord(typeIndex * index, char * key){
 
-    cleaningWord(key);
+    cleaningWord((unsigned char*)key);
 
     tipoPalavra* word = searchDynamicDictionary(index->words,key,strlen(key));
    
@@ -182,6 +184,9 @@ void showIndex(typeIndex * index){
         
         tmp = remove_start(index->wordsForSeach);
     }
+
+    analyticalData data = getAnalicalDataDynanDic(index->words);    
+    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md",.createNewFile=0);
     
 
 

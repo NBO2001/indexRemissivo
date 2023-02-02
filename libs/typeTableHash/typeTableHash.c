@@ -17,7 +17,7 @@ struct typeTableHash{
     // Statistical parameters
     unsigned int totalReHashingRealized;
     unsigned int seachTotal;
-    double totalCmp;
+    unsigned int totalCmp;
 };
 
 typedef struct typeCharge typeCharge;
@@ -113,7 +113,7 @@ static unsigned int hashing(typeTableHash* thash,unsigned int keySize ,void* key
 
 void _executeReHashing(typeTableHash* thash){
 
-  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.5 * thash->totalElements ));
+  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.4 * thash->totalElements ));
   unsigned int newChargeFactor = (unsigned int) log2(thash->totalElements);
 
   newChargeFactor = newChargeFactor > 2? newChargeFactor - 1: newChargeFactor;
@@ -131,6 +131,8 @@ void _executeReHashing(typeTableHash* thash){
   int tamList;
 
   for(int i=0; i < thash->len; i++){
+    
+    thash->totalCmp += getTotalComparations(thash->lists[i]);
 
     tmpCharge = remove_start(thash->lists[i]);
     
@@ -234,7 +236,6 @@ void* seachTable(typeTableHash * thash, void * key,unsigned int sizeKey){
 
     typeCharge* aux = seach_in_list(thash->lists[index],charge);
 
-    thash->totalCmp += getTotalComparations(thash->lists[index]);
     thash->seachTotal++;
 
     free(charge);
@@ -260,11 +261,32 @@ void* removeTable(typeTableHash * thash, void * key,unsigned int sizeKey){
 
 analyticalData getAnalicalData(typeTableHash * thash){
 
+  unsigned int totListsNotEmpty = 0;
+  unsigned int totListsLen = 0;
+  unsigned int exceedFactorC = 0;
+
+  for(int i=0; i < thash->len; i++){
+
+    totListsLen += getTamList(thash->lists[i]);
+
+    if(getTamList(thash->lists[i]) != 0) totListsNotEmpty++;
+
+    if(getTamList(thash->lists[i]) > thash->chargeFactor) exceedFactorC++;
+
+    thash->totalCmp += getTotalComparations(thash->lists[i]);
+  }
+
+
   return (analyticalData){.tam=thash->len,
   .factorCharge=thash->chargeFactor,
   .reHashingRealizade = thash->totalReHashingRealized,
   .totalElements=thash->totalElements,
   .biggerLinkedList=thash->biggerList,
   .seachTotal=thash->seachTotal,
-  .totalCmp=thash->totalCmp};
+  .totalCmp=thash->totalCmp,
+  .avarageComparator= (double)thash->totalCmp/thash->seachTotal,
+  .averageListSize=(double) totListsLen/totListsNotEmpty,
+  .positionsNoEmpty=totListsNotEmpty,
+  .exceededFactorCharge=exceedFactorC
+  };
 }

@@ -16,7 +16,7 @@ char isLetter(unsigned char letter){
     );
 }
 
-int lenStr(char string[]){
+int lenStr(unsigned char *string){
 
     int cont = 0;
 
@@ -65,7 +65,7 @@ double idf(int docsWords, int docs){
 
 double tfidf(int palavra, int doc, int qntWords, int docs){ return ( tf(palavra, doc) * idf(qntWords, docs)); }
 
-const char * lowerCase(unsigned char string[]){
+void lowerCase(unsigned char string[]){
     int size = lenStr(string);
     for (int i = 0; i < size; i++){
         if (string[i] >= 65 && string[i] <= 90){
@@ -74,5 +74,36 @@ const char * lowerCase(unsigned char string[]){
             string[i] += 32;
         }
     }
-    return string;
+    
+}
+
+void _fileAnalyticalData(fileG in){
+
+    FILE * fp = fp = fopen(in.outputName,"a");
+
+    analyticalData data = in.data;
+    double taxaOcupationVector = ((double) data.positionsNoEmpty*100)/data.tam;
+    if(in.createNewFile){
+        fprintf(fp,"# %s\n",in.title);
+        
+        fprintf(fp,"## 1. Analise do vetor\n");
+        fprintf(fp,"| Total de elementos | Tamanho vetor final      | Total de posicoes ocupadas | Ocupacao do vetor (%%) |\n");
+        fprintf(fp,"| ----------- | ----------- | ----------- | ----------- |\n");
+        fprintf(fp,"| %u    | %u    | %u | %.2lf%% |\n", \
+        data.totalElements,data.tam, data.positionsNoEmpty, taxaOcupationVector);
+        
+        fprintf(fp,"## 2. Analise de espalhamento\n");
+        fprintf(fp,"| Fator de carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de no por lista |\n");
+        fprintf(fp,"| ----------- | ----------- | ----------- | ----------- | ----------- |\n");
+        fprintf(fp,"| %u    | %u | %u | %u | %lf |\n\n", \
+        data.factorCharge, data.biggerLinkedList, data.exceededFactorCharge, data.reHashingRealizade,data.averageListSize);
+
+        fprintf(fp,"## 3. Buscas e comparacoes\n");
+        fprintf(fp,"| Total de buscas      | Total de comparacoes | Media comparacoes/busca |\n");
+        fprintf(fp,"| ----------- | ----------- | ----------- |\n");
+    }
+    
+    fprintf(fp,"| %u    | %u | %.2lf |\n", data.seachTotal,  data.totalCmp, data.avarageComparator);
+
+    fclose(fp);
 }

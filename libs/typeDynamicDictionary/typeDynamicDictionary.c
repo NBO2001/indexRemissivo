@@ -35,3 +35,5 @@ void removeDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsi
     void * tmp = removeTable(dictionary->table,key, keySize);
     free(tmp);
 }
+
+analyticalData getAnalicalDataDynanDic(typeDynamicDictionary* dictionary){ return getAnalicalData(dictionary->table); }

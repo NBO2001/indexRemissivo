@@ -104,11 +104,14 @@ void * seach_in_list(typeList * list, void* key){
 	list->totalBuscas++;
 	aux = list->first;
 	
+	if(!aux) return NULL;
+
 	while( aux && list->cmp(aux->data,key) != 0){
 		list->totalComparation++;
 		aux = aux->next;
 	}
-	
+
+	list->totalComparation++;
 
 	if(aux){
 		return aux->data;
@@ -122,11 +125,9 @@ void * seach_in_list(typeList * list, void* key){
 
 void* remove_with_key(typeList * list, void* key){
 
-	typeNode* aux;
+	typeNode* aux = list->first;
 	typeNode * previusAddr = aux;
 	
-	aux = list->first;
-
 	if(!aux) return NULL;
 	
 	void* data = malloc(list->sizeElement);
@@ -172,23 +173,17 @@ void * last_element(typeList * list){
 	
 	aux = list->first;
 
-	while(aux && aux->next){
-		aux = aux->next;
-	}
+	while(aux && aux->next) aux = aux->next;
 
-	if(aux){
-		return &(aux->data);
-	}else{
-		return NULL;
-	}
+	if(aux) return &(aux->data);
+	else return NULL;
+
 
 }
 
 unsigned int getTamList(typeList * list){ return list->ocupation; }
 
 void deleteList(typeList * list){ free(list); }
-
-double getTotalComparations(typeList * list){ return (double) list->totalComparation/list->totalBuscas; }
 
 void insert_with_value(typeList * list, void* data){
 
@@ -203,9 +198,9 @@ void insert_with_value(typeList * list, void* data){
 	}
 
 	while (aux && list->cmp(aux->data,new_nd->data) <= 0){
-		
 		previusAddr = aux;
 		aux = aux->next;
+		list->totalComparation++;
 	}
 
 	if(aux == previusAddr){
@@ -219,3 +214,5 @@ void insert_with_value(typeList * list, void* data){
 	previusAddr->next = new_nd;
 
 }
+
+unsigned int getTotalComparations(typeList * list){ return (double) list->totalComparation; }
