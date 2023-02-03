@@ -18,6 +18,7 @@ struct typeTableHash{
     unsigned int totalReHashingRealized;
     unsigned int seachTotal;
     unsigned int totalCmp;
+    unsigned int totalListsRemoved;
 };
 
 typedef struct typeCharge typeCharge;
@@ -126,6 +127,7 @@ void _executeReHashing(typeTableHash* thash){
   newTable->totalReHashingRealized = thash->totalReHashingRealized+1;
   newTable->totalCmp = thash->totalCmp;
   newTable->seachTotal = thash->seachTotal;
+  newTable->totalListsRemoved = thash->totalListsRemoved;
 
   unsigned int indexToList;
   int tamList;
@@ -137,7 +139,9 @@ void _executeReHashing(typeTableHash* thash){
     tmpCharge = remove_start(thash->lists[i]);
     
     while (tmpCharge){
-      
+
+      newTable->totalListsRemoved++;
+
       indexToList = hashing(newTable,tmpCharge->sizeKey,tmpCharge->key);
 
       insert_start(newTable->lists[indexToList], tmpCharge);
@@ -169,6 +173,7 @@ typeTableHash* _createTableHash(elementTableHash in){
     thash->totalReHashingRealized = 0;
     thash->seachTotal = 0;
     thash->totalCmp = 0;
+    thash->totalListsRemoved = 0;
 
     thash->lists = malloc(sizeof(typeList*)*thash->len);
 
@@ -287,6 +292,7 @@ analyticalData getAnalicalData(typeTableHash * thash){
   .avarageComparator= (double)thash->totalCmp/thash->seachTotal,
   .averageListSize=(double) totListsLen/totListsNotEmpty,
   .positionsNoEmpty=totListsNotEmpty,
-  .exceededFactorCharge=exceedFactorC
+  .exceededFactorCharge=exceedFactorC,
+  .totalListsRemoved=thash->totalListsRemoved
   };
 }

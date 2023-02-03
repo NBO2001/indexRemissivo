@@ -127,16 +127,23 @@ void _fileAnalyticalData(fileG in){
         fprintf(fp,"## 1. Analise do vetor\n\n");
         fprintf(fp,"| Total de elementos | Tamanho vetor final      | Total de posicoes ocupadas | Ocupacao do vetor (%%) |\n");
         fprintf(fp,"| ----------- | ----------- | ----------- | ----------- |\n");
-        fprintf(fp,"| %u    | %u    | %u | %.2lf%% |\n", \
+        fprintf(fp,"| %u    | %u    | %u | %.2lf%% |\n\n", \
         data.totalElements,data.tam, data.positionsNoEmpty, taxaOcupationVector);
         
         fprintf(fp,"## 2. Analise de espalhamento\n\n");
-        fprintf(fp,"| Fator de carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de no por lista |\n");
-        fprintf(fp,"| ----------- | ----------- | ----------- | ----------- | ----------- |\n");
-        fprintf(fp,"| %u    | %u | %u | %u | %lf |\n\n", \
-        data.factorCharge, data.biggerLinkedList, data.exceededFactorCharge, data.reHashingRealizade,data.averageListSize);
+        fprintf(fp,"| Fator de carga | Maior Lista Encadeada | Listas > Fator Carga | Media de no por lista |\n");
+        fprintf(fp,"| ----------- | ----------- | ----------- | ----------- |\n");
+        fprintf(fp,"| %u    | %u | %u | %lf |\n\n", \
+        data.factorCharge, data.biggerLinkedList, data.exceededFactorCharge, data.averageListSize);
 
-        fprintf(fp,"## 3. Buscas e comparacoes\n\n");
+        fprintf(fp,"## 3. Analise de custo\n\n");
+        fprintf(fp,"| Re-hashing Realizados | Quantidade de NOs removidos | Nos/Re-hashing |\n");
+        fprintf(fp,"| ----------- | ----------- | ----------- |\n");
+        fprintf(fp,"| %u    | %u | %lf |\n\n", \
+        data.reHashingRealizade,data.totalListsRemoved, (double) data.totalListsRemoved/data.reHashingRealizade);
+
+
+        fprintf(fp,"## 4. Buscas e comparacoes\n\n");
         fprintf(fp,"| Total de buscas      | Total de comparacoes | Media comparacoes/busca |\n");
         fprintf(fp,"| ----------- | ----------- | ----------- |\n");
     }

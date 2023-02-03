@@ -13,7 +13,7 @@ typedef struct analyticalData{
     unsigned int seachTotal;
     unsigned int positionsNoEmpty;
     unsigned int exceededFactorCharge;
-
+    unsigned int totalListsRemoved;
 }analyticalData;
 
 #endif
