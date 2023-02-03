@@ -22,7 +22,7 @@ Este trabalho tem como objetivo criar um programa que gerará um índice remissi
 ## Métodos
 
 ## Discussões e Resultados
-###
+### Type Stop Words
 
 ## Conclusão
 
