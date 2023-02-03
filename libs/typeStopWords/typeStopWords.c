@@ -20,10 +20,10 @@ typeStopWord * newTypeStopWord(char * fileName){
 
     FILE * wordsFile = fopen(fileName, "r");
 
-    char * word = malloc(sizeof(char)*25);
+    char * word = calloc(25,sizeof(char));
 
     while (fscanf(wordsFile,"%s", word) == 1) chargeStaticDic(stopWords->dictionary, word, strlen(word));
-    
+     
     fclose(wordsFile);
 
     analyticalData data = getAnalicalDataStactDic(stopWords->dictionary);    

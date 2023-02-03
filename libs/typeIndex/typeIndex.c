@@ -60,7 +60,11 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
             lowerCase((unsigned char*) tmp);
             
             if((!isStopWord(stopWords,tmp)) && (lenStr((unsigned char*)tmp) > 1)){
+                
+                removeSpecialCharacters((unsigned char*) tmp);
 
+                if(strlen(tmp)==0) continue;
+                
                 setLenWords(documents[indexDoc-1],getLenWords(documents[indexDoc-1])+1);
 
                 tipoPalavra* word = searchDynamicDictionary(index->words,tmp,strlen(tmp));
@@ -171,7 +175,7 @@ void showIndex(typeIndex * index){
     while (tmp){
 
         typeElementIndex * elem = consultWord(index,tmp);
-
+        
         assert(elem != NULL);
 
         printf("%s",elem->word);

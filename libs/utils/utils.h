@@ -20,5 +20,6 @@ double idf(int docsWords, int docs);
 double tfidf(int palavra, int doc, int qntWords, int docs);
 void lowerCase(unsigned char string[]);
 void _fileAnalyticalData(fileG in);
+void removeSpecialCharacters(unsigned char * string);
 
 #endif

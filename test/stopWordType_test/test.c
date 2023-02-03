@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include "../../libs/typeStopWords/typeStopWords.h"
+#include "../../libs/utils/utils.h"
 
 int main(int argc, char * argv[]){
 
 
     typeStopWord * stopword = newTypeStopWord(argv[1]);
 
-    for(int i=0; i < 10; i++){
+    FILE * fp = fopen(argv[1], "r");
 
-        char seach[25];
-        scanf("%s",seach);
-
-        if(isStopWord(stopword,seach)) printf("Eh stop word\n");
-        else printf("N eh estop word\n"); 
-
-
+    char search[25];
+    while (fscanf(fp,"%s", search)==1){
+        cleaningWord((unsigned char *)search);
+        if(!isStopWord(stopword,search)) printf("N eh estop word: %s\n", search); 
     }
+    
+    printf("Fim\n");
+
+    
 
 
 }

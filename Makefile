@@ -7,8 +7,8 @@ $(PRJ): *.c
 
 run:
 	-@clear
-	-@gcc $(code) -Wall -std=c17 -o ./build/$(PRJ)
-	-@./build/$(PRJ)
+	-@gcc ./libs/*/*.c  main.c -Wall -std=c17  -lm -o ./build/$(PRJ)
+	-@./build/$(PRJ) $(st) $(fl)
 
 testa:
 	-@clear
