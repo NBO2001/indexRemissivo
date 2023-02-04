@@ -10,6 +10,8 @@
 #include "../tipoPalavra/tipoPalavra.h"
 #include "../typeLinkedList/linked_list.h"
 
+#define TITLE "TypeIndex Dictionary Generic"
+
 struct typeIndex{
     typeDynamicDictionary *words;
 
@@ -36,6 +38,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     
     char tmp[150];
 
+    // index->words = newDynamicDictionary(.fixedChargeFactor=1,.factorCharge=5);
     index->words = newDynamicDictionary();
 
     while(fscanf(fp,"%s", tmp) == 1){
@@ -94,7 +97,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData){
     index->totalPages = indexDoc;
 
     analyticalData data = getAnalicalDataDynanDic(index->words);    
-    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md");
+    fileAnalyticalData(.data=data,.title=TITLE,.outputName="DIC5201.md");
 
     return index;
 
@@ -191,7 +194,7 @@ void showIndex(typeIndex * index){
     }
 
     analyticalData data = getAnalicalDataDynanDic(index->words);    
-    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md",.createNewFile=0);
+    fileAnalyticalData(.data=data,.title=TITLE,.outputName="DIC5201.md",.createNewFile=0);
     
 
 
@@ -231,7 +234,7 @@ void createMarkDownIndex(typeIndex * index, char * fileName, char * title){
     fclose(fp);
 
     analyticalData data = getAnalicalDataDynanDic(index->words);    
-    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md",.createNewFile=0);
+    fileAnalyticalData(.data=data,.title=TITLE,.outputName="DIC5201.md",.createNewFile=0);
     
 
 

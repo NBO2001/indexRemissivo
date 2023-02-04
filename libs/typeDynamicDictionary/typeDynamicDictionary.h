@@ -6,9 +6,11 @@ typedef struct typeDynamicDictionary typeDynamicDictionary;
 
 typedef struct{
     unsigned int tam;
+    unsigned int factorCharge;
+    short fixedChargeFactor;
 } initialValuesDict;
 
-#define newDynamicDictionary(...) _newDynamicDictionary((initialValuesDict){.tam = 2, __VA_ARGS__})
+#define newDynamicDictionary(...) _newDynamicDictionary((initialValuesDict){.tam = 2,.fixedChargeFactor=0, __VA_ARGS__})
 
 typeDynamicDictionary * _newDynamicDictionary(initialValuesDict in);
 
