@@ -85,9 +85,9 @@ void cleaningWord(unsigned char * word){
     int ctI = 0;
     int ctJ = tam-1;
 
-    while (!isLetter(word[ctI])){ ctI++; }
+    while (ctI < ctJ && !isLetter(word[ctI])){ ctI++; }
     
-    while (!isLetter(word[ctJ])){ ctJ--; }
+    while (ctJ > ctI && !isLetter(word[ctJ])){ ctJ--; }
 
     int i; 
 
