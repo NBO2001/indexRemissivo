@@ -5,9 +5,12 @@
 typedef struct {
     unsigned int tam;
     unsigned int factorCharge;
+    short fixedChargeFactor;
+    short metricsAvaliable;
+    short biggerListAvaliable;
 }elementTableHash;
 
-#define createTableHash(...) _createTableHash((elementTableHash){.tam=2,.factorCharge=1,__VA_ARGS__})
+#define createTableHash(...) _createTableHash((elementTableHash){.tam=2,.factorCharge=1,.fixedChargeFactor=0,.metricsAvaliable=1,.biggerListAvaliable=1,__VA_ARGS__})
 typedef struct typeTableHash typeTableHash;
 
 typeTableHash* _createTableHash(elementTableHash in);

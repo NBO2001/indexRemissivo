@@ -14,6 +14,11 @@ struct typeTableHash{
     unsigned int chargeFactor;
     unsigned int biggerList;
 
+    // Parametrs for re-hashing
+    short fixedChargeFactor;
+    short metricsAvaliable;
+    short biggerListAvaliable;
+
     // Statistical parameters
     unsigned int totalReHashingRealized;
     unsigned int seachTotal;
@@ -36,7 +41,20 @@ int cmp(void* a,void*b){
     typeCharge* aa = a;
     typeCharge* bb = b;
 
-    return memcmp(aa->key,bb->key,aa->sizeKey);
+    int tmpVal = memcmp(aa->key,bb->key,aa->sizeKey);
+
+    if(tmpVal == 0){
+
+      if(aa->sizeKey > bb->sizeKey){
+        return 1;
+      }else if(aa->sizeKey < bb->sizeKey){
+        return -1;
+      }else{
+        return 0;
+      }
+    }else return tmpVal;
+    
+
 }
 
 static unsigned int primo_proximo(int num){
@@ -114,10 +132,16 @@ static unsigned int hashing(typeTableHash* thash,unsigned int keySize ,void* key
 
 void _executeReHashing(typeTableHash* thash){
 
-  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.4 * thash->totalElements ));
-  unsigned int newChargeFactor = (unsigned int) log2(thash->totalElements);
+  unsigned int newTam = primo_proximo(thash->totalElements + ( 0.3 * thash->totalElements ) + ( 0.1 * thash->len ));
 
-  newChargeFactor = newChargeFactor > 2? newChargeFactor - 1: newChargeFactor;
+  unsigned int newChargeFactor;
+
+  if(!thash->fixedChargeFactor){
+    newChargeFactor = (unsigned int) log2(thash->totalElements);
+    newChargeFactor = newChargeFactor > 2? newChargeFactor - 1: newChargeFactor;
+  }else{
+    newChargeFactor = thash->chargeFactor;
+  }
 
   typeTableHash * newTable = createTableHash(.factorCharge=newChargeFactor,.tam=newTam);
 
@@ -128,6 +152,11 @@ void _executeReHashing(typeTableHash* thash){
   newTable->totalCmp = thash->totalCmp;
   newTable->seachTotal = thash->seachTotal;
   newTable->totalListsRemoved = thash->totalListsRemoved;
+
+  //Parameters 
+  newTable->fixedChargeFactor = thash->fixedChargeFactor;
+  newTable->metricsAvaliable = thash->metricsAvaliable;
+  newTable->biggerListAvaliable = thash->biggerListAvaliable;
 
   unsigned int indexToList;
   int tamList;
@@ -174,6 +203,12 @@ typeTableHash* _createTableHash(elementTableHash in){
     thash->seachTotal = 0;
     thash->totalCmp = 0;
     thash->totalListsRemoved = 0;
+
+
+    //Parameters 
+    thash->fixedChargeFactor = in.fixedChargeFactor;
+    thash->metricsAvaliable = in.metricsAvaliable;
+    thash->biggerListAvaliable = in.biggerListAvaliable;
 
     thash->lists = malloc(sizeof(typeList*)*thash->len);
 
@@ -227,7 +262,9 @@ void insertTable(typeTableHash * thash, void * key,unsigned int sizeKey, void * 
 
     if(tamList > thash->biggerList) thash->biggerList = tamList;
    
-    if(( (thash->biggerList > thash->chargeFactor ) ) || _analyzeLoadFactor(thash)) _executeReHashing(thash);
+    if(( (thash->biggerList > thash->chargeFactor ) && thash->biggerListAvaliable )  || \
+    ( thash->metricsAvaliable && _analyzeLoadFactor(thash))) \
+    _executeReHashing(thash);
     
 }
 

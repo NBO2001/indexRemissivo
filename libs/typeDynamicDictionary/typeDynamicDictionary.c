@@ -3,6 +3,9 @@
 #include "../../libs/typeDynamicDictionary/typeDynamicDictionary.h"
 #include "../../libs/typeTableHash/typeTableHash.h"
 
+#define METRICSAVAL 1
+#define BIGGERLIST 1
+
 struct typeDynamicDictionary{
 
     typeTableHash * table;
@@ -16,9 +19,17 @@ typeDynamicDictionary * _newDynamicDictionary(initialValuesDict in){
     typeDynamicDictionary * dictionary = malloc(sizeof(typeDynamicDictionary));
 
     dictionary->len = in.tam;
-    unsigned int log = (unsigned int) log2(dictionary->len);
 
-    dictionary->table = createTableHash(.tam=dictionary->len,.factorCharge=log);
+    unsigned int log;
+
+    if(!in.fixedChargeFactor){
+        log = (unsigned int) log2(dictionary->len);
+    }else{
+        log = in.factorCharge;
+    }
+
+    dictionary->table = createTableHash(.tam=dictionary->len,.factorCharge=log,
+    .fixedChargeFactor=in.fixedChargeFactor,.metricsAvaliable=METRICSAVAL,.biggerListAvaliable=BIGGERLIST,);
 
     return dictionary;
 

@@ -6,7 +6,7 @@
 #include "libs/typeStopWords/typeStopWords.h"
 
 int main(int argc, char * argv[]){
-
+    //make run st=data/stopwords_br.txt fl=data/Paralelismo.base
     assert(argc == 3);
 
     typeStopWord * stWord = newTypeStopWord(argv[1]);
