@@ -7,7 +7,7 @@
 * Marcello Cipriano
 * Natanael Oliveira
 
-## Indrodução
+## Introdução
 
 Um Índice Remissivo é uma lista de termos ou expressões presentes em uma obra escrita juntamente com suas respectivas páginas de referência. É uma ferramenta útil para ajudar o leitor a encontrar informações específicas dentro de um documento grande. O índice remissivo será mais eficiente quando conseguir direcionar o leitor para as ocorrências mais significativas de uma palavra no texto.
 
