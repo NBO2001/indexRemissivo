@@ -1,0 +1,451 @@
+PA TABELA 7.1 - TIPOS DE VARIÁVEIS DO OBJECT PASCAL (DELPHI 4) E A MEMÓRIA UTILIZADA. ...........270
+   TABELA 7.2 - EXEMPLOS DE CRITÉRIOS OBTIDOS EM TERMOS DE .....................................................291
+   TABELA 8.1 - HERBÁRIOS BRASILEIROS E NÚMEROS DE EXEMPLARES [PEIXOTO & BARBOSA, 1998]. 336
+   TABELA 8.2 - OS DOZE HERBÁRIOS BRASILEIROS QUE MAIS DETÊM INFORMAÇÕES [PEIXOTO &
+   BARBOSA, 1998]. .......................................................................................................................337
+   TABELA 8.3 - ESPÉCIES UTILIZADAS NO EXPERIMENTO. ......................................................................363
+   TABELA 9.1 - SÍNTESE DAS PRINCIPAIS CONTRIBUIÇÕES DESTA TESE. .................................................373
+   xxi
+   xxii
+   CAPÍTULO
+   1
+   INTRODUÇÃO
+   "I think computer viruses should count as life. I think it says something about human
+   nature that the only form of life we have created so far is purely destructive. We've
+   created life in our own image."
+   Stephen Hawking
+   11
+   CAPÍTULO 1
+   2
+   INTRODUÇÃO
+   CAPÍTULO 1 – INTRODUÇÃO
+   1.1 – O PARALELISMO NATURAL
+   Desconhecemos a exata razão da natureza ao evoluir os diversos seres
+   vivos, mas sabemos entretanto, que como resultado, eles se tornam mais
+   adaptados ao meio e consequentemente mais complexos. Devemos lembrar que a
+   adaptação não compreende apenas a modelagem do indivíduo ao meio físico, mas
+   também seu relacionamento com outros seres e muitas vezes a competição entre
+   as espécies e indivíduos. Embora vários fatores sejam relevantes na adaptação de
+   um ser ao meio, tais como: locomoção, mecanismos de alimentação e dispositivos
+   de ataque (predadores) e defesa (presa), sem dúvida o mais importante é a
+   informação, uma vez que é através dela que o indivíduo vai poder se locomover,
+   alimentar, defender ou atacar, enfim realizar sua integração ao meio.
+   No decorrer de bilhões de anos, inúmeros mecanismos foram desenvolvidos
+   pela natureza a fim de que os seres vivos pudessem extrair informações do meio.
+   Esses mecanismos são denominados sentidos, estando presentes no ser humano
+   em cinco diferentes modalidades: audição, visão, olfato, paladar e tato. O que
+   determina a eficácia de um sentido é a quantidade e a qualidade das informações
+   através dele percebidas. Foi através da percepção das ondas eletromagnéticas que
+   a natureza desenvolveu uma das suas obras mais incríveis, o mecanismo mais
+   poderoso e sofisticado para a aquisição de informação: a visão.
+   Mais do que apenas uma maneira de obter informações sobre o meio, a
+   visão é um complexo sistema de processamento de sinais, no qual as imagens são
+   convertidas em informações compreensíveis para o indivíduo. É razoável que um
+   sistema de processamento tão intrincado e sofisticado tenha um elevado custo. De
+   fato, nos animais que possuem a visão mais evoluída, como é o caso dos primatas,
+   cerca de 60% dos neurônios corticais estão envolvidos com este processo.
+   Entretanto, num mundo onde a competição é sinônimo de sobrevivência, não basta
+   obter informação abundante e de qualidade sobre o meio, é necessário também
+   que ela seja adquirida em tempo real, uma vez que essa condição na maioria das
+   vezes pode significar a diferença entre a vida ou morte para grande parte dos seres
+PA vivos.
+   3
+   CAPÍTULO 1
+   Sem dúvida, o principal mecanismo encontrado na natureza para agilizar o
+   processamento das informações é o paralelismo. A maior prova disso é a natureza
+   paralela e distribuída do sistema de visão dos primatas, os animais mais evoluídos.
+   Contudo, não é apenas para a velocidade de resposta que o paralelismo contribui.
+   Na verdade, o sistema de visão dos primatas tem no paralelismo sua base de
+   estruturação em todos os seus níveis. Como propõem Zeki e Shipp [Zeki & Shipp,
+   1988], o paralelismo permite não somente a integração dos atributos visuais, mas
+   também de cada um dos submódulos que os compõe.
+   O paralelismo foi uma escolha realizada pela natureza ao longo da
+   evolução, o qual iniciou com o aparecimento dos seres pluricelulares. Se
+   pensarmos em cada célula como um elemento individual de processamento da
+   vida, todo ser vivo pluricelular é composto por uma estrutura de processamento
+   paralelo. Nesse contexto, o paralelismo vai se intensificando à medida que os seres
+   se tornam mais complexos e começam a surgir os tecidos e órgãos, culminando no
+   sistema nervoso central, a máquina de processamento paralelo mais poderosa que
+   conhecemos. Em visão, assim como no sistema nervoso, a base estrutural do
+   processamento está fundada no paralelismo.
+   Podemos considerar que o paralelismo na visão se inicia nos dois órgãos
+   responsáveis pela captação da luz, os olhos, que possuem autonomia e
+   independência, operando em concorrência. O paralelismo dos olhos se acentua
+   quando consideramos suas retinas. Além de possuírem hemisférios de percepção
+   autônomos (campo visual direito e esquerdo), as retinas possuem dois conjuntos de
+   fotorreceptores (cones e bastonetes) que constituem o início de sistemas
+   independentes que captam informações distintas (caminho parvo celular e magno
+   celular). A informação proveniente da retina é replicada e distribuída para diversas
+   regiões do córtex visual, caracterizando um sistema massivamente paralelo com
+   arquitetura distribuída constituído por módulos independentes responsáveis pelo
+   processamento de informações específicas. Cada um dos módulos que constituem
+   o sistema visual é ainda subdividido em estruturas hierárquicas que realizam
+   processamento paralelo. Deste modo, o paralelismo apresenta-se no sistema visual
+   em multiníveis, mostrando-se como uma das bases de sua arquitetura.
+   É dentro do fascinante universo da visão que reside o objeto de estudo
+   desta tese multidisciplinar: o estudo do paralelismo no sistema de visão dos
+   primatas e sua inspiração para que possamos desenvolver sistemas paralelos de
+   visão artificial mais eficientes.
+   4
+   INTRODUÇÃO
+   1.2 - PARALELISMO EM VISÃO ARTIFICIAL
+   Embora seja de conhecimento da neurociência que os sistemas biológicos
+   de visão estejam fundamentados em estruturas distribuídas e paralelas de
+   processamento, não encontramos, como era de se esperar, na visão artificial (visão
+   computacional) a mesma concepção. De fato, observando a literatura da área, esse
+   assunto, embora de extrema importância, tem sido pouco explorado. Se tomarmos
+   algumas das bases bibliográficas mais importantes, poderemos constatar que o
+   paralelismo não é nem ao menos citado, na sua grande maioria. Como exemplo
+   podemos sugerir o famoso livro "Vision" de David Marr, o qual é consagrado por ser
+   uma das bíblias da área. Marr não faz nem ao menos uma citação em sua obra
+PA sobre a importância do paralelismo em visão.
+   Ainda que a visão artificial seja uma área cuja inspiração biológica é
+   amplamente incentivada, não sabemos qual é o motivo da lacuna que incide sobre
+   o tema do paralelismo. Podemos supor alguns fatores responsáveis pela exclusão
+   do paralelismo nas bases da visão artificial. Uma das possibilidades seria o
+   processamento seqüencial historicamente utilizado pela ciência da computação
+   para resolver seus problemas, que pode ter contribuído para que o paralelismo
+   tenha sido abandonado em visão artificial.
+   Uma diferença entre os elementos de processamento natural e biológico é a
+   velocidade de processamento. Sendo os neurônios lentos, se comparados com a
+   freqüência de operação dos microprocessadores atuais, existe uma necessidade
+   intrínseca de paralelismo para realizar processamento em tempo real. Talvez este
+   fator tenha levado a uma crença onde, ao contrário da visão natural, o estudo de
+   visão artificial não tivesse a necessidade de se preocupar com os assuntos de
+   paralelismo, uma vez que num futuro próximo, os sistemas computacionais
+   poderiam chegar a possuir poder computacional suficiente para efetuar os métodos
+   e técnicas de visão computacional e processamento de imagens em tempo real.
+   Entretanto, devemos lembrar que na visão natural o paralelismo não possui apenas
+   esse caráter.
+   Outra possibilidade seria a dificuldade no desenvolvimento de aplicações
+   paralelas, devido à impopularidade da computação paralela levando a uma falta de
+   ambientes de desenvolvimento amigáveis, a necessidade de um profundo
+   conhecimento em computação paralela exigida para sua programação e sistemas
+   de computação complexos e pouco amigáveis entre outras. Esses fatores têm
+   5
+   CAPÍTULO 1
+   mantido a computação paralela restrita aos especialistas da área. Sendo visão um
+   assunto multidisciplinar envolvendo além de cientistas da computação,
+   engenheiros, matemáticos, físicos, biólogos, neurocientistas e outros, o alto custo
+   com o aprendizado e utilização das técnicas de computação paralela estariam
+   assim conduzindo à opção seqüencial.
+   Seja qual for a possibilidade, podemos concluir que a principal barreira que
+   impõe uma abordagem paralela em visão artificial é a dificuldade de implementação
+   paralela e o direcionamento de suas ferramentas para o restrito grupo dos
+   especialista da área. Observando a história da computação, vemos a grande
+   importância da interação usuário/máquina e de sua simplificação. Deste modo,
+   tornar as tecnologias mais fáceis de utilizar, além de auxiliar os usuários
+   inexperientes, também beneficia os expertos, uma vez que [Hayes, 1990] [Baber et
+   al., 1993]. Bons exemplos desta linha de raciocínio são: a tecnologia GUI ( Grafical
+   User Interface), a programação visual e a programação orientada a objetos, cujo
+   principal objetivo é simplificar o relacionamento entre o homem e a máquina.
+   Deste forma, acreditamos que a principal solução para a ausência de
+   paralelismo em visão artificial seria eliminar a barreira da dificuldade de utilização
+   da tecnologia de computação paralela, através de metodologias e ferramentas que
+   possibilitassem uma simplificação da implementação de aplicativos, permitindo
+   assim que toda a gama de pesquisadores relacionados com visão pudessem
+   facilmente incorporar paralelismo em seus projetos.
+   Assim sendo, o problema do paralelismo em visão artificial se transforma
+   numa questão inserida no seio da ciência da computação: a adoção do paralelismo
+   com uma filosofia de interação homem-máquina, objetivando o acesso fácil e
+PA amigável aos recursos da computação paralela.
+   1.3 - AS DUAS COLUNAS
+   O paralelismo é inerente à visão natural, possibilitando além de grande
+   performance (processamento em tempo real), as bases para a integração entre os
+   diferentes atributos visuais e seus respectivos módulos [Zeki & Shipp, 1988]
+   [Livingstone & Hubel, 1988] [Zeki, 1993] [Hubel, 1995] [Levine & Shefner, 1991].
+   Seguindo as lições da natureza, o estudo do paralelismo em visão artificial, é vital
+   para o desenvolvimento de modelos mais realísticos de visão auxiliando na
+   elaboração de sistemas mais complexos, que permitam a integração de atributos
+   6
+   INTRODUÇÃO
+   visuais (cor, estéreo, textura, forma, etc.) e diferentes técnicas de visão, assim
+   como sua execução em tempo real, uma vez que a performance está condicionada
+   à filosofia paralela.
+   Além de melhorias nos sistemas de visão artificial, a adoção de modelos
+   mais realísticos do ponto de vista biológico permite uma melhor compreensão dos
+   sistemas de visão natural, e consequentemente do funcionamento do cérebro como
+   um todo. Essa realimentação de conhecimento constitui uma das bases da Visão
+   Cibernética, que caracteriza o estudo da visão como um assunto multidisciplinar
+   correlacionado.
+   Esta tese está fundada em duas colunas: (i) o estudo do paralelismo em
+   visão natural e artificial e (i ) a proposta de uma ferramenta de desenvolvimento
+   paralelo, baseada na interação entre usuário e máquina, que facilite a
+   implementação de algoritmos paralelos de visão.
+   Na primeira parte que compõe este trabalho realizamos uma revisão,
+   discussão e análise do paralelismo em visão natural e artificial. São abordadas as
+   bases do paralelismo na visão natural, enfocando o sistema de visão dos primatas.
+   Em visão artificial são tratados os possíveis benefícios do paralelismo, através de
+   sistemas paralelos de visão, concentrando o assunto sobre o projeto Cyvis-1
+   ( Cybernetic Vision 1), sistema de visão versátil em desenvolvimento no nosso
+   grupo. O Cyvis-1 é baseado no modelo de especialização funcional proposto por
+   Zeki & Shipp [Zeki & Shipp, 1988], apresentando deste modo, assim como os
+   sistemas de visão natural, uma arquitetura que possui paralelismo inerente.
+   Conforme discutimos na seção anterior, acreditamos que a principal razão
+   que impele a utilização de paralelismo em massa em visão computacional é a
+   dificuldade de utilização, de implementação e o longo treinamento requerido para a
+   implementação paralela. Na tentativa de solucionar esse problema, sobretudo
+   dentro do nosso grupo de pesquisa, a segunda parte desta tese introduz uma nova
+   metodologia de implementação paralela, baseada na simplicidade de utilização e
+   programação e na reutilização de código.
+   1.4 - OBJETIVOS DA TESE
+   Nesta seção vamos apresentar ao leitor uma síntese dos principais objetivos
+   deste trabalho, permitindo uma perspectiva sobre os assuntos discutidos e
+   abordados ao longo da tese.
+   7
+   CAPÍTULO 1
+   Como primeiro passo, este trabalho pretende realizar um levantamento
+   crítico e abrangente das diversas áreas relacionadas ao paralelismo em visão
+   natural e artificial. Uma vez que o paralelismo em visão artificial está vinculado à
+   computação paralela, intencionamos realizar uma substancial revisão à
+PA computação paralela, de modo a fornecer ao leitor as bases para as discussões do
+   assunto sob o ponto de vista da visão. Em visão natural, o objetivo é realizar uma
+   revisão sobre o assunto, culminando em uma discussão do paralelismo no sistema
+   visual dos primatas. A integração entre as duas modalidades de visão ocorre
+   através de uma análise crítica de sistemas de visão artificial com motivação
+   biológica.
+   Um dos objetivos principais deste trabalho é fornecer as bases de
+   paralelismo e integração entre pesquisadores para o desenvolvimento do projeto
+   Cyvis-1, uma proposta de visão versátil, que vem sendo desenvolvida pelo nosso
+   grupo. Com forte motivação biológica, o Cyvis-1, é baseado na especialização
+   funcional do córtex visual dos primatas proposta por Zeki & Shipp [Zeki & Shipp,
+   1988], possuindo como principais características a integração dos atributos visuais,
+   o paralelismo em visão e o trabalho cooperativo entre os diversos pesquisadores
+   envolvidos no projeto.
+   De forma a viabilizar o item anterior e na tentativa de preencher a lacuna do
+   paralelismo em visão artificial, pretendemos desenvolver um conjunto de
+   ferramentas para o desenvolvimento, de forma simples e amigável, de aplicações
+   paralelas em visão que, auxilie tanto os programadores sem conhecimentos em
+   paralelismo como os expertos. Deste modo, permitirá a qualquer pesquisador de
+   visão com o mínimo conhecimento de programação, a utilização de recursos de
+   paralelismo em seus projetos, e aos especialistas, o desenvolvimento mais ágil.
+   Denominado CVMP ( Cybernetic Vision Message Passage), o conjunto de
+   ferramentas em questão é voltado para a plataforma Windows NT/9X e para o
+   ambiente de desenvolvimento Delphi, que constituem uma das bases de
+   desenvolvimento computacional do nosso grupo.
+   Uma vez implementado, é necessário realizar a avaliação e validação do
+   CVMP, tanto nos aspectos de funcionalidade quanto em utilização. Assim, um dos
+   objetivos do trabalho foi a implementação de versões paralelas de diversos
+   algoritmos de visão computacional e de processamento de imagens. Dentre os
+   algoritmos, serão abordados casos clássicos em visão e processamento de
+   imagens, tais como os operados locais, transformada de Hough [Hough, 1959] e
+   8
+   INTRODUÇÃO
+   transformada de Fourier [Brigham, 1988], amplamente discutidos na literatura,
+   algumas vezes até mesmo sob o ponto de vista do paralelismo, além de uma
+   técnica de segmentação inédita baseada em campos aleatórios de Markov [Bruno &
+   Costa, 2000]. Os algoritmos foram analisados através dos módulos de estatística do
+   CVMP, o qual permitiu um estudo sobre seu comportamento, eficiência e
+   performance.
+   Outro objetivo é o desenvolvimento de situações reais em visão artificial que
+   utilizem os recursos da computação paralela, através do CVMP. Para tanto serão
+   apresentadas 3 aplicações inéditas desenvolvidas nesse trabalho: (i) estruturas de
+   paralelismo da integração dos atributos cor e estéreo do projeto Cyvis-1, (ii) um
+   experimento para um modelo de complexidade baseado na percepção humana
+   (projeto ynergos) e (i i) uma proposta para um herbário digital e automático
+   (proposta TreeVis). As duas primeiras aplicações fazem parte de projetos em
+   desenvolvimento no nosso grupo (Grupo de Pesquisa em Visão Cibernética), nos
+   quais além do autor participam outros integrantes do grupo, possibilitando a
+   validação do CVMP tanto na simplicidade de utilização (manuseio amigável), como
+   na reutilização de código e integração entre pesquisadores. A outra aplicação
+PA apresenta um protótipo de uma proposta do autor para um sistema de
+   reconhecimento automático de plantas arbóreas, com o intuito de fornecer aos
+   botânicos uma ferramenta complementar aos tradicionais herbários.
+   1.5 - ORGANIZAÇÃO DA TESE
+   Esta tese prossegue com uma revisão dos conceitos básicos de
+   computação paralela, permitindo ao leitor familiarizar-se com o assunto. No
+   Capítulo 2 são apresentados alguns aspectos teóricos de arquiteturas paralelas e,
+   no Capítulo 3, o tema continua com uma abordagem em software.
+   No Capítulo 4 é realizada uma revisão de visão natural, com enfoque no
+   sistema de visão dos primatas. O capítulo é complementado por uma discussão do
+   assunto sob o prisma do paralelismo. No Capítulo 5 são apresentados os sistemas
+   de visão artificial Cyvis-1 e ynergos, em desenvolvimento no Grupo de Visão
+   Cibernética deste instituto. Dentre eles devemos destacar o Cyvis-1, sistema
+   fortemente motivado pela inspiração biológica, que possui como coluna dorsal o
+   paralelismo, sendo uma das bases de estudo deste trabalho. Ainda nesse capítulo
+   será realizada uma análise comparativa entre o sistema Cyvis-1 e outros sistemas
+   9
+   CAPÍTULO 1
+   artificiais encontrados na literatura.
+   Esta tese introduz um conjunto de ferramentas visuais, que simplificam a
+   implementação de aplicações paralelas, denominado CVMP. Embora o CVMP
+   tenha sido idealizado para a visão computacional, sua utilização é genérica,
+   permitindo virtualmente que qualquer programador Delphi desenvolva uma
+   aplicação paralela, bastando para isto um conhecimento rudimentar de paralelismo.
+   O conjunto de ferramentas CVMP é apresentado e discutido no Capítulo 6.
+   O Capítulo 7 apresenta diversas técnicas e métodos paralelos de visão
+   computacional e processamento de imagens, desenvolvidos através de CVMP.
+   Cada caso é discutido, abordando as questões teóricas do assunto, assim como os
+   resultados da implementação paralela e ainda sua comparação com as versões
+   seqüenciais. Dentre as técnicas apresentadas salientamos a implementação
+   paralela do algoritmo de segmentação de imagens, baseado em campos aleatórios
+   de Markov, cuja metodologia foi desenvolvida neste trabalho.
+   No Capítulo 8 são apresentadas três inéditas aplicações paralelas em visão
+   artificial, implementadas através de CVMP. A primeira delas é um protótipo do
+   sistema de visão Cyvis-1, na qual é realizada a integração dos atributos de cor e
+   estéreo, a partir do paralelismo. Na seguinte, é discutido um experimento de
+   psicofísica realizado a partir do projeto ynergos, visando a obtenção de um
+   modelo de medida de complexidade, baseado na percepção humana. Na última
+   aplicação temos um sistema paralelo de visão para auxiliar no levantamento e
+   estudo das plantas arbóreas de florestas tropicais, que funciona como um herbário
+   digital, cuja proposta e implementação foi introduzida nesta tese.
+   Finalmente esta tese é concluída no Capítulo 9, onde são discutidas as
+   contribuições deste trabalho e as possíveis pesquisas científicas que podem ser
+   realizadas na sua continuação.
+   10
+   CAPÍTULO
+   2
+   COMPUTAÇÃO PARALELA –
+   HARDWARE
+   ... toda ciência é melhor conhecida a partir de sua história, do mesmo modo que as
+PA maiores edificações apresentam as bases mais sólidas ...
+   11
+   CAPÍTULO 2
+   12
+   COMPUTAÇÃO PARALELA - HARDWARE
+   CAPÍTULO 2 – COMPUTAÇÃO PARALELA -
+   HARDWARE
+   2.1 – INTRODUÇÃO
+   Partindo da premissa de que toda ciência é melhor conhecida a partir de sua
+   história, do mesmo modo que as maiores edificações apresentam as bases mais
+   sólidas, iniciamos esse capítulo com uma breve revisão da história da computação
+   paralela, a fim de que possamos, a partir da base, traçar as perspectivas para os
+   avanços de uma das áreas mais importantes da Ciência da Computação. Seguindo
+   esse princípio, discorreremos sobre a evolução da computação seqüencial e a
+   seguir apresentaremos a evolução da computação paralela abordando alguns
+   elementos clássicos, de modo a gerar as bases para sua melhor compreensão.
+   Como podemos deduzir através do título desse capítulo, estaremos
+   discutindo a computação paralela sob o ponto de vista do hardware. Após a
+   abordagem histórica da computação paralela, apresentada na Seção 2.2, na
+   seguinte, iremos tratar da evolução da eletrônica, e apresentar o perfil tecnológico
+   da evolução do hardware. Continuando, trataremos na Seção 2.4 da evolução da
+   computação seqüencial, demonstrando as tendências de paralelismo nos
+   computadores seqüenciais. Na Seção 2.5 apresentaremos a evolução da
+   computação paralela através de uma jornada evolutiva sobre as principais
+   arquiteturas não convencionais, e finalmente concluímos o capítulo apresentando
+   alguns métodos para a taxionomia de computadores.
+   2.2 – PRINCÍPIOS HISTÓRICOS DA COMPUTAÇÃO
+   PARALELA
+   A história da computação paralela é tão antiga quanto a história do
+   computador moderno. O próprio John von Neumann, criador da arquitetura von
+   Neumann, arquitetura fundamental para a maioria dos computadores desenvolvidos
+   13
+   CAPÍTULO 2
+   até hoje, desenvolveu trabalhos na década de 40 que discutiam a possibilidade de
+   algoritmos paralelos para a solução de equações diferenciais [Breton, 1991]. Com
+   isso podemos concluir que a história da computação paralela vem transcorrendo
+   em paralelo com a própria história da computação moderna, e como poderemos
+   observar, aparenta ser uma evolução natural à computação.
+   Sem desmerecer as contribuições de importantes nomes da história da
+   computação, como Blaise Pascal [Goldstine, 1993], Gottfried Wilhelm von Leibniz
+   [Breton, 1991], Charles Babbage [Spufford & Uglow, 1997] e Al an Turing [Hodges,
+   1992], assim como toda a era pré-moderna da história da computação, podemos
+   dizer que a computação moderna, teve seu início com o projeto ENIAC (Electronic
+   Numerical Integrator and Computer) [Goldstine, 1993] [Breton, 1991], iniciado na
+   década de 40. O projeto ENIAC iniciou-se na era das grandes calculadoras.
+   Embora seus coordenadores Eckert e Mauchly estivessem dispostos a inovar, em
+   seu projeto inicial, o ENIAC não passava de uma calculadora, e a teoria utilizada
+   ainda era muito semelhante à máquina de Babbage e mesmo à Pascalina. Em
+   agosto de 1944, com a incorporação de John von Neumann no projeto do ENIAC, o
+   rumo da história mudaria. Infelizmente o ENIAC já estava em fase bem adiantada e
+PA não apresentaria muitas das propostas revolucionárias de von Neumann, mas ainda
+   assim o ENIAC seria o primeiro computador eletrônico de uso geral. Mesmo sendo
+   um precursor dos computadores modernos, o ENIAC já possuía caráter paralelo,
+   uma vez que era disposto em vários módulos independentes, descentralizados e
+   que poderiam realizar operações simultaneamente.
+   John von Neumann propôs uma nova forma de organizar os sistemas de
+   computação, que deu origem à arquitetura von Neumann e marcou o início da
+   computação moderna. Um dos principais conceitos apresentados por von Neumann
+   foi a memória e a idéia de programa armazenado. A partir da influência direta das
+   idéias de von Neumann nasceram os primeiros cinco computadores modernos
+   (sistema de memória) da história, que foram o EDVAC (o primeiro projeto de
+   computador moderno), a máquina IAS, o BINAC, o EDSAC e o Manchester MARK I
+   (o primeiro computador a funcionar na história). Esses computadores foram de
+   caráter acadêmico ou militar, porém seus sucessos fizeram com que logo
+   começassem a ser produzidos computadores comerciais.
+   Um fato bastante curioso nessa história, e que nos liga novamente à história
+   da computação paralela, é que uma das características que inviabilizavam o ENIAC
+   era o seu aspecto paralelo, onde diversas partes de sua arquitetura funcionavam
+   14
+   COMPUTAÇÃO PARALELA - HARDWARE
+   independentes e em paralelo. Com o paralelismo era necessária a supervisão
+   humana, já que a máquina não possuía uma unidade central autômata. [Breton,
+   1991].
+   Com os princípios de memória e programa armazenado, von Neumann
+   implementava a máquina de Turing universal, e com isso, o computador assumia
+   agora um papel genérico, todo e qualquer (salvo limitações) problema computável
+   possuía um programa capaz de resolvê-lo; porém essa nova organização possuía
+   um controle centralizado e tarefas seqüenciais. A partir da definição de computador
+   moderno, a história dos computadores pode ser dividida em três partes, que vão
+   caminhando simultaneamente. Primeiramente temos a revolução tecnológica, à
+   medida que a eletrônica se desenvolvia, computadores mais poderosos e velozes
+   surgiam. Ao mesmo tempo que avançava a eletrônica, que está intimamente ligada
+   à história da computação, ocorriam também progressos na própria computação, em
+   termos de arquitetura, “hardware” e “software”. Na computação ocorreram dois
+   caminhos simultâneos: por um lado temos os computadores de uso geral ou
+   comerciais, que adotaram a tradicional máquina de von Neumann como arquitetura
+   básica, por outro lado temos os denominados supercomputadores.
+   A necessidade de velocidade é inerente à computação, e a solução natural
+   para essa questão é a paralelização. Portanto, os supercomputadores são projetos
+   que tentam alternativas à arquitetura seqüencial de von Neumann, e buscam
+   aumentar a performance da máquina através do paralelismo. Em geral essas
+   máquinas são de uso específico, voltadas a problemas determinados, e de caráter
+   científico.
+   2.3 – EVOLUÇÃO ELETRÔNICA
+   Do ponto de vista da eletrônica, a história pode ser dividida em cinco partes
+   ou gerações. À medida que a tecnologia eletrônica evoluía, novos computadores
+   mais velozes e poderosos surgiam, baseados na nova tecnologia. Por um lado a
+   velocidade de comutação dos dispositivos aumentava a cada geração e por outro
+   as tecnologias de miniaturização e de integração evoluíam e proporcionavam
+   computadores menores em tamanho, porém com um número cada vez maior de
+PA dispositivos de processamento (transistores) e memória. A Figura 2.1 apresenta um
+   diagrama sobre as gerações e seus respectivos períodos.
+   A primeira geração de computadores (1938-1953), iniciou-se com os primeiros
+   15
+   CAPÍTULO 2
+   computadores pré-modernos (máquinas de calcular), que utilizavam dispositivos
+   eletromecânicos (Reles) e estendeu-se até que surgiram os primeiros
+   computadores eletrônicos, sendo essa fase o período áureo da primeira geração: a
+   utilização de válvulas para o desenvolvimento de computadores eletrônicos. Neste
+   período os computadores possuíam arquitetura bit-by-bit, onde não existia o
+   conceito de palavra (byte) e o processador utilizava um intervalo de relógio para
+   processar cada bit.
+   Quinta
+   Quarta
+   Terceira
+   Gerações
+   Segunda
+   Primeira
+   1940
+   1950
+   1960
+   1970
+   1980
+   1990
+   Fig. - 2.1 – Gerações de Computadores.
+   Os transistores foram inventados em 1948, e com eles surge uma nova
+   evolução na eletrônica. A confecção de computadores utilizando transistores marca
+   a segunda geração de computadores (1952-1963). O primeiro computador a utilizar
+   essa nova tecnologia foi o TRADIC, construído pela Bel Laboratories em 1954. O
+   TRADIC utilizava 800 transistores. Nesse período surge o circuito impresso e a
+   memória magnética.
+   Ainda nessa época começam a surgir as primeiras linguagens de alto-nível,
+   como o Fortran (do inglês, formula translation) em 1956, o Algol (do inglês,
+   algorithmic language) em 1960 e o COBOL (do inglês COmmon Business Oriented
+   Language) em 1959, e começam também a aparecer processadores específicos
+   para processamento de entrada e saída de dados.
+   A terceira geração de computadores (1962-1975) surge com o aparecimento
+   dos circuitos integrados SSI (pequena escala) e MSI (média escala). Nessa época
+   surge a memória de estado sólido. Nesse período as linguagens de alto-nível são
+   16
+   COMPUTAÇÃO PARALELA - HARDWARE
+   favorecidas com compiladores inteligentes. Começam a ser empregadas as
+   tecnologias de multiprogramação e memória virtual.
+   Nessa geração surge o microprocessador, através de um projeto de
+   calculadora, Ted Hoff da Intel, projeta um circuito integrado para uso geral em
+   calculadoras e então nasce o microprocessador. O microprocessador é uma
+   unidade central de processamento construída em um único circuito integrado. Esse
+   foi um importante passo na história, surge então o microcomputador e somente a
+   partir daqui os computadores podem ser difundidos e construídos em larga escala.
+   Inicia-se a popularização da informática.
+PA A partir de 1972, utilizando a nova tecnologia de circuitos integrados LSI,

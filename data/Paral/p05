@@ -1,0 +1,1050 @@
+PA proporcionado por essa abordagem aumentou a motivação para essa estratégia e
+   cada vez mais dispositivos do sistema (excluindo UCP – Unidade Central de
+   Processamento) foram ganhando unidades de processamento independentes,
+   autômatas e capazes de trabalhar simultaneamente à UCP. Essa abordagem deu
+   origem ao conceito de interrupção e se difundiu, chegando aos sistemas de
+   computação atuais, que mesmo sendo seqüenciais apresentam várias unidades de
+   processamento (microcontroladores). Podemos citar como exemplos atuais desta
+   abordagem os controladores de Vídeo, interfaces de controle de disco e demais
+   dispositivos de armazenamento de dados, portas seriais (mouse) e paralelas
+   (impressora), controlador DMA (acesso direto a memória), assim como uma série
+   de outros dispositivos incorporados nos atuais sistemas de computação.
+   18
+   COMPUTAÇÃO PARALELA - HARDWARE
+   Ainda na segunda e terceira gerações, muitas melhorias beneficiaram o
+   desempenho dos computadores. Enquanto a eletrônica inovou com circuitos mais
+   rápidos e potentes, a computação desenvolve sistemas e melhorias na arquitetura,
+   a fim de deixar o computador mais poderoso e veloz. Surgem então, entre outras
+   melhorias, a memória cache (disco e RAM), a multitarefa, a multiprogramação e a
+   memória virtual.
+   A partir da terceira e quarta gerações de computadores utiliza-se o circuito
+   integrado. Como resultado, a redução do custo faz com que o microcomputador
+   popularize-se e comece a proliferar. Até o final da década de 70 o microcomputador
+   estaria consolidado como bem de consumo. Na década de 80, o microcomputador
+   atinge o ápice. Com o lançamento do microcomputador da IBM PC, o
+   microcomputador começa sua escalada, e rapidamente ocorre o chamado
+   “downsizing”, fenômeno onde o microcomputador ocupa os lugares dos
+   computadores de grande porte, e faz com que estes tornem-se obsoletos.
+   No início da informática, os computadores eram programados através da
+   conexão de cabos. Um contato mais íntimo entre o homem e a máquina tornaria
+   sem dúvida o computador mais fácil de ser utilizado pelo homem. Muitas
+   descobertas e invenções contribuíram para a evolução das interfaces. O primeiro
+   passo seria os cartões perfurados, logo a seguir teríamos as “teletypewrites”
+   (dispositivos que se assemelhavam a máquinas de escrever). A primeira grande
+   inovação nesse contexto viria no final da década de 60, com o uso do terminal de
+   vídeo, que adotava a interface CLI (do inglês command line interface); bons
+   exemplos são o UNIX, o VAX-VMS, o AppleDOS e o próprio MS-DOS [Hayes,
+   1990].
+   Durante toda a década de 70, um importante consórcio coordenou os rumos
+   da computação para a próxima década. Não poderíamos narrar a história da
+   computação atual sem considerar as importantes contribuições da XEROX e de seu
+   centro de pesquisas PARC (Palo Alto Research Center). Desde o início da década
+   de 70 o PARC iniciou pesquisas para tornar o relacionamento entre o homem e a
+   máquina mais íntimo. Durante uma década de pesquisas, o PARC chegou a um
+   sistema muito próximo ao que denominamos atualmente de GUI (do inglês
+   graphical user interface) [Peddie, 1992]. Através dessa pesquisa foi descoberto o
+   mouse (dispositivo apontador), o paradoxo de orientação a mensagens e a eventos
+   e adotado o conceito de orientação a objeto, que viria a marcar definitivamente os
+   rumos da computação no final da década de 80 e na década de 90 [Bruno, 1995].
+   19
+   CAPÍTULO 2
+PA A partir da utilização das interfaces gráficas (GUI) e suas novas tecnologias,
+   surgem as estações de trabalho, e com elas se popularizam as redes de
+   computadores. Embora as redes de computadores tenham também uma longa
+   história, foi apenas nos anos 80 através das estações de trabalho que ocorreu sua
+   popularização na computação.
+   A nível de hardware, as estações de trabalho trouxeram o paralelismo para
+   os microprocessadores seqüenciais. Isto ocorreu inicialmente com o conceito de
+   arquitetura RISC (do Inglês Reduce Instruction Set Computer). A nova geração de
+   microprocessadores RISC incorporava a arquitetura pipeline [Gimarc & Milutinovic,
+   1987]. A Figura 2.2 apresenta um exemplo de pipeline de instruções em
+   microprocessadores RISC. [Gimarc & Milutinovic, 1987] [Ryan, 1992]
+   Tempo
+   Busca
+   Decodificação
+   Execução
+   Escrita
+   Instrução 1
+   Ciclo 0
+   Instrução 2
+   Instrução 1
+   Ciclo 1
+   Instrução 3
+   Instrução 2
+   Instrução 1
+   Ciclo 2
+   Instrução 4
+   Instrução 3
+   Instrução 2
+   Instrução 1
+   Ciclo 3
+   Instrução 4
+   Instrução 3
+   Instrução 2
+   Ciclo 4
+   Instrução 4
+   Instrução 3
+   Ciclo 5
+   Instrução 4
+   Ciclo 6
+   Fluxo das instruções
+   Fig. 2.2 – Típica pipeline de instruções de arquitetura RISC.
+   A velocidade e o poder de processamento alcançados por esse novo
+   conceito proporcionaram uma corrida dos desenvolvedores de microprocessadores
+   para o mundo do paralelismo (a nível de instrução). Atualmente vivemos uma forte
+   tendência onde as pesquisas de arquiteturas paralelas estão sendo aproveitadas
+   para o desenvolvimento dos novos microprocessadores “seqüenciais”, que se
+   tornam mais paralelos a cada geração. Um bom exemplo dessa perspectiva é o
+   microprocessador Intel Pentium, que como podemos observar pela Figura 2.3
+   superou a expectativa tecnológica de desempenho graças à utilização de conceitos
+   de computação paralela. Atualmente a grande maioria dos microprocessadores
+PA comerciais incorporam pipeline e outros mecanismos de paralelismo em seus
+   microprocessadores convencionais [Ryan, 1992].
+   20
+   COMPUTAÇÃO PARALELA - HARDWARE
+   Desnsidade / MIPS
+   100M/1000
+   P5 - Desempenho
+   Benefício do
+   10M/100
+   paralelismo
+   Desempenho
+   1M/10
+   esperado
+   P5 - Densidade
+   100K/1
+   10K/0,1
+   1K/0,01
+   1971 73 75 77 79 81 83 85 87 89 91 93
+   Desempenho/ MIPS
+   Densidade – Número de transistores
+   Milhões de Instruções por segundo
+   Fig. 2.3 – Benefício proporcionado pelo paralelismo na arquitetura do
+   Pentium.
+   2.5 – EVOLUÇÃO DO PARALELISMO
+   Até a década de 60, os computadores eram projetados para resolver
+   problemas específicos, isto porém apresentava um obstáculo para a evolução da
+   computação. À medida que a computação evoluía e o universo de aplicações que
+   poderiam utilizar computadores crescia, os computadores começaram a ser úteis
+   para uma gama cada vez maior de problemas. Tornava-se bem claro o rumo dos
+   fabricantes de computadores: desenvolver computadores de uso genérico, que
+   possam ser utilizados nas mais diversas formas de aplicações [Bruno, 1995]. Para
+   esse fim ficou consagrada a arquitetura de von Neumann e com ela os
+   computadores seqüenciais.
+   A demanda por velocidade é inerente à computação. Assim, nem todos os
+   usuários ficaram satisfeitos com a generalização. Muitos problemas, a grande
+   maioria de caráter científico ou científico-militar, exigiam um desempenho
+   computacional maior que o fornecido pelas máquinas de uso genérico. A resposta
+   21
+   CAPÍTULO 2
+   para aumentar o desempenho dos computadores estava muito clara: paralelismo. O
+   paralelismo porém acarretaria um custo muito maior em diversos aspectos, tais
+   como: desenvolvimento de hardware específico, multiplicação de recursos
+   (multiplicação de custos consequentemente), desenvolvimento de software
+   específico, desenvolvimento personalizado (sem utilizar as vantagens da produção
+   em massa). Mesmo sendo o paralelismo o resultado de projetos onerosos, existia
+   um nicho disposto a pagar seu preço. Deste modo surge a computação paralela ou
+   supercomputação [Hockney & Jesshope, 1988].
+   Embora presente desde o ENIAC na história da computação moderna,
+   somente a partir da década de sessenta a computação paralela assume o seu
+   papel. Devido ao desempenho e aplicações das máquinas paralelas, a computação
+PA paralela passa a ser denominada de supercomputação. A partir dessa demanda
+   surgiram diversos projetos de arquiteturas paralelas, apresentando cada vez mais
+   alternativas de paralelização.
+   2.5.1 – ARQUITETURA ESCALAR
+   Uma das primeiras arquiteturas paralelas que surgiram foi a arquitetura
+   escalar, que deu origem aos denominados computadores escalares rápidos. A
+   longa história do desenvolvimento dos computadores escalares inicia-se na década
+   de 60 e seu desenvolvimento prolonga-se por toda a década de 70. A evolução dos
+   computadores escalares é basicamente semelhante à própria história da
+   computação paralela, onde o paralelismo vem surgindo e evoluindo pouco a pouco,
+   baseado em máquinas convencionais.
+   Os computadores escalares, também denominados de computadores
+   pipeline [Hwang et al., 1984] são máquinas que apresentam elementos de
+   processamento duplicados. A grande diferença em termos de instrução entre os
+   computadores escalares e os computadores vetoriais (que trataremos mais tarde) é
+   o tratamento dos dados. As instruções dos computadores escalares trabalham com
+   dados individuais, enquanto que os computadores vetoriais trabalham com grande
+   quantidade de dados ordenados (vetores) por instrução. Um dos primeiros
+   computadores escalares que surgiram foi o IBM 7090.
+   Um computador que influenciou a história tanto em arquitetura quanto em
+   software foi o ATLAS. Embora seu projeto tenha-se iniciado na Universidade de
+   Manchester por volta de 1956, a primeira produção dessa máquina ocorreu apenas
+   22
+   COMPUTAÇÃO PARALELA - HARDWARE
+   em 1963, pela Ferranti. Em termos de software, o ATLAS foi o pioneiro na utilização
+   de sistema operacional multiprogramado. Com aproximadamente 80000
+   transistores, o ATLAS dispunha de vários dispositivos de I/O com processamento
+   independente, que solicitava o processador apenas quando necessário. Além do
+   pioneirismo em termos de organização, o ATLAS incorporava paralelismo para
+   aumentar seu desempenho computacional.
+   O ATLAS utilizava quatro bancos independentes de memória, que permitiam
+   acesso simultâneo (em um único clock). Utilizando esses blocos, o ATLAS possuía
+   uma arquitetura funcional com duas unidades aritméticas, de modo que em
+   combinação com seu arranjo de memória, ele poderia (em casos muito favoráveis)
+   executar duas instruções aritméticas em um único clock. Além da arquitetura
+   funcional, o ATLAS também possuía um arranjo pipeline entre as seguintes fases
+   da execução de instruções: busca de instrução, cálculo de endereçamento, busca
+   de operando e execução aritmética.
+   Para fazer melhor uso de suas características paralelas (múltiplas unidades
+   aritméticas, registradores e memória) e de seus recursos computacionais, seria
+   necessário um sistema que previsse as futuras instruções e determinasse quais
+   instruções poderiam ser executadas concorrentemente sem alterar a lógica do
+   programa. Embora o ATLAS não possuísse nenhum mecanismo de previsão, dois
+   aspectos foram considerados posteriormente por Kel er (1976) e Kuck (1978) e
+   incluídos nos computadores escalares CDC6600 e IBM 360/91.
+   A introdução gradual do paralelismo funcional e pipeline nos computadores
+   seriais pode ser bem observada através dos computadores da Control Data
+   (empresa sob influência direta de Seymour Cray). O seu computador CDC 6600,
+   lançado em 1964, foi o primeiro computador escalar a utilizar o paralelismo
+   funcional como sua característica mais importante de projeto. O modelo seguinte da
+PA Control Data, que tomaria o lugar do CDC 6600, viria a ser o CDC 7600, lançado
+   posteriormente em 69. Estas duas máquinas estão entre os supercomputadores de
+   maior sucesso da história, possuindo um parque em sua época com mais de 70
+   máquinas instaladas. O sucesso comercial bem como o computacional foram tão
+   grandes, que a IBM não conseguia superar sua concorrente. A IBM lançou sua
+   corrida aos supercomputadores através do projeto STRETCH, do laboratório de
+   computação científica de Los Alamos, que pretendia projetar um computador 100
+   vezes mais rápido que o IBM 704. A versão comercial do STRETCH sairia mais
+   tarde através do IBM 7030, porém não obteve sucesso comercial. Os
+   23
+   CAPÍTULO 2
+   supercomputadores da série CDC eram imbatíveis. Em 1964 a IBM anuncia a série
+   de supercomputadores IBM 360, que segundo a IBM teria performance comparável
+   ao CDC 6600.
+   A IBM perdia a cada dia o parque de computação científica para sua rival.
+   Em resposta a essa situação, em 1967 a IBM lançou o IBM 360/91, que possuía
+   uma performance cerca de duas vezes maior que o CDC 6600. Essa máquina
+   possuía unidades de execução separadas para operações com números reais e
+   cálculo de endereçamento de memória (inteiro), as instruções eram executadas em
+   paralelo através de arquitetura pipeline.
+   A corrida continuaria e em 1969 a Control Data lançava a série CDC 7600,
+   com um desempenho cerca de duas vezes maior que o IBM 360/91. A disputa
+   comercial trouxe muitos benefícios para a arquitetura de computadores. Em 1970 a
+   IBM utilizaria o conceito de memória caché [Zuffo, 1978] [Tabak, 1990], que já teria
+   sido utilizado desde o vagaroso ATLAS, e lança o IBM 360/195, superando mais
+   uma vez a Control Data.
+   Ainda nas arquiteturas escalares, não poderíamos deixar de citar as
+   máquinas da Amdahl corporation. Essa companhia foi fundada por Gene Amdahl,
+   chefe da equipe de arquitetura da séria IBM 360. Amdahl desenvolveu
+   computadores baseados na arquitetura IBM 360. Com isso, suas máquinas além de
+   serem compatíveis com os periféricos IBM, também poderiam utilizar software e
+   sistema operacional desenvolvidos para as máquinas IBM. Isso foi muito
+   importante, pois nesse período os fabricantes tomavam as interfaces com
+   dispositivos de entrada e saída como segredos industriais. Empresas como a
+   Amdahl, quebraram esses segredos e contribuíram muito com a história da
+   portabilidade [Bruno, 1995]. Um outro fator muito importante foi a utilização da nova
+   tecnologia de integração LSI. Com isso a máquina AMDAHL 470V/6 era cerca de
+   um terço do tamanho de sua equivalente a IBM 360/168.
+   2.5.2 – ARQUITETURA PIPELINE VETORIAL
+   Em 1972, Seymour Cray deixou a Control Data com o propósito de fundar
+   sua própria empresa, a Cray Research. A principal meta dessa empresa era
+   desenvolver o supercomputador mais rápido do mundo. Em apenas quatro anos a
+   Cray estaria não apenas lançando o computador mais rápido do mundo, o CRAY-1
+   (1976), como também revolucionando a arquitetura dos supercomputadores e
+   24
+   COMPUTAÇÃO PARALELA - HARDWARE
+   virando uma nova página na história da computação paralela. O CRAY-1 marcava
+   um estágio evolucionário aos projetos CDC 6600 e CDC 7600 e através dele surgia
+   um novo conceito em arquitetura, a arquitetura vetorial.
+   Em geral, os problemas científicos mais freqüentes, com grande demanda
+PA computacional, realizam de algum modo operações com matrizes ou vetores. A
+   estratégia de paralelismo da arquitetura vetorial parte exatamente desse princípio.
+   Na arquitetura vetorial, diversos elementos de processamento são replicados e
+   arranjados de modo a favorecer o processamento de estruturas de dados vetoriais.
+   Esses elementos são controlados por uma única unidade de controle, e muitas
+   vezes com uma única instrução podem ser feitas operações em vetores inteiros.
+   A Figura 2.4 apresenta um esquema genérico de uma arquitetura vetorial.
+   Neste modelo, é apresentada uma arquitetura vetorial real, onde os elementos são
+   realmente replicados. Na prática, a idéia da arquitetura vetorial verdadeira é
+   transposta para pipeline. Com o pipeline os elementos não são replicados
+   realmente, ocorrendo então paralelismo temporal ao invés de espacial [Almasi &
+   Gottlieb, 1994].
+   UCP
+   ULA
+   ULA
+   ULA
+   M
+   M
+   M
+   UCP – Unidade Central de Processamento e de Controle
+   M – Memória
+   ULA – Unidade de Lógica e Aritmética
+   Fig. - 2.4 – Arquitetura Vetorial.
+   Em relação ao software, o programador pode perceber diretamente o
+   potencial da arquitetura vetorial através das instruções. A arquitetura vetorial
+   permite que ocorram instruções voltadas para vetores, que possam operar
+   diretamente através desses sem a necessidade de indexadores.
+   A Figura 2.5 apresenta uma comparação entre dois códigos para
+   multiplicação de matrizes com 100 elementos, escritos em Fortran. No código para
+   máquinas seriais, podemos observar a multiplicação realizada a partir de uma
+   25
+   CAPÍTULO 2
+   estrutura de laço (loop), que incrementa o indexador dos vetores. Através de uma
+   máquina vetorial, em uma única instrução pode ser realizada essa operação, como
+   podemos observar no código paralelo, escrito em Fortran 90 [Almasi & Gottlieb,
+   1994].
+   Código em Fortran seqüencial
+   Código em Fortran 90, otimizado
+   para máquinas vetoriais
+   DO 10 I=1,100
+   A(1:100)=B(1:100) * C(1:100)
+   10 A( I ) = B( I ) * C( I )
+   Fig. - 2.5 – Comparação entre códigos Fortran.
+   Embora o CRAY-1 tenha marcado a era das máquinas vetoriais, existiram
+   outras duas máquinas anteriores ao CRAY-1, o CDC STAR 100 e o TIASC (Texas
+   Instruments Advanced Scientific Computer).
+   O projeto da STAR 100 iniciou-se em 1967, porém apenas em 1973, após
+   um processo de gestação de seis anos, foi desenvolvida uma STAR 100
+   operacional. Embora utilizasse uma arrojada arquitetura pipeline voltada para
+   cálculos vetoriais, a STAR 100 foi implementada utilizando memória de núcleo
+PA magnético, uma tecnologia anterior às memórias de semicondutores. Devido ao
+   atraso tecnológico, o acesso à memória era demasiadamente lento comparado com
+   as memórias semicondutoras, o que fazia com que o seu desempenho se
+   equiparasse ao das máquinas seqüenciais de uso geral contemporâneas. Apenas
+   em vetores muito longos, da ordem de centenas a milhares de elementos, e com o
+   código muito bem elaborado, o STAR era mais rápido que seus contemporâneos de
+   uso geral. Com isso, seu projeto foi um completo fracasso, não ocorrendo nenhuma
+   venda comercial da máquina (apenas foram vendidas quatro máquinas que haviam
+   previamente sido encomendadas pelo governo americano).
+   Fato semelhante aconteceu com o TIASC. Seu projeto iniciou-se em 1966,
+   porém apenas em 1973 estava operacional. Por ter sido projetado com uma
+   tecnologia obsoleta, não possuía um bom desempenho e tornou-se um fracasso
+   comercial. A Texas Instruments não deu continuidade ao projeto de máquinas
+   vetoriais e deste modo não houve prosseguimento ao TIASC.
+   No entanto, o projeto STAR foi completamente reconstruído em tecnologia
+   LSI e entrou em 1979 novamente no mercado com o nome de CYBER203E, que
+   após pequenas alterações ficou conhecido como CYBER205 (Figura 2.6). Essa
+   26
+   COMPUTAÇÃO PARALELA - HARDWARE
+   máquina tornou-se competitiva com o CRAY-1, embora tenha sido lançada três
+   anos após o lançamento daquele.
+   Embora o CYBER205 seja uma máquina vetorial, sua arquitetura possui
+   uma estratégia para adaptação de recursos de máquina genérica. Enquanto o
+   CRAY-1 possuía registradores vetoriais e também uma arquitetura totalmente
+   otimizada para o cálculo vetorial, o CYBER 205 processava os vetores diretamente
+   da memória, e sua estrutura pipeline podia ter características de uso geral.
+   Tanto o CRAY-1 quanto o CYBER 205 deram continuidade a sua
+   revolucionária arquitetura vetorial, e seguiram caminhos semelhantes de evolução,
+   através da replicação de processadores. O CYBER 205 foi base para o
+   supercomputador ETA-10, lançado em 1986. O ETA-10 foi a máquina mais rápida
+   de sua época, possuía uma performance de pico de 10 Gflop/s (flop/s – operações
+   com ponto flutuante por segundo).
+   Buffer de
+   Comunicação
+   IOP 0
+   CPU 0
+   add
+   add
+   add
+   add
+   IOP 1
+   mult
+   mult
+   mult
+   mult
+   CPU 1
+   div
+   div
+   div
+   div
+PA sqrt
+   sqrt
+   sqrt
+   sqrt
+   ória
+   tilhada
+   IOP 2
+   CPU 2
+   m
+   par
+   Me
+   m
+   Co
+   IOP 3
+   CPU 3
+   Unidade Vetorial
+   CPU 4
+   IOP 16
+   CPU 5
+   Memória Central
+   IOP 17
+   CPU 6
+   CPU 7
+   Unidade de
+   Serviço
+   ETA-10 – Com sua configuração máxima:
+   CYBER 205 – quatro unidades
+   8 CPUs – Unidades de Processamento
+   pipeline de ponto flutuante de
+   18 IOP – Portos de Entrada e Saída de dados
+   uso geral idênticas.
+   Fig. - 2.6 – Diagramas das arquiteturas dos computadores Cyber205 e ETA-10.
+   A Figura 2.6 apresenta um diagrama da arquitetura do ETA-10. O ETA-10
+   podia possuir 2, 4, 6 ou 8 unidades de processamento, onde cada um desses
+   processadores possuía a mesma arquitetura do Cyber-205, cuja arquitetura
+   também é apresentada na Figura 2.6. O ETA-10 podia possuir também de 2 a 18
+   portos de entrada e saída, através dos quais era possível a comunicação com
+   27
+   CAPÍTULO 2
+   periféricos padrão, como discos, tapes e rede, e uma memória compartilhada de 64,
+   128, 192 ou 256 Mwords (64-bits).
+   Fig. - 2.7 – Diagrama de arquitetura do computador CRAY - 1.
+   O CRAY-1 foi a base para a evolução da família de computadores CRAY. A
+   Figura 2.7 apresenta um diagrama da arquitetura do CRAY – 1, onde podemos
+   observar os registradores específicos para vetores, e as pipelines assim como toda
+   sua estrutura vetorial. Os primeiros modelos baseados no CRAY-1 foram o CRAY
+   X-MP e o CRAY-2. Ambos, do mesmo modo que o ETA-10, seguiram o passo de
+   28
+   COMPUTAÇÃO PARALELA - HARDWARE
+   multiprocessamento, e multiplicaram seu poder replicando os processadores. O
+PA CRAY X-MP foi lançado com dois processadores em 1982 e a versão com quatro
+   processadores em 1984.
+   A Figura 2.8 apresenta o arranjo esquemático de um CRAY X-MP, com sua
+   versão de 2 processadores. Como podemos observar, o CRAY X-MP nada mais é
+   do que a duplicação de recursos computacionais do CRAY-1, uma vez que esse
+   possui dois processadores CRAY-1. É importante observar que os computadores
+   Cray X-MP, Cray 2 e Eta-10 são exemplos de arquitetura MIMD, e foram aqui
+   apresentados apenas para elucidar a evolução de sua família. Porém os núcleos
+   desses permanecem como bons exemplos de arquitetura SIMD (arquitetura
+   vetorial).
+   UCP-1
+   Intercom
+   UCP-2
+   Unidade de
+   Controle
+   Clock
+   sincronizador
+   Buffer de
+   Instrução
+   Memória
+   word
+   64bits
+   -1
+   dor
+   -1
+   dor
+   Y
+   Y
+   A
+   cessa
+   A
+   2Mword
+   cessa
+   CR
+   ou
+   CR
+   Pro
+   Pro
+   4Mword
+   E/S
+   SSD
+   Discos,
+   2 a 4
+   64Mbyte
+   Tapes,
+   Portos
+   128Mbyte
+   1 a 3
+   ou
+   entradas
+PA 256Mbyte
+   Fig. - 2.8 – Diagrama de arquitetura do computador CRAY X-MP/2.
+   O CRAY-2 também seguiu a mesma linha evolutiva do CRAY X-MP, porém
+   foi seu caráter tecnológico que recebeu maior destaque em seu projeto (em
+   comparação ao CRAY X-MP). A compactação e a utilização de processadores com
+   alta freqüência foram suas principais características. Devido a esses fatores, o
+   CRAY-2 gerava 195 kW, que era aproximadamente a mesma quantia gerada pelo
+   CRAY X-MP, porém sua dimensão reduzida restringia a dissipação de toda essa
+   energia. Para solucionar esse problema, um sofisticado sistema de refrigeração foi
+   adotado, onde todos os circuitos dos processadores, memória e fontes ficavam
+   imersos num líquido inerte e dielétrico de fluorcarbono. A Figura 2.9 apresenta o
+   29
+   CAPÍTULO 2
+   computador CRAY-2. Seu extravagante sistema de refrigeração proporcionava um
+   aspecto inédito ao computador. Seus circuitos podiam ser observados imersos em
+   líquido borbulhante através do vidro, dando um ar fictício ao computador.
+   Fig. - 2.9 – CRAY 2.
+   Atualmente a CRAY Research faz parte da Silicon Graphics, dando uma
+   ênfase maior à visualização científica e computação gráfica na utilização das
+   máquinas científicas CRAY.
+   2.5.3 – ARQUITETURA MATRICIAL
+   Diferentemente da arquitetura vetorial, que apresentava apenas uma
+   evolução lógica dos computadores seqüenciais voltada para o cálculo vetorial, a
+   arquitetura matricial marcou uma mudança radical na concepção da computação
+   paralela. A arquitetura matricial nasceu basicamente a partir de um único artigo de
+   1962 [Hockney & Jesshope, 1988], intitulado “The SOLOMON Computer”, cujo
+   nome SOLOMON é um acrônimo derivado de “Simultaneous Operation Linked
+   Ordinal Modular Network”. O trabalho descreve uma matriz bidimensional de 32 x
+   32 elementos de processamento, onde cada um desses elementos contém uma
+   memória de 128 posições de 32 bits e uma unidade aritmética. Toda essa estrutura
+   está sob o controle de uma única unidade de controle e fluxo de instrução. Embora
+   SOLOMON tenha sido a origem das arquiteturas matriciais, houve ainda um artigo
+   anterior no qual foi inspirado, o computador espacial, publicado por Unger em 1958
+   30
+   COMPUTAÇÃO PARALELA - HARDWARE
+   [Unger, 1958].
+   [80-100]
+   [104]
+   ILLIAC IV
+   Phoenix
+   (1972)
+   (?)
+   [100]
+   [50]
+   [103]
+   PEPE
+   BSP
+   NASF
+   (1973)
+   (1979)
+PA (?)
+   [200-600]
+   Unger
+   SOLOMON
+   Staran
+   MPP
+   (1958)
+   (1962)
+   (1970)
+   (1983)
+   Clip
+   (1976)
+   [10-30]
+   DAP
+   (1978)
+   Fig. - 2.10 – Família dos computadores de arquitetura matricial. Os números
+   em conchetes são as performances máximas estimadas em mflops.
+   Embora o conceito SOLOMON tenha sido uma revolução em arquitetura de
+   computadores, seu projeto nunca foi construído exatamente como descrito no artigo
+   de 1962. Porém deu origem aos clássicos computadores ILLIAC IV, Burroughs
+   PEPE, Goodyear Aerospace STARAN e ICL DAP entre outros (ver Figura 2.10).
+   Em 1966, a Universidade de Illinois, contratada pelo departamento de
+   defesa americano (ARPA), iniciou o projeto de um computador baseado no
+   SOLOMON. Nascia então o clássico ILLIAC IV (Figura 2.11 e 2.12), que possuía
+   quatro quadrantes com uma unidade de controle e interpretação de instruções para
+   os 64 elementos de processamento de ponto flutuante. Cada um dos elementos de
+   processamento tinha uma memória com 2000 posições de 64 bits. Cada elemento
+   de processamento e memória, em cada quadrante, eram conectados por uma
+   matriz de 8 x 8, e os quadrantes eram conectados por um barramento paralelo, o
+   qual era também responsável pela interface de uma unidade de disco, que era a
+   unidade secundária do sistema. Embora o projeto inicial possuísse quatro
+   quadrantes, o ILLIAC IV foi construído utilizando apenas um, pela Burroughs
+   Corporation 1969-73, conforme apresenta a Figura 2.11.
+   31
+   CAPÍTULO 2
+   Entrada/Saída
+   Barramento de dados
+   Dados e Intruções
+   MUC
+   UC
+   Barramento de controle
+   EP0
+   EP1
+   EP63
+   MEP0
+   MEP1
+   MEP63
+   Rede de interconexão
+   UC
+   Unidade de Controle
+PA MUC
+   Memória da Unidade de Controle
+   EP
+   Elemento de Processamento
+   MEP
+   Memória do Elemento de Processamento
+   Fig. - 2.11 – Diagrama de arquitetura do computador ILLIAC IV.
+   EP56
+   EP57
+   EP58
+   EP63
+   EP63
+   0
+   1
+   2
+   7
+   EP8
+   EP7
+   8
+   9
+   10
+   15
+   EP16
+   EP15
+   16
+   17
+   18
+   23
+   EP24
+   EP55
+   56
+   57
+   58
+   63
+   EP0
+   EP0
+   EP1
+   EP2
+   EP7
+   Fig. - 2.12 – Configuração da rede de elementos de processamento (EP).
+   Pela primeira vez despontava a problemática do software paralelo. Um
+   amplo investimento em software fez com que o ILLIAC IV possuísse seu próprio
+   sistema operacional, assim como quatro linguagens de programação específicas (
+   TRANQUIL e GLYPNIR – derivadas do ALGOL, ACTUS – derivada do PASCAL e
+   CFD FORTRAN).
+   O projeto ILLIAC IV foi seguido pelo PEPE, computador encomendado à
+   Burroughs com finalidades militares, e ao computador científico comercial BSP, e
+   ainda ao Phoenix, projeto da NASA para substituir o ILLIAC IV. Classificado como
+   múltiplo-SIMD, o Phoenix possuía basicamente 16 máquinas ILLIAC IV, onde cada
+   uma executava seu próprio fluxo de instruções, sob o controle de uma única
+PA 32
+   COMPUTAÇÃO PARALELA - HARDWARE
+   unidade de controle.
+   A arquitetura matricial marcou era na computação paralela, tornando
+   possível a incorporação de muitas unidades de processamento em máquinas
+   (milhares). Contribuiu também para a pesquisa em software paralelo, que talvez
+   venha a ser o maior desafio da computação paralela.
+   2.5.4 – ARQUITETURA MIMD
+   O termo MIMD, derivado do inglês “Multiple Instructions Multiple Data”, é
+   proveniente do clássico artigo de taxonomia de computadores, proposto por Flynn
+   [Flynn, 1966]. Nas arquiteturas anteriores à MIMD, somente algumas partes da
+   UCP são replicadas, ou ainda, são replicados pseudo-processadores, (ex:
+   elementos de processamento da arquitetura matricial), onde existe um controle
+   único externo, que em geral é ainda responsável pelo fluxo de instruções. Na
+   arquitetura MIMD no entanto, UCPs (unidade central de processamento) são
+   inteiramente replicadas, e em certos casos computadores inteiros. Deste modo a
+   arquitetura MIMD é verdadeiramente uma coleção de computadores formando uma
+   única máquina paralela.
+   A arquitetura MIMD despontou no início da década de 80, devido à queda de
+   preço dos microprocessadores, assim como ao aumento da performance desses a
+   partir da tecnologia VLSI. A arquitetura MIMD demonstrou ser a tecnologia
+   integradora e evolutiva das arquiteturas SIMD. A maioria do prosseguimento de
+   projeto das tecnologias vetoriais e matriciais acabaram por se tornar arquiteturas
+   MIMD replicadoras de SIMD. Como exemplos, temos as arquiteturas Phoenix, Cray
+   2, Cray X-MP e Eta 10, descritas anteriormente como SIMD (modo didaticamente
+   evolutivo), mas que na verdade são máquinas MIMD paralelizando SIMD. A
+   arquitetura MIMD amadureceu, chegando até os dias de hoje, onde é a mais
+   utilizada tanto em pesquisa quanto comercialmente.
+   O maior desafio para os projetos de arquiteturas MIMD está exatamente na
+   comunicação entre os computadores. Na maior parte dos casos, os processadores
+   utilizados são comerciais de larga difusão e de uso genérico, porém a consolidação
+   da tendência MIMD fez com que surgissem processadores específicos para
+   projetos de máquinas MIMD. Entre eles podemos citar a linha Transputer da Inmos
+   e os processadores de processamento de sinais da Texas Instruments.
+   A partir da comunicação ou integração dos processadores, podemos
+   33
+   CAPÍTULO 2
+   classificar a arquitetura MIMD basicamente em memória compartilhada e memória
+   distribuída, conforme apresenta a Figura 2.13. A diferença básica entre os dois
+   modelos é que enquanto os sistemas de memória compartilhada utilizam uma única
+   memória acessível a todos os processadores, e a utilizam para trocar informações,
+   nos sistemas de memória distribuída, por outro lado, cada um dos processadores
+   possui sua própria memória, inacessível para os demais, e utilizam troca de
+   mensagens via rede ou barramento para efetuar a comunicação.
+   rede ou barramento
+   P
+   P
+   P
+   P
+   P
+PA P
+   Memória
+   M
+   M
+   M
+   Memória compartilhada
+   Memória distribuída
+   Fig. - 2.13 – Memória compartilhada versus memória distribuída.
+   UCP 0
+   Seção 0
+   Porto A
+   Registradores
+   a
+   da UCP
+   Sub-seções
+   Porto B
+   a de
+   16 bancos
+   rot
+   móri
+   lecionador
+   Registr. de
+   de
+   Me
+   Porto D
+   Se
+   Instrução
+   da
+   ída
+   rtilha
+   Sa
+   pa
+   e
+   om
+   ção de
+   da
+   Se
+   UCP 7
+   tra
+   ia C
+   En
+   ór
+   em
+   Porto A
+   Registradores
+   M
+   a
+   da UCP
+   Porto B
+   a de
+PA rot
+   móri
+   Seção 7
+   lecionador
+   Registr. de
+   de
+   Me
+   Porto D
+   Se
+   Instrução
+   Sub-seções
+   16 bancos
+   Fig. - 2.14 – Organização da memória do Cray - J90.
+   Entre as máquinas MIMD de memória compartilhada atuais podemos citar:
+   as séries J90 e T90 da Cray, a AlphaServer da Digital, a série Hitachi S3800, o
+   NEC SX-4, a Starfire E10000 da Sun, Connection Machine CM-5, etc. A Figura 2.14
+   34
+   COMPUTAÇÃO PARALELA - HARDWARE
+   apresenta um diagrama da arquitetura da máquina Cray – J90 uma típica MIMD de
+   memória compartilhada.
+   Unidade de Ponto Flutuante
+   VCC
+   GND
+   CapPlus
+   CapM inus
+   Processador
+   Reset
+   Analyse
+   Serviços do
+   32 bit
+   ErrorIn
+   Sistema
+   Error
+   BootFromROM
+   ClockIn
+   Serviços de
+   LinkSpecial
+   ProcSpeed
+   Link0Special
+   Select0-2
+   Link
+   Link123Special
+   LINK 0 Entrada
+   Timers
+   Interface - Link
+   LINK 0 S aída
+   LINK 1 Entrada
+   Interface - Link
+   RAM
+   LINK 1 S aída
+PA 4 Kbytes
+   Interface - Link
+   LINK 2 Entrada
+   LINK 2 S aída
+   ProcClockOut
+   LINK 3 Entrada
+   NotMemS0-4
+   Interface - Link
+   LINK 3 S aída
+   NotM emWrB0-3
+   Interface
+   NotMemRd
+   NotMemRf
+   Memória
+   MemWait
+   Externa
+   MemConfig
+   Memória
+   MemReq
+   MemGranted
+   Fig. - 2.15 – Diagrama em blocos do processador Transputer IMS T800.
+   As máquinas MIMD de memória distribuída, obtiveram uma atenção maior a
+   partir da metade da década de 80. A arquitetura MIMD de memória distribuída,
+   praticamente começou com um projeto Cosmic Cube da Caltech. Esse projeto
+   introduziu toda a pesquisa em torno de redes de conexão de processadores
+   (hipercubos) [Almasi & Gottlieb, 1994]. O Cosmic Cube foi uma máquina baseada
+   no processador 8086 e seu coprocessador de ponto flutuante 8087 (famosos devido
+   aos microcomputadores pessoais), que integrava 64 pares de processadores (8086
+   e 8087), conectados com arquitetura de hipercubo [Hockney & Jesshope, 1988]. A
+   partir de 1985, com o lançamento do Transputer (Inmos), um processador
+   destinado ao desenvolvimento de arquiteturas paralelas, houve uma grande difusão
+   da pesquisa e utilização de arquitetura MIMD. Devido ao fato de ser
+   especificamente voltado ao desenvolvimento de sistemas paralelos, o Transputer
+   tornava os projetos paralelos simples e com custos competitivos. Além de contar
+   com uma série de ferramentas e linguagens que realizavam o suporte de
+   programação. A Figura 2.15 apresenta o diagrama do processador Transputer
+   35
+   CAPÍTULO 2
+   [Inmos, 1988].
+   Dentre o universo das máquinas MIMD distribuídas podemos citar:
+   Intel iPSC, Intel Paragon, Cray T3E, Avalon A12, nCUBE 2S, As máquinas
+   baseadas em Transputer (ex: IBM – Victor), IBM 9076 SP2, etc.
+   2.5.5 – COMPUTAÇÃO DISTRIBUÍDA
+   No final da década de 80, devido ao desenvolvimento e proliferação da
+   tecnologia de redes de computadores e do mesmo modo à diminuição do custo dos
+   microcomputadores, surgiu uma nova arquitetura paralela denominada de
+   Computação Distribuída. Ao invés de desenvolver hardware específico, o conceito
+   de Computação Distribuída utiliza computadores padrão (ou não) conectados por
+   rede de computadores (ethernet ou outra), ficando todo o mecanismo de
+   paralelização sob a responsabilidade das camadas de software [Tanenbaum, 1990],
+PA sendo essa em nível de sistema operacional, através de sistemas operacionais
+   distribuídos [Tanenbaum, 1995], ou ainda através de ferramentas de troca de
+   mensagens tais como PVM [Geist et al., 1996], MPI [Pacheco, 1997] ou ainda
+   CVMP apresentada nesta tese.
+   Embora a velocidade de comunicação das redes de computadores seja
+   muito mais lenta do que através dos mecanismos desenvolvidos em hardware, a
+   simplicidade e baixo custo fizeram com que os Sistemas Distribuídos viessem a se
+   tornar a mais difundida utilização de arquiteturas paralelas, somando a utilização
+   comercial e científica [Almasi & Gottlieb, 1994].
+   Segundo a classificação de Flynn [Flynn. 1972], a Computação Distribuída é
+   considerada MIMD de memória distribuída [Almasi & Gottlieb, 1994], seguindo a
+   mesma heurística de arquitetura e software. Assim como ocorrem em algumas
+   máquinas de arquitetura MIMD, que podem ser compostas por elementos de
+   processamento com arquiteturas paralelas diferentes, como por exemplo o CRAY –
+   J90 (MIMD com processadores SIMD), os sistemas distribuídos podem integrar um
+   único sistema e possuir diversas arquiteturas paralelas diferentes, trabalhando
+   juntas. Além de possuir tal característica heterogênea, os Sistemas Distribuídos
+   ainda podem possuir um número de unidades de processamento variáveis,
+   caracterizando sua utilização em sistemas tolerantes a falha. Para caracterizar um
+   aglomerado de estações como Sistema Distribuído (Computação Distribuída), basta
+   que exista um mecanismo de integração das máquinas e que através desse
+   36
+   COMPUTAÇÃO PARALELA - HARDWARE
+   mecanismo de troca de mensagens sejam capazes de realizar uma mesma tarefa
+   (ou diferentes partes de uma mesma tarefa). O número de máquinas (elementos de
+   processamento) de um Sistema Distribuído varia muito, indo desde 2 a mesmo
+   milhares de máquinas. A Figura 2.16 apresenta um diagrama de um Sistema
+   Distribuído heterogêneo, onde juntos podem operar estações de trabalho de
+   diversas plataformas diferentes (PCs, estações de trabalho RISC) assim como
+   supercomputadores MIMD e ou SIMD, conectados por rede.
+   Fig. - 2.16 – Sistema Distribuído Heterogêneo.
+   2.6 – TAXONOMIA DE COMPUTADORES
+   Anteriormente, descrevemos uma série de tecnologias apresentadas com
+   sua evolução no tempo. Obviamente, não abordamos todo o universo das
+   arquiteturas paralelas, apenas traçamos um breve perfil da evolução da
+   computação paralela, com o intuito de formar bases para as noções de arquitetura
+   de computadores requeridas nesta tese.
+   As inúmeras possibilidades de organização dos computadores, assim como
+   a diversidade de processadores, geram a necessidade da classificação dos
+   computadores, a fim de encontrarmos famílias as quais podem ser agrupadas,
+   melhor estudadas e comparadas. Existem inúmeras propostas encontradas na
+   literatura para classificar as diferentes arquiteturas e organização dos
+   37
+   CAPÍTULO 2
+   computadores, podemos citar entre elas: Flynn [Flynn, 1966], Feng [Hwang et al.,
+   1984], Händler [Hwang et al., 1984], Gajski [Amorin et al.,1988], Shore [Hockney &
+   Jesshope, 1988], Estrutural [Hockney & Jesshope, 1988], Kuck [Almasi & Gottlieb,
+   1994], Treleaven [Almasi & Gottlieb, 1994], Duncan [Duncan, 1990], etc. Nesta
+   seção vamos apresentar três delas: classificação de Flynn, taxonomia estrutural de
+   Hockney e classificação de Duncam.
+PA A classificação de Flynn é a mais divulgada pela literatura, embora seja
+   bastante antiga, originária a partir de um artigo de 1966. A tradição e a
+   popularização tornaram-na a mais importante taxonomia de computadores,
+   permanecendo a mais utilizada atualmente, mesmo com suas falhas e dúvidas
+   [Bogni & Marrone, 1991]. Devido à sua importância, trataremos esta classificação
+   com maiores detalhes que as demais.
+   Na tentativa de realizar uma classificação bastante abrangente, foi proposta
+   a taxonomia estrutural de Hockney. Esta classifica tanto os computadores
+   (históricos) seqüenciais, quanto os paralelos (até os atuais). A maior característica
+   da taxonomia estrutural é a sua diversidade de classes. Embora seja bastante
+   abrangente, essa classificação é pouco conhecida e utilizada. Apresentaremos
+   sucintamente a taxonomia estrutural na Seção 2.6.2.
+   Com o surgimento de novas tecnologias e com o decorrer de décadas de
+   pesquisa houve uma diversificação das arquiteturas de computadores paralelos,
+   muitas das quais não poderiam ser classificadas através da taxonomia clássica.
+   Tendo em vista esse problema, Duncan propôs uma classificação extensiva à
+   classificação de Flynn, através do artigo “A Survey of Parallel Computer
+   Architectures” [Duncan, 1990]. Finalizaremos a seção Taxonomia de Computadores
+   apresentando sucintamente a proposta de Duncan, na Seção 2.6.3.
+   2.6.1 – CLASSIFICAÇÃO DE FLYNN
+   O primeiro método de classificação de computadores foi inicialmente
+   proposto por Flynn, em seu célebre artigo de 1966, intitulado “Very High Speed
+   Computing Systems” [Flynn, 1966], mais tarde apresentado com maior formalidade,
+   em 1972 [Flynn, 1972]. O método consiste nas possibilidades de combinação entre
+   uma ou mais seqüências de instruções atuando sobre uma ou mais seqüências de
+   dados.
+   O princípio básico do funcionamento de um processador é a busca de
+   38
+   COMPUTAÇÃO PARALELA - HARDWARE
+   operandos na memória principal, seguindo da execução das instruções compostas
+   por esses operandos e finalmente no armazenamento dos resultados obtidos na
+   memória. Assim sendo, as etapas distintas associadas ao processamento de uma
+   instrução constituem o ciclo de instruções. Deste modo um ciclo de instrução é
+   composto por:
+   Encontrar o endereço da instrução
+   Buscar a instrução
+   Decodificar a instrução
+   Gerar os endereços referentes aos operandos
+   Executar a instrução
+   Armazenar os resultados
+   A visualização da seqüência da execução das instruções pode ser
+   comparada a um fluxo ou corrente. O fluxo de instruções dirigi-se da memória para
+   o processador. A partir da execução das instruções, são solicitados dados,
+   armazenados na memória, cuja visualização pode igualmente ser comparada a um
+   fluxo ou corrente (fluxo de dados). O fluxo de dados por sua vez, possui uma dupla
+   corrente, indo e vindo da memória para o processador e do processador para a
+   memória.
+   Número de Fluxo de Dados
+   Simples
+   Múltiplos
+PA Número de
+   Simples
+   SISD
+   SIMD
+   Fluxo de
+   Instruções
+   Múltiplos
+   MISD
+   MIMD
+   Fig. - 2.17 – Classificação de Flynn.
+   Baseado no fluxo de instruções e no fluxo de dados, Michael J. Flynn
+   realizou uma classificação de computadores, sugerindo combinações de classes de
+   fluxos de dados versus fluxo de instruções. A partir dessas combinações, Flynn
+   sugeriu quatro classes de computadores: Um fluxo de instrução e um fluxo de
+   dados – SISD (do inglês “Single Instruction stream Single Data stream”), um fluxo
+   39
+   CAPÍTULO 2
+   de instrução e múltiplos fluxos de dados – SIMD (do inglês “Single Instruction
+   stream Multiple Data stream”), múltiplos fluxos de instrução e um fluxo de dados –
+   MISD (do inglês “Multiple Instruction stream Single Data stream”) e múltiplos fluxos
+   de instrução e múltiplos fluxos de dados – SISD (do inglês “Multiple Instruction
+   stream Multiple Data stream”). (ver Figura 2.17).
+   Apresentaremos cada um dos casos a seguir, e um diagrama
+   correspondente à arquitetura classificada. Em cada um dos diagramas mostrados
+   serão apresentadas apenas três espécies de componentes de sistema: Unidade de
+   Controle (UC), Unidade de Processamento (UP) e Memória (M) (Figuras 2.18, 2.19,
+   2.20 e 2.21).
+   Unidade de Controle (UC) – Responsável pela decodificação das instruções
+   e pelo envio das instruções decodificadas ao processador.
+   Unidade de Processamento (UP) – Executa as instruções e armazena os
+   resultados na memória.
+   Memória (M) – Armazena os dados.
+   Além dos componentes do sistema também serão apresentados os fluxos
+   de dados (FD) e os fluxos de instruções (FI). Observando as Figuras 2.18, 2.19,
+   2.20 e 2.21, devemos notar que cada fluxo de instruções é gerado por uma unidade
+   de controle independente.
+   2.6.1.1 – SISD - UM FLUXO DE INSTRUÇÃO E UM FLUXO DE
+   DADOS
+   A classe SISD classifica as arquiteturas convencionais, ou de von
+   Neumman, ou seja os computadores seqüenciais, que compõem a maioria do
+   nosso parque atualmente. Embora a maioria dos microprocessadores atuais SISD
+   possuam mais do que uma unidade funcional e pipeline de instrução [Gimarc &
+   Milutinovic, 1987], todas as suas unidades funcionais estão sob a supervisão de
+   uma única unidade de controle, classificando-os deste modo como SISD (Figura
+   2.18).
+   40
+   COMPUTAÇÃO PARALELA - HARDWARE
+   FI
+   UC
+   FI
+PA UP
+   FD
+   M
+   Fig. - 2.18 – Diagrama da arquitetura SISD.
+   2.6.1.2 – MISD - MÚLTIPLOS FLUXOS DE INSTRUÇÃO E UM
+   FLUXO DE DADOS
+   A Figura 2.19 apresenta um diagrama conceptual da arquitetura
+   MISD. Não existe nenhuma implementação real desse tipo de arquitetura,
+   ocorrendo então uma falha de classificação do modelo de Flynn [Almasi & Gottlieb,
+   1994] [Duncan, 1990].
+   FD
+   UC
+   FI1
+   1
+   UP1
+   FI2
+   UC1
+   UP2
+   M1
+   M2
+   Mn
+   FIn
+   UC1
+   UPn
+   FI1
+   FD
+   FIn
+   FI2
+   Fig. - 2.19 – Diagrama da arqui t etura MISD.
+   41
+   CAPÍTULO 2
+   2.6.1.3 – SIMD – UM FLUXO DE INSTRUÇÃO E MÚLTIPLOS
+   FLUXOS DE DADOS
+   UP
+   FD
+   1
+   1
+   M1
+   UP
+   FD2
+   M
+   UC
+   2
+   FI
+   2
+   UP
+   FDn
+   n
+   Mn
+   FI
+PA Fig. - 2.20 – Diagrama da arquitetura SIMD.
+   A classe SIMD corresponde aos computadores matriciais e vetoriais.
+   Conforme podemos observar na Figura 2.20, existem muitos elementos de
+   processamento sendo supervisionados por uma única unidade de controle. Todos
+   os elementos de processamento recebem a mesma instrução, transmitida pela
+   unidade de controle, porém operam as instruções sobre distintos fluxos de dados.
+   Na prática, a classificação SIMD levanta algumas dúvidas e polêmicas. Na
+   literatura podemos encontrar alguns autores que classificam máquinas vetoriais
+   pipeline (ex: Cray-1, Cyber-205) como SIMD [Almasi & Gottlieb, 1994] [Hockney &
+   Jesshope, 1988], enquanto outros autores as classificam como SISD [Hwang et al.,
+   1984] [Bogni & Marrone, 1991].
+   42
+   COMPUTAÇÃO PARALELA - HARDWARE
+   2.6.1.4 – MIMD – MÚLTIPLOS FLUXOS DE INSTRUÇÃO E
+   MÚLTIPLOS FLUXOS DE DADOS
+   FI1
+   FD1
+   UC1
+   UP1
+   M1
+   FI1
+   FI1
+   FI
+   FI
+   2
+   FD2
+   UC
+   2
+   1
+   UP2
+   M2
+   FI2
+   FIn
+   FIn
+   FDn
+   UC1
+   UPn
+   Mn
+   FIn
+   Fig. - 2.21 – Diagrama da arquitetura MIMD.
+   A Figura 2.21 apresenta um diagrama conceptual da arquitetura MIMD. A
+   maioria dos sistemas paralelos atuais podem ser classificados nessa categoria,
+   gerando deste modo uma sobrecarga a esta classe, que abrange tanto as
+   máquinas multiprocessadores (memória compartilhada) quanto os sistemas
+   multicomputadores (memória distribuída). Deste modo, segundo a organização da
+   memória, a classe MIMD é diretamente dividida em MIMD memória compartilhada e
+   MIMD memória distribuída (Figura 2.13).
+   43
+   CAPÍTULO 2
+   2.6.2 – TAXONOMIA ESTRUTURAL

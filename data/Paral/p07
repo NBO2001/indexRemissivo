@@ -1,0 +1,50 @@
+PA i
+   = 1
+   )
+   (8.8)
+   n
+   348
+   APLICAÇÕES PARALELAS EM VISÃO
+   n
+   bi
+   +
+   +
+   i=
+   r
+   g
+   b
+   C b
+   i
+   i
+   i
+   ( = 1
+   )
+   (8.9)
+   n
+   Os cálculos para a cromaticidade multiescala são realizados da mesma
+   maneira, sendo considerados os dois lados da imagem, que no entanto sofrem
+   convoluções com Gaussianas de diferentes desvios padrão (5 desvios-padrão ao
+   todo).
+   8.4.5.4.3 - Forma
+   O módulo forma analisa o contorno da folha (imagem binarizada) e também
+   seu interior, através das nervuras. No primeiro caso, o sistema utiliza o algoritmo de
+   extração de contorno [Cesar, 1997] (Figura 8.19b). Com base no modelo de
+   contorno são calculadas 15 características, das quais, 3 consistem na energia de
+   dobramento ( bending energy) multi-escala [Cesar, 1997] e as outras 12 nos
+   descritores de Fourier 1D do contorno [Castleman, 1996] [Gonzalez & Woods,
+   1993]. Uma vez que ambos os lados da folha possuem o mesmo contorno, somente
+   é considerado o lado A.
+   (a)
+   (b)
+   (c)
+   Fig. - 8.19 - Visualização do cálculo de curvatura. Contorno da folha da
+   Cariniana estrellensis (Jequitibá), obtida através da detecção de bordas da
+   imagem binarizada. (b) Janela de controle, apresentando a projeção do
+   contorno no eixo x, y e o gráfico de curvatura. (c) Projeção do gráfico de
+   curvatura sobre o contorno (3D).
+   A Figura 8.19 ilustra a visualização do cálculo de curvatura, onde a figura (a)
+   349
+   CAPÍTULO 8
+   apresenta o contorno de uma folha, obtido através da detecção de borda (Sobel) da
+   imagem binarizada, a figura (b) apresenta as projeções do contorno nos eixo x e y e
+   o gráfico de curvatura e a figura (c) exibe a projeção do gráfico de curvatura de

@@ -12,7 +12,7 @@ char isLetter(unsigned char letter){
     || ( 91 <= letter &&  letter <= 96) 
     || ( 123 <= letter &&  letter <= 128)
     || ( 226 <= letter &&  letter <= 226)
-    || ( 152 <= letter &&  letter <= 157)  
+    || ( 147 <= letter &&  letter <= 157)  
     || ( 8200 <= letter &&  letter <= 8230) 
     );
 }
@@ -51,12 +51,21 @@ void removeSpecialCharacters(unsigned char * string){
             else if( (string[i+1] >= 178 && string[i+1] <= 181) || (string[i+1] >= 146 && string[i+1] <= 150)   ) string[indexCopia] = 111;
             else if( (string[i+1] >= 185 && string[i+1] <= 188) || (string[i+1] >= 153 && string[i+1] <= 156)   ) string[indexCopia] = 117;
             else if( (string[i+1] == 167 || string[i+1] == 135)    ) string[indexCopia] = 99;
+            else if( (string[i+1] == 177)    ) string[indexCopia] = 110;
 
             indexCopia++;
             i = i + 2;
 
         }else if(string[i] == 194) i = i + 2;
-
+        else if(string[i] == 226){
+            string[indexCopia] = 39;
+            indexCopia++;
+            i = i + 3;
+        }else if( string[i] == 198 ){
+            string[indexCopia] = 102;
+            indexCopia++;
+            i = i + 3;
+        }
         else{
             string[indexCopia] = string[i];
             indexCopia++;
@@ -108,7 +117,7 @@ void lowerCase(unsigned char string[]){
             string[i] += 32;
         }else if(string[i] >= 128 && string[i] <= 159){
             string[i] += 32;
-        }else if(string[i] == 226){
+        }else if((string[i] == 226) || (string[i] == 198)){
             i = i + 3;
         }
     }

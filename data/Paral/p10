@@ -1,0 +1,56 @@
+PA 287
+   CAPÍTULO 7
+   7.6 - RESTAURAÇÃO DE IMAGENS BASEADO EM
+   CAMPOS RANDÔMICOS MARKOVIANOS
+   Uma aplicação bastante comum em processamento de imagens é a
+   eliminação de ruídos de uma imagem. Diversos fatores, tais como interferência em
+   sistemas de aquisição de imagem, ruído em sistemas de comunicação, sistemas de
+   imagem por satélite, sistema de aquisição de imagens médicas (ultra-som), etc.,
+   podem ocasionar a adição de ruídos a imagem, de forma a poluí-la. Os algoritmos
+   de restauração de imagens são técnicas que permitem a redução do ruído ou em
+   alguns casos até mesmo sua completa eliminação.
+   Nesta seção vamos apresentar a paralelização do algoritmo de restauração
+   de imagens baseado em campos aleatórios de Markov, desenvolvido no decorrer
+   deste doutorado. A nova técnica [Bruno & Costa, 2000] consiste em uma
+   modificação dos campos aleatórios de Gibbs operando no modo condicional
+   iterativo (ICM) [Chellappa & Jain, 1993].
+   A primeira abordagem da técnica classifica o campo aleatório de Markov
+   como um caso específico da teoria da regularização [Poggio et al., 1985]. A
+   regularização de um problema "il -posed" pode ser compreendida em termos da
+   equação Az=y, onde z é a solução procurada, y é o dado original, e A é o operador linear. Uma possível solução consiste em achar z que minimiza ( z) na Equação
+   7.12, onde ||P z|| é o estabilizador funcional.
+   ( z) = Az y 2 + Pz 2
+   (7.12)
+   Enquanto o primeiro termo da Equação 7.12 expressa a discrepância entre
+   os dados originais e a solução, o segundo termo indica o sucesso da solução z no
+   critério de regularização expresso pelo operador P. Através de variações no
+   parâmetro é possível controlar o grau de similaridade do dado original e do
+   resultado do processo de regularização. Para a técnica de restauração de imagem
+   P é considerado linear. Aplicando o conceito em termos práticos, a Equação 7.13
+   ilustra essa situação com respeito a dois termos funcionais, onde ƒ (x,y) é a imagem
+   original e g(x,y) é a solução procurada. O primeiro termo força a similaridade entre
+   a imagem original e a imagem modificada, o segundo termo conhecido como
+   "membrana", impõe um certo grau de "borramento", controlado pelo parâmetro ,
+   288
+   ESTUDOS DE ALGORITMOS PARALELOS PARA VISÃO
+   sobre a solução esperada g(x,y).
+   2
+   F ( x, y)=
+   f ( x, y) g( x, y)2 + 2. r g( x, y) dxdy (7.13)
+   image
+   Embora o conceito dos campos aleatórios de Markov (MRF) não seja novo,
+   sua aplicação em processamento de imagem e visão computacional foi apenas
+   recentemente explorada [Bruno & Costa, 2000]. Basicamente, os campos aleatórios
+   de Markov, são extensões de grandes dimensões da clássica abordagem da cadeia
+   de Markov. Deste modo, ele assume que o valor de um dado ponto da imagem é
+   influenciado somente pelo seu vizinho imediato. Pelo estabelecimento de uma
+   conexão entre os campos aleatórios de Markov (locais) e a distribuição de Gibbs
+   (global) dada pela mecânica estatística, o teorema de Hammersley-Clifford permitiu
+   um significado essencial para o cálculo das probabilidades das possíveis
+   configurações em MRF [Li, 1995] [Kindermann and Snell, 1980] [Chellappa & Jain,
+PA Considerando que unir as distribuições em um MRF é uma tarefa
+   particularmente complicada, uma abordagem alternativa denominada de modo
+   condicional iterativo (ICM) foi proposta por Besag [Besag, 1986]. Duas hipóteses
+   são assumidas no ICM: (i) as observações di são independentes e cada observação
+   possui a mesma densidade condicional conhecida p(di|ƒ i), que depende somente de
+   ƒ

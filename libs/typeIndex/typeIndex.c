@@ -166,6 +166,7 @@ typeElementIndex* consultWord(typeIndex * index, char * key){
 void* getWordsSeach(typeIndex * index){ return index->wordsForSeach; }
 
 void _addPoint(int n){ for(int i=0; i < n; i++) printf("."); }
+void _faddPoint(FILE * fp,int n){ for(int i=0; i < n; i++) fprintf(fp,"."); }
 
 void showIndex(typeIndex * index){
 
@@ -188,6 +189,46 @@ void showIndex(typeIndex * index){
         
         tmp = remove_start(index->wordsForSeach);
     }
+
+    analyticalData data = getAnalicalDataDynanDic(index->words);    
+    fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md",.createNewFile=0);
+    
+
+
+}
+
+void createMarkDownIndex(typeIndex * index, char * fileName, char * title){
+
+
+    FILE * fp = fp = fopen(fileName,"w");
+    fprintf(fp,"# %s\n\n", title);
+
+    char * tmp = remove_start(index->wordsForSeach);
+    unsigned char letter = 0;
+
+    while (tmp){
+        
+        if(tmp[0] != letter){
+            fprintf(fp,"## %c\n\n", tmp[0]-32);
+            letter = tmp[0];
+        }
+
+        typeElementIndex * elem = consultWord(index,tmp);
+        
+        assert(elem != NULL);
+
+        fprintf(fp,"%s",elem->word);
+        _faddPoint(fp,50 - strlen(elem->word));
+        
+        int i;
+        
+        for(i=0; i < elem->lenPages-1; i++) fprintf(fp,"%d, ", elem->pages[i].page+1);
+        fprintf(fp,"%d\n\n", elem->pages[i].page+1);
+        
+        tmp = remove_start(index->wordsForSeach);
+    }
+
+    fclose(fp);
 
     analyticalData data = getAnalicalDataDynanDic(index->words);    
     fileAnalyticalData(.data=data,.title="TypeIndex Dictionary",.outputName="DIC5201.md",.createNewFile=0);

@@ -14,7 +14,8 @@ int main(int argc, char * argv[]){
     typeIndex * indiceRemissivo = newTypeIndex(argv[2],stWord);
 
 
-    showIndex(indiceRemissivo);
+    //showIndex(indiceRemissivo);
+    createMarkDownIndex(indiceRemissivo, "padrao.md", "Padrao Indice");
 
     analiseDataStopWord(stWord);
 

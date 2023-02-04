@@ -30,5 +30,7 @@ void* getWordsSeach(typeIndex * index);
 
 void showIndex(typeIndex * index);
 
+void createMarkDownIndex(typeIndex * index, char * fileName, char * title);
+
 
 #endif
