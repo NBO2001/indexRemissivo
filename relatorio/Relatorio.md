@@ -83,7 +83,7 @@ Para tanto, e como modelo de organização do projeto, foram desenvolvidos algun
 
 <div id='projimpl2'/>  
 
-### 2.1. *typeTableHash*
+### 2.1 *typeTableHash*
 
 <div id='211'/>
 
@@ -96,23 +96,29 @@ de busca binária, sem a necessidade de ordenação completa.
 
 #### 2.1.2 Fator de carga
 
-Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *hash*. Dependendo a funcao de espalhamento, o tamanho das listas encadeadas podem se menores ou maiores que esse fator de carga.
+Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *hash*. O tamanho das listas encadeadas depende da função de espalhamento, de acordo com a variação, o tamanho pode ser menor ou maior que o fator de carga.
+
 
 <div id='213'/>
 
 #### 2.1.3 Quando executar *rehashing*
 
-Em nossa implementacao há duas metricas importante, metrica de dispersao na tabela e de maior lista encadeda no conjunto.
+Na implementação do trabalho, foram considerados duas métricas: métrica de dispersão da tabela e métrica de maior lista encadeada no conjunto
 
-* Metrica de dispersao na tabela:
+
+* Métrica de dispersão na tabela:
+    Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
+    <div align="center">
 
     ![Equancao](imgs/equacao1.png "Equacao 1")
 
-    Essa metrica mede o nível de agrupamento, onde Xi indica o número de colisões por entrada ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), demonstra que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing*.
+    </div>
+    Na funçfómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
+    
 * Maior lista encadeada:
 
-    Esta avaliacao monitora o tamanho da maior lista encadeada, quando esse ultrapassa o fator de carga indica a necessidade de um eventual *rehashing*.
+    Esta avaliação monitora o tamanho da maior lista encadeada, quando esse ultrapassa o fator de carga indica a necessidade de um eventual *rehashing*.
 
 <div id='214'/>
 
@@ -130,38 +136,38 @@ Tipo Abstrato básico, de camada intermediária, que modela genericamente a impl
 
 <div id='23'/>
 
-### 2.3. *typeStopWords*
+### 2.3 *typeStopWords*
 
 Tipo responsável pela criação do coadjuvante dicionário de *stop words*, com a implementação de uma função de pesquisa dessa espécie de dicionário de caráter mais estático, a fim de facilitar a identificação das palavras que não precisam ser consideradas na confecção do índice remissivo.
 
 <div id='24'/>
 
-### 2.4. *typeDynamicDictionary*
+### 2.4 *typeDynamicDictionary*
 
 Também é um tipo básico de camada intermediária que implementa genericamente uma estrutura de Dicionário, porém com atributos e funções de um grau maior de flexibilidade quanto à manipulação dos dados, pois admite operações, não só de inserção e consulta, mas também de remoção eventual. Será útil para caracterizar a modelagem do Índice Remissivo propriamente dito.
 
 <div id='25'/>
 
-### 2.5. *typeIndex*
+### 2.5 *typeIndex*
 
 Contém o TAD de mais alto nível da aplicação, ao qual se vinculam todos os demais tipos abstratos intermediários, bem como um cojunto de funções auxiliares de manipulação de strings e outras utilidades, para tornar operável o sistema de montagem (processo de leitura e guarda de dados) e consulta do Índice Remissivo reclamado no projeto. Nele também estão previstos os processos de confecção dos arquivos contendo as avaliações de seu desempenho.
 
 <div id='26'/>
 
-### 2.6. *tipoPalavra*
+### 2.6 *tipoPalavra*
 
 Tipo Abstrato de importância central contendo a previsão da estrutura de guarda dos dados principais (palavras e seus atributos) que serão manipulados pelos dicionários e usados na modelagem do índice remissivo, bem como no processamento das avaliações estatísticas e comparativas. Contém também as funções de organização e ordenação das palavras conforme a relevância de suas ocorrências nas páginas.
 
 <div id='27'/>
 
-### 2.7. *typeDocument*
+### 2.7 *typeDocument*
 
 Documento, na esteira do presente trabalho, é cada página das obras literárias.
 O TAD em referência tem caráter auxiliar do tipoPalavra, pois objetiva primordialmente apoiar a manipulação dos dados com uma administração estratificada por documento, organizando o processo de leitura e guarda das palavras a partir de uma pauta da página com indicadores de seu início e fim, além de um contador de palavras, útil para o cálculo do fator de relevância da palavra em cada documento.
 
 <div id='28'/>
 
-### 2.8. *typeLinkedList*
+### 2.8 *typeLinkedList*
 
 Também é um tipo auxiliar, usado com fins organizativos para especializar as funções de montagem e manuseio dos dados guardados nas estruturas de listas que vão compor as entradas da tabela principal de guarda e busca dos dados contidos nos dicionários.
 
@@ -172,7 +178,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 <div id='discc'/>
 
-## 3.Discussões e Resultados
+## 3. Discussões e Resultados
 
 Após a implementação do Índice Remissivo, conforme o modelo acima descrito, foi utilizada uma base de dados de teste fornecida pelo professor Cesar Melo, contendo os textos completos, em formato digital, de três obras literárias:
 
@@ -186,40 +192,41 @@ Um dos principais objetivos do trabalho era permitir que fosse feita uma avalia�
 
 Foram feitas cinto tipos de análise de performance do dicionário e do uso da técnica de espalhamento próprias de tabela *hash* para cada uma das cinco obras e para o índice de *stop words*. Cada uma dessas cinco análises, envolvia a customização da técnica de dispersão usada na modelagem da tabela *hash* aplicada, para permitir a comparação entre os modelos a fim de identificar qual o que demonstraria maior aplicabilidade a certa atividade dependendo de suas características.
 
-Portanto, as performances dos dicionários foram analisadas utilizando os seguintes cenários;
+Portanto, as performances dos dicionários foram analisadas utilizando os seguintes cenários:
 
-- Tabela *hash* sem executar *rehashing* e com o tamanho 2.
+- cenário 1: sem executar *rehashing* e com o tamanho inicial igual a 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
+- cenário 2: executando *rehashing* utilizando a métrica de avaliação de dispersão, com tamanho inicial igual a 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
+- cenário 3: executando *rehashing* utilizando a 
+métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
+- cenário 4: executando *rehashing* utilizando a métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor 5.
 
-- Cenário 5: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
+- cenário 5: executando *avaliação* utilizando a métrica de avalicacao de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor igual a 4.
 
 <div id="32" />
 
-### 3.2.Análise Média de Comparações X *Rehashing*
+### 3.2 Análise Média de Comparações X *Rehashing*
 
 
-#### 3.2.1.Rehashing X Comparação (Aventuras)
+#### 3.2.1 Rehashing X Comparação (Aventuras)
 
 ![rehashingAventuras](imgs/RehashingvsMediaComparaçãoAventuras.png "Aventuras ComparacoesXRehashing")
 
-#### 3.2.2.Rehashing X Comparação (Guarani)
+#### 3.2.2 Rehashing X Comparação (Guarani)
 
 ![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
 
-#### 3.2.3.Rehashing X Comparação (Paralelismo)
+#### 3.2.3 Rehashing X Comparação (Paralelismo)
 
 ![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
 
-#### 3.2.4.Análise dos gráficos
+#### 3.2.4 Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
-### 3.3.Análise Custo do *Rehashing*
+### 3.3 Análise Custo do *Rehashing*
 
 ![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
 
@@ -261,7 +268,7 @@ A tabela do TIPO II, por sua vez, onde o redimensionamento ocorre pela simples s
 
 <div id='conclusion'/>
 
-## 4.Conclusão
+## 4. Conclusão
 
 ## 5. Referências
 
