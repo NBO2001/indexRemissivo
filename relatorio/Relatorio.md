@@ -168,7 +168,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 <div id='29'/>
 
 ### 2.9.Fluxo da Aplicação
-![Fluxo da aplicao](imgs/fluxograma.png "Fluxo")
+![Fluxo da aplicao](imgs/Fluxograma.png "Fluxo")
 
 <div id='discc'/>
 
@@ -221,9 +221,7 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3.Análise Custo do *Rehashing*
 
-Para cada opereção de rehashing é necessário criar uma 
-
-![noPorRehashig](imgs/Nó por Rehashing.png "No X Rehahing")
+![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
 
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
