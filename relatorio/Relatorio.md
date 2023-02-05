@@ -121,7 +121,6 @@ de busca binária, sem a necessidade de ordenação completa.
 
 Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *hash*. O tamanho das listas encadeadas depende da função de espalhamento, de acordo com a variação, o tamanho pode ser menor ou maior que o fator de carga.
 
-
 <div id='213'/>
 
 #### 2.1.3 Quando executar *rehashing*
@@ -137,7 +136,7 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
     </span>
     Na fómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
- 
+
 * Maior lista encadeada:
     Esta avaliação monitora o tamanho da maior lista encadeada. Quando esse tamanho utrapassa o fator de carga, isso significa que será necessário realizar o *rehashing*.
 
@@ -295,7 +294,6 @@ E por fim o custo de criação de uma tabela é:
 
 $$ O(m)$$
 
-
 Em que *m* é o tamanho da tabela.
 
 Assim, temos que uma operacão de rehasing tem o seguinte custo:
@@ -303,7 +301,6 @@ Assim, temos que uma operacão de rehasing tem o seguinte custo:
 $$
 O(m_1+\{m_0* [\sum_{i=0}^{m} O (n_i)] \})
 $$
-
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
@@ -337,7 +334,7 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 ### 3.5.Análise da Ocupação dos Dicionários
 
-A tabela a seguir mostra o ocupação
+A tabela a seguir mostra o ocupação do dicionário em cada cenário, pode-se observar que os cenários em que o fator de carga é variável a ocupação do dicionário é melhor que em cenários que o fator de carga é fixo.
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
@@ -351,8 +348,8 @@ A tabela a seguir mostra o ocupação
 
 ## 4. Conclusão
 
-Após análise dos resultados, é possível perceber as vantagens que a utilização dos dicionários proporcionam na implementação de um Índice Remissivo. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas. 
-Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário.
+Após análise dos resultados, é possível perceber as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
+Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário. Nota-se também que ao váriar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdicio de memória.
 
 Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
