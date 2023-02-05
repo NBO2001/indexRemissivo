@@ -154,8 +154,14 @@ Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho a
 <div id='215'/>
 
 #### 2.1.5 Função *hash*
+Função de *hash* mapeia dados grande e de tamanhos variáveis para dados menores com tamanho fixo. No contexto desse trabalho, a função *hash* irá mapear uma palavra para um índice da tabela *hash*.
+A função que está sendo utilizada nesse trabalho é a MurmurHash. Ela funciona da seguinte maneira: é passado um valor para função, que no caso é uma chave do livro, esse valor é convertido para um unsigned char e defini-se  de forma aleatória um h, esse valor é utilizado nas operações binárias que serão realizadas. Com isso, são efetuadas operações de manipulações binárias de quatro em quatro bits gerando um valor final. Esse resultado é convertido e será utilizado como índice da tabela *hash*.
 
-Falar da mumurhash
+<span align="center">
+
+![Fluxo da aplicao](imgs/diagrama.png "Fluxo")
+
+</span>
 
 <div id='22'/>
 
