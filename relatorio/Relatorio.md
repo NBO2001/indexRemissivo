@@ -79,7 +79,8 @@ Observa-se, portanto, que a ideia de utilização das tabelas de espalhamento cl
 
 Nessa esteira, o projeto se iniciou com a ideia de construir inicialmente dois tipos de dicionários: um, de característica mais estática, isto é, de conteúdo fixo e de uso genérico, para a guarda de um índice das mencionadas *stop words*; e um outro, dinâmico, com maioir facilidade para a inserção de diferentes conteúdos e eventuais alterações, que seria utilizado na guarda e organização dos dados que seriam manipulados pelo índice remissivo propriamente dito.
 
-Para tanto, e como modelo de organização do projeto, foram desenvolvidos alguns Tipos Abstratos de Dados, com suas estruturas específicas e funções direcionadas à manipulação dos dados relacionados com seu escopo, dentre os quais:
+Dessa forma, para organizar o projeto, foram criados Tipos Abstratos de Dados, que possuem estruturas específicas e funções específicas para manipular os dados relacionados ao escopo do projeto. Abaixo, está uma explicação detalhada de cada tipo desenvolvido.
+
 
 <div id='projimpl2'/>  
 
@@ -108,11 +109,12 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
 * Métrica de dispersão na tabela:
     Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
-    <div align="center">
+
+    <span align="center">
 
     ![Equancao](imgs/equacao1.png "Equacao 1")
 
-    </div>
+    </span>
     Na fómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
     
@@ -124,10 +126,11 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 #### 2.1.4 *Rehashing*
 
 A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
-<div align="center">
+<span align="center">
 
 ![fatordecarga](imgs/fator.png "fatordecarga")
-</div>
+</span>
+
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
 
 <div id='22'/>
@@ -214,66 +217,80 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 
 #### 3.2.1 Rehashing X Comparação (Aventuras)
-<div align="center">
+
+<span align="center">
 
 ![rehashingAventuras](imgs/RehashingvsMediaComparaçãoAventuras.png "Aventuras ComparacoesXRehashing")
-</div>
+
+</span>
+
 #### 3.2.2 Rehashing X Comparação (Guarani)
 
-<div align="center">
+<span align="center">
 
 ![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
-</div>
+
+</span>
+
 #### 3.2.3 Rehashing X Comparação (Paralelismo)
 
-<div align="center">
+<span align="center">
 
 ![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
-</div>
+
+</span>
+
 #### 3.2.4 Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
 ### 3.3 Análise Custo do *Rehashing*
 
-<<<<<<< HEAD
-<div align="center">
-=======
-O gráfico a seguir mostra uma média entre os nós removidos e a quantidades de rehashing realizadas.
+<span align="center">
 
 ![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
->>>>>>> 77cd8abf081955723f4d43d122d12550e4c362a8
 
-![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
-</div>
+</span>
+
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
 
-<div align="center">
+<span align="center">
 
 ![Custo de esvaziamento de uma lista encadeda](imgs/on.png "Custo de esvaziamento de uma lista encadeda")
-</div>
+
+</span>
+
 em que *n* é a quantidade de NÓs da lista.
 
 Já o custo de esvaziamento de uma tabela é:
-<div align="center">
+
+<span align="center">
 
 ![Custo de esvaziamento de uma tabela](imgs/sumOm.png "Custo de esvaziamento de uma lista tabela")
-</div>
+
+</span>
+
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
-<div align="center">
+
+<span align="center">
 
 ![Custo de esvaziamento de criacao](imgs/om.png "Custo de esvaziamento de uma lista criacao")
-</div>
+
+</span>
+
 Em que *m* é o tamanho da tabela.
 
 Assim, temos que uma operacão de rehasing tem o seguinte custo:
-<div align="center">
+
+<span align="center">
 
 ![Custo de rehashing](imgs/omPluSun.png "Custo de rehashing")
-</div>
+
+</span>
+
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
@@ -282,13 +299,17 @@ Nota-se que a operação de rehashing é bem custosa, que dependendo dos valo
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
 
+
+
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
 | Cenario 1 | 100.00% | 100.00% | 100.00% |
 | Cenario 2 | 0.00% | 0.00% | 0.34% |
 | Cenario 3 | 0.00% | 0.00% | 0.00% |
 | Cenario 4 | 0.00% | 0.00% | 0.00% |
-| Cenario 5 | 0.12% | 0.19% | 0.10% |
+| Cenario 5 | 0.12% | 0.19% | 0.10% | 
+
+
 
 Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario teve um baixissimo número de listas acima do fator de carga. Isso fica mais claro quando análisamos a tabela de listas abaixo do fator de carga.
 
