@@ -113,19 +113,20 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
     ![Equancao](imgs/equacao1.png "Equacao 1")
 
     </div>
-    Na funçfómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
+    Na fómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
     
 * Maior lista encadeada:
-
-    Esta avaliação monitora o tamanho da maior lista encadeada, quando esse ultrapassa o fator de carga indica a necessidade de um eventual *rehashing*.
+    Esta avaliação monitora o tamanho da maior lista encadeada. Quando esse tamanho utrapassa o fator de carga, isso significa que será necessário realizar o *rehashing*.
 
 <div id='214'/>
 
 #### 2.1.4 *Rehashing*
 
-A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao; l = i + 0.4 \* i + 0.1 \* n.
-
+A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
+<div align="center">
+![fatordecarga](imgs/fatordecarga.png "fatordecarga")
+</div>
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
 
 <div id='22'/>
