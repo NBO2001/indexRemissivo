@@ -307,7 +307,7 @@ $$
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
-Nota-se que a operação de rehashing é bem custosa, e dependendo dos valores das variavéis pode ser inviável realizá-lo.
+Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
 ### 3.4 Análise Fator de carga
 
@@ -335,7 +335,15 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 ### 3.5.Análise da Ocupação dos Dicionários
 
-Escrever tambelinha
+A tabela a seguir mostra o ocupação
+
+|   | Aventura      | Gurani | Paralelismo |
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| Cenario 1 | 100% | 100% | 100% |
+| Cenario 2 | 78.09% | 95.76% | 96.53% |
+| Cenario 3 | 75.09% | 63.07% | 83.67% |
+| Cenario 4 | 53.52% | 51.77% | 52.73% |
+| Cenario 5 | 50.18% | 49.96% | 50.13%|
 
 <div id='conclusion'/>
 
