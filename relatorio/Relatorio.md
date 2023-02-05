@@ -214,7 +214,17 @@ Foi, portanto, estudada a performance dos dicionários, usando os seguintes cena
 
 #### 3.2.3.Rehashing X Comparação (Paralelismo)
 
-![rehashingParalelismo](imgs/RehashingeMediaComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
+![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
+
+#### 3.2.4.Análise dos gráficos
+
+A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
+
+### 3.3.Análise Custo do *Rehashing*
+
+Para cada opereção de rehashing é necessário criar uma 
+
+![noPorRehashig](imgs/Nó por Rehashing.png "No X Rehahing")
 
 Nessa segunda abordagem, a tabela cresceria dinamicamente conforme as inserções, mas à razão de um fator de carga calculado para representar um valor inteiro menor que o log2 N (log de N na base 2), onde N seria o número de elementos inseridos. Com isso, a ideia era manter o tamanho da tabela em uma dimensão menor que o número de chaves mapeadas para *hash* obviamente, porém mantendo a propriedade de garantir um número médio de colisões, que significariam número de comparações, sempre, ou na maioria dos casos, abaixo do esperado para uma busca binária, que, por sua vez, já é considerada um modelo de busca bem eficiente.
 
