@@ -243,44 +243,23 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
-
-
-<span align="center">
-
-![Custo de esvaziamento de uma lista encadeda](imgs/on.png "Custo de esvaziamento de uma lista encadeda")
-
-</span>
-
-em que *n* é a quantidade de NÓs da lista.
+A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é, $$ O(n) $$ onde *n* é quantidade de nós da lista encadeada.
 
 Já o custo de esvaziamento de uma tabela é:
-
-<span align="center">
-
-![Custo de esvaziamento de uma tabela](imgs/sumOm.png "Custo de esvaziamento de uma lista tabela")
-
-</span>
+$$O(\sum_{i=0}^{m} O (n_i))$$
 
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
+$$ O(m)$$
 
-<span align="center">
-
-![Custo de esvaziamento de criacao](imgs/om.png "Custo de esvaziamento de uma lista criacao")
-
-</span>
 
 Em que *m* é o tamanho da tabela.
 
 Assim, temos que uma operacão de rehasing tem o seguinte custo:
 
-<span align="center">
+$$ O(m_1+\{m_0* [\sum_{i=0}^{m} O (n_i)] \})$$
 
-![Custo de rehashing](imgs/omPluSun.png "Custo de rehashing")
-
-</span>
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
