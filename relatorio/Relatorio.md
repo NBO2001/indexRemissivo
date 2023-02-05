@@ -7,7 +7,7 @@
 * Marcello Cipriano
 * Natanael Oliveira
 
-## Introdução
+## 1.Introdução
 
 Um Índice Remissivo é uma lista de termos ou expressões presentes em uma obra escrita juntamente com suas respectivas páginas de referência. É uma ferramenta útil para ajudar o leitor a encontrar informações específicas dentro de um documento grande. O índice remissivo será mais eficiente quando conseguir direcionar o leitor para as ocorrências mais significativas de uma palavra no texto.
 
@@ -19,7 +19,7 @@ No contexto de um único documento, o TF-IDF é calculado como o produto da freq
 
 Este trabalho tem como objetivo criar um programa que gerará um índice remissivo de um livro em formato de texto. Isso será realizado utilizando conceitos de Tipos Abstratos de Dados (TAD) e técnicas de armazenamento como dicionários estáticos e dinâmicos. O resultado final será um conjunto de cinco páginas de cada palavra do livro, ordenado pelo número de relevância. Para garantir a eficiência e performance, é importante escolher uma estrutura de dados adequada e aplicar técnicas eficientes de armazenamento e busca de informações.
 
-## Projeto da implementação (Métodos)
+## 2.Projeto da implementação (Métodos)
 
 Uma das primeiras e mais importantes tarefas relacionadas com a ideia de construção de um índice remissivo de uma obra literária utilizando uma ferramenta computacional é, sobretudo, a escolha ou identificação dos tipos de estruturas de dados que permitiriam a manipulação mais eficiente dos dados relacionados com tal aplicação.
 
@@ -39,41 +39,71 @@ Nessa esteira, o projeto se iniciou com a ideia de construir inicialmente dois t
 
 Para tanto, e como modelo de organização do projeto, foram desenvolvidos alguns Tipos Abstratos de Dados, com suas estruturas específicas e funções direcionadas à manipulação dos dados relacionados com seu escopo, dentre os quais:
 
-### *typeTableHash*
+### 2.1.*typeTableHash*
+
+#### 2.1.1 Definição
 
 Este é o TAD de base, onde se implementa a estrutura de dados que será usada para administrar o uso das espécies de dicionários que serão úteis na aplicação computacional de que trata o presente trabalho. Neste tipo, tem-se a modelagem de uma tabela *hash* com parâmetros flexíveis a permitir a criação de uma tabela de dispersão com diferentes características, desde modelos mais estáticos, de tamanho fixos, a alternativas de crescimento dinâmico (*rehashing*) e com variação do fator de carga, a possibilitar eficiência de busca sempre superior a de um algoritmo
 de busca binária, sem a necessidade de ordenação completa.
 
-### *typeStaticDictionary*
+#### 2.1.2 Fator de carga
+
+Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *hash*. Dependendo a funcao de espalhamento, o tamanho das listas encadeadas podem se menores ou maiores que esse fator de carga.
+
+#### 2.1.3 Quando executar *rehashing*
+
+Em nossa implementacao há duas metricas importante, metrica de dispersao na tabela e de maior lista encadeda no conjunto.
+
+* Metrica de dispersao na tabela:
+
+    ![Equancao](imgs/equacao1.png "Equacao 1")
+
+    Essa metrica mede o nível de agrupamento, onde Xi indica o número de colisões por entrada ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), demonstra que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing*.
+
+* Maior lista encadeada:
+
+    Esta avaliacao monitora o tamanho da maior lista encadeada, quando esse ultrapassa o fator de carga indica a necessidade de um eventual *rehashing*.
+
+#### 2.1.4 *Rehashing*
+
+A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao; l = i + 0.4 \* i + 0.1 \* n.
+
+Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
+
+### 2.2.*typeStaticDictionary*
 
 Tipo Abstrato básico, de camada intermediária, que modela genericamente a implementação de uma estrutura de Dicionário com característica mais estática, contendo somente funções que permitem o carregamento (inserção dos elementos) e a consulta, portanto sem previsão para remoções. No contexto do presente trabalho, é o plano de fundo do *typeStopWords* e suas respectivas funções de manipulação de dados.
 
-### *typeStopWords*
+### 2.3.*typeStopWords*
 
 Tipo responsável pela criação do coadjuvante dicionário de *stop words*, com a implementação de uma função de pesquisa dessa espécie de dicionário de caráter mais estático, a fim de facilitar a identificação das palavras que não precisam ser consideradas na confecção do índice remissivo.
 
-### *typeDynamicDictionary*
+### 2.4.*typeDynamicDictionary*
 
 Também é um tipo básico de camada intermediária que implementa genericamente uma estrutura de Dicionário, porém com atributos e funções de um grau maior de flexibilidade quanto à manipulação dos dados, pois admite operações, não só de inserção e consulta, mas também de remoção eventual. Será útil para caracterizar a modelagem do Índice Remissivo propriamente dito.
 
-### *typeIndex*
+### 2.5.*typeIndex*
 
 Contém o TAD de mais alto nível da aplicação, ao qual se vinculam todos os demais tipos abstratos intermediários, bem como um cojunto de funções auxiliares de manipulação de strings e outras utilidades, para tornar operável o sistema de montagem (processo de leitura e guarda de dados) e consulta do Índice Remissivo reclamado no projeto. Nele também estão previstos os processos de confecção dos arquivos contendo as avaliações de seu desempenho.
 
-### *tipoPalavra*
+### 2.6.*tipoPalavra*
 
 Tipo Abstrato de importância central contendo a previsão da estrutura de guarda dos dados principais (palavras e seus atributos) que serão manipulados pelos dicionários e usados na modelagem do índice remissivo, bem como no processamento das avaliações estatísticas e comparativas. Contém também as funções de organização e ordenação das palavras conforme a relevância de suas ocorrências nas páginas.
 
-### *typeDocument*
+### 2.7.*typeDocument*
 
 Documento, na esteira do presente trabalho, é cada página das obras literárias.
 O TAD em referência tem caráter auxiliar do tipoPalavra, pois objetiva primordialmente apoiar a manipulação dos dados com uma administração estratificada por documento, organizando o processo de leitura e guarda das palavras a partir de uma pauta da página com indicadores de seu início e fim, além de um contador de palavras, útil para o cálculo do fator de relevância da palavra em cada documento.
 
-### *typeLinkedList*
+### 2.8.*typeLinkedList*
 
 Também é um tipo auxiliar, usado com fins organizativos para especializar as funções de montagem e manuseio dos dados guardados nas estruturas de listas que vão compor as entradas da tabela principal de guarda e busca dos dados contidos nos dicionários.
 
-## Discussões e Resultados
+### 2.9.Fluxo da Aplicação
+
+![Fluxo da aplicao](imgs/fluxo.png "Fluxo")
+
+## 3.Discussões e Resultados
 
 Após a implementação do Índice Remissivo, conforme o modelo acima descrito, foi utilizada uma base de dados de teste fornecida pelo professor Cesar Melo, contendo os textos completos, em formato digital, de três obras literárias:
 
@@ -85,9 +115,19 @@ A aplicação foi capaz de construir um índice remissivo para cada obra, com in
 
 Um dos principais objetivos do trabalho era permitir que fosse feita uma avaliação da eficiência e performance das estruturas de dados usadas na construção dos dicionários e do índice remissivo propriamente dito, motivo pelo qual foram incorporados ao projeto da implementação, algumas estruturas e funções estatísticas para medição desses citados indicadores, a partir das quais foram extraídos os dados compreendidos nas tabelas abaixo, referentes ao conteúdo de cada um dos três livros acima mencionados, bem como ao modelo de dicionário genérico aplicado para guarda da relação de *stop words*.
 
-Foram feitas três tipos de análise de performance do dicionário e do uso da técnica de espalhamento próprias de tabela *hash* para cada uma das três obras e para o índice de *stop words*. Cada uma dessas três análises, envolvia a customização da técnica de dispersão usada na modelagem da tabela *hash* aplicada, para permitir a comparação entre os modelos a fim de identificar qual o que demonstraria maior aplicabilidade a certa atividade dependendo de suas características.
+Foram feitas cinto tipos de análise de performance do dicionário e do uso da técnica de espalhamento próprias de tabela *hash* para cada uma das cinco obras e para o índice de *stop words*. Cada uma dessas cinco análises, envolvia a customização da técnica de dispersão usada na modelagem da tabela *hash* aplicada, para permitir a comparação entre os modelos a fim de identificar qual o que demonstraria maior aplicabilidade a certa atividade dependendo de suas características.
 
-Foi, portanto, estudada a performance dos dicionários, usando, primeiro, uma *hash* com tamanho fixo e estimado para um quantitativo maior do que o número possível de chaves mapeadas. E em um segundo momento, foi usada a abordagem de criação de uma tabela dinâmica, cuja dimensão cresceria em função do número de elementos inseridos, não em uma proporção direta, mas em uma escala logarítmica.
+Foi, portanto, estudada a performance dos dicionários, usando os seguintes cenarios;
+
+- Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
+
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
+
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
+
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
+
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
 
 Nessa segunda abordagem, a tabela cresceria dinamicamente conforme as inserções, mas à razão de um fator de carga calculado para representar um valor inteiro menor que o log2 N (log de N na base 2), onde N seria o número de elementos inseridos. Com isso, a ideia era manter o tamanho da tabela em uma dimensão menor que o número de chaves mapeadas para *hash* obviamente, porém mantendo a propriedade de garantir um número médio de colisões, que significariam número de comparações, sempre, ou na maioria dos casos, abaixo do esperado para uma busca binária, que, por sua vez, já é considerada um modelo de busca bem eficiente.
 
@@ -395,7 +435,7 @@ Por outro lado, traçando um comparativo entre os resultados obtidos com as tabe
 
 A tabela do TIPO II, por sua vez, onde o redimensionamento ocorre pela simples superação do fator de carga por qualquer de suas entradas, promove naturalmente um número maior de *rehashings*, trazendo como resultado um menor número de colisões por entrada e, a partir daí, uma melhor performance na média de comparações por busca do que a do TIPO III, porém não otimiza muito bem a memória, pois, em alguns casos dos experimentos, a sua dimensão (tamanho do vetor) chegou a patamares relativamente próximos ao quantitativo total de chaves mapeadas, mas ainda assim com vantagens em relação ao vetor de tamanho fixo e dimensão superior (tabela do TIPO I).
 
-## Conclusão
+## 4.Conclusão
 
 ## Referências
 

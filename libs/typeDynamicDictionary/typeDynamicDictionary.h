@@ -17,6 +17,7 @@ typeDynamicDictionary * _newDynamicDictionary(initialValuesDict in);
 void insertDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize, void * value, unsigned int sizeValue);
 void * searchDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize);
 void removeDynamicDictionary(typeDynamicDictionary * dictionary, void * key,unsigned int keySize);
+void deleteDictionary(typeDynamicDictionary * dictionary);
 
 analyticalData getAnalicalDataDynanDic(typeDynamicDictionary* dictionary);
 
