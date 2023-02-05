@@ -130,11 +130,10 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 * Métrica de dispersão na tabela:
     Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
 
-    <span align="center">
+    $$ 
+    C = \sum_{i}(x_i^2)/(n-a) 
+    $$
 
-    ![Equancao](imgs/equacao1.png "Equacao 1")
-
-    </span>
     Na fómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
 * Maior lista encadeada:
@@ -142,19 +141,20 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
 <div id='214'/>
 
-#### 2.1.4.*Rehashing*
+#### 2.1.4 *Rehashing*
 
-A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
-<span align="center">
+A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equação:
 
-![fatordecarga](imgs/fator.png "fatordecarga")
-</span>
+$$
+l = i * 0,4 * i + 0,1 * n
+$$
+
 
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
 
 <div id='215'/>
 
-#### 2.1.5.Função *hash*
+#### 2.1.5 Função *hash*
 
 Falar da mumurhash
 
@@ -306,8 +306,6 @@ Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
-<div id='34'/>
-
 ### 3.4 Análise Fator de carga
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
@@ -351,7 +349,7 @@ A tabela a seguir mostra o ocupação do dicionário em cada cenário, pode-
 Após análise dos resultados, é possível perceber as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
 Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário. Nota-se também que ao váriar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdicio de memória.
 
-Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
+Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível. 
 
 ## 5. Referências
 
