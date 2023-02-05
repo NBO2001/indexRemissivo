@@ -282,14 +282,6 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
 <div id='33'/>
-
-<<<<<<< HEAD
-A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é: $$ O(n) $$ onde *n* é quantidade de nós da lista encadeada.
-
-Já o custo de esvaziamento de uma tabela é:
-
-$$O(\sum_{i=0}^{m} O (n_i))$$
-=======
 ### 3.3.Análise Custo do *Rehashing*
 
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é,
@@ -303,19 +295,14 @@ Já o custo de esvaziamento de uma tabela é:
 $$
 O(\sum_{i=0}^{m} O (n_i))
 $$
->>>>>>> 771b2473be4fdc5e5ced24a416d92d0b067f41fc
 
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
 
-<<<<<<< HEAD
-$$ O(m)$$
-=======
 $$
 O(m)
 $$
->>>>>>> 771b2473be4fdc5e5ced24a416d92d0b067f41fc
 
 
 Em que *m* é o tamanho da tabela.
@@ -329,15 +316,11 @@ $$
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
-Nota-se que a operação de rehashing é bem custosa, e dependendo dos valores das variavéis pode ser inviável realizá-lo.
+Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
-<<<<<<< HEAD
-### 3.4 Análise Fator de carga
-=======
 <div id='34'/>
 
 ### 3.4.Análise Fator de carga
->>>>>>> 771b2473be4fdc5e5ced24a416d92d0b067f41fc
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
 
@@ -363,23 +346,25 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 ### 3.5.Análise da Ocupação dos Dicionários
 
-Escrever tambelinha
+A tabela a seguir mostra o ocupação
+
+|   | Aventura      | Gurani | Paralelismo |
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| Cenario 1 | 100% | 100% | 100% |
+| Cenario 2 | 78.09% | 95.76% | 96.53% |
+| Cenario 3 | 75.09% | 63.07% | 83.67% |
+| Cenario 4 | 53.52% | 51.77% | 52.73% |
+| Cenario 5 | 50.18% | 49.96% | 50.13%|
 
 <div id='conclusion'/>
 
 ## 4. Conclusão
 
-Após análise dos resultados, é possível perceber as vantagens que a utilização dos dicionários proporcionam na implementação de um Índice Remissivo. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas. 
-Na implementação deste trabalho, observa-se 
-que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário.
+Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
 
-<<<<<<< HEAD
-Por fim, após estudar os três livros, poderiamos iniciar o dicionário.
-=======
 Por fim, após estudar os tres livros, poderiamos iniciar o dicionário os seguintes parametros; tamanho do dicionário com 8335, fator de carga de 5 e fixando o fator de carga, para esse conjunto teriamos a inicialização ideal e com o menor custo possível.
 
 <div id='ref'/>
->>>>>>> 771b2473be4fdc5e5ced24a416d92d0b067f41fc
 
 ## 5. Referências
 
