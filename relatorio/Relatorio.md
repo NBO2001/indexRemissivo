@@ -81,7 +81,6 @@ Nessa esteira, o projeto se iniciou com a ideia de construir inicialmente dois t
 
 Dessa forma, para organizar o projeto, foram criados Tipos Abstratos de Dados, que possuem estruturas específicas e funções específicas para manipular os dados relacionados ao escopo do projeto. Abaixo, está uma explicação detalhada de cada tipo desenvolvido.
 
-
 <div id='projimpl2'/>  
 
 ### 2.1 *typeTableHash*
@@ -292,17 +291,13 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 | Cenario 4 | 100.00% | 100.00% | 100.00%|
 | Cenario 5 | 99.88% | 99.81% | 99.90% |
 
-No tocante às análises feitas com as tabelas do TIPO II e III, que comumente operam com dimensão menor do que o número de chaves mapeadas, nota-se que ambas conseguiram desenvolver um nível de espalhamento das chaves bem siginificativo, com taxas de ocupação do vetor em patamares médios acima de 80% (oitenta por cento) para as do TIPO II, e acima de 90% (noventa por cento) para as do TIPO III, mesmo com uma dimensão inferior a 50% (cinquenta por cento) em relação à quantidade de elementos. Em alguns casos, conseguindo tal performance de dispersão, mesmo com uma dimensão próxima ao impressionante patamar de cerca de apenas 30% (trinta por cento) do número de chaves mapeadas, para casos das tabelas do TIPO III. Tal dado, pode ser explicado certamente pelo grau de eficiência da função de *hashing* usada.
-
-[TALVEZ EXPLICAR SOBRE A MURMUR AQUI]
-
-Por outro lado, traçando um comparativo entre os resultados obtidos com as tabelas do TIPO II e III, foi possível perceber que há uma maior distribuição dos elementos (palavras, no caso dos experimentos) pelas entradas da tabela do TIPO III, isto é, aquela que usa como critério para seu redimensionamento somente o índice que mede o seu nível de agrupamento. Esse tipo de tabela produziu maiores taxas de ocupação do vetor, com realização de um número menor de *rehashings*, porém construiu entradas ligeiramente maiores (com mais elementos) do que a do TIPO II, o que provocou uma média de comparações por busca um pouco maior, porém ainda abaixo do fator de carga.
-
-A tabela do TIPO II, por sua vez, onde o redimensionamento ocorre pela simples superação do fator de carga por qualquer de suas entradas, promove naturalmente um número maior de *rehashings*, trazendo como resultado um menor número de colisões por entrada e, a partir daí, uma melhor performance na média de comparações por busca do que a do TIPO III, porém não otimiza muito bem a memória, pois, em alguns casos dos experimentos, a sua dimensão (tamanho do vetor) chegou a patamares relativamente próximos ao quantitativo total de chaves mapeadas, mas ainda assim com vantagens em relação ao vetor de tamanho fixo e dimensão superior (tabela do TIPO I).
-
 <div id='conclusion'/>
 
 ## 4. Conclusão
+
+Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
+
+Por fim, após estudar os tres livros, poderiamos iniciar o dicionário.
 
 ## 5. Referências
 
