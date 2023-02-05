@@ -106,7 +106,6 @@ Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *
 
 Na implementação do trabalho, foram considerados duas métricas: métrica de dispersão da tabela e métrica de maior lista encadeada no conjunto
 
-
 * Métrica de dispersão na tabela:
     Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
 
@@ -116,8 +115,7 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
     </span>
     Na fómula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
-
-    
+ 
 * Maior lista encadeada:
     Esta avaliação monitora o tamanho da maior lista encadeada. Quando esse tamanho utrapassa o fator de carga, isso significa que será necessário realizar o *rehashing*.
 
@@ -246,11 +244,13 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-<span align="center">
+<<<<<<< HEAD
+<div align="center">
+=======
+O gráfico a seguir mostra uma média entre os nós removidos e a quantidades de rehashing realizadas.
 
 ![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
-
-</span>
+>>>>>>> 77cd8abf081955723f4d43d122d12550e4c362a8
 
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
