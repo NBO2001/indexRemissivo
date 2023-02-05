@@ -14,9 +14,38 @@
  1. [Introdução](#introducao)
  2. [Projeto da implementação](#projimpl)
 
+    2.1. [*typeTableHash*](#projimpl2)
+
+    2.1.1. [Defificao](#211)
+
+    2.1.2. [Fator de carga](#212)
+
+    2.1.3. [Quando executar *rehashing*](#213)
+
+    2.1.4. [Rehashing](#214)
+
+    2.2. [TypeStaticDictionary](#22)
+
+    2.3. [typeStopWords](#23)
+
+    2.4. [typeDynamicDictionary](#24)
+
+    2.5. [typeIndex](#25)
+
+    2.6. [tipoPalavra](#26)
+
+    2.7. [typeDocument](#27)
+
+    2.8. [typeLinkedList](#28)
+
+    2.9. [Fluxo da Aplicação](#29)
+
+ 3. [Discussões e Resultados](#conclusion)
+ 4. [Conclusão](#projimpl2)
+
 *******
 
-<div id='introducao'/>  
+<div id='introducao'/>
 
 ## 1.Introdução
 
@@ -52,16 +81,24 @@ Nessa esteira, o projeto se iniciou com a ideia de construir inicialmente dois t
 
 Para tanto, e como modelo de organização do projeto, foram desenvolvidos alguns Tipos Abstratos de Dados, com suas estruturas específicas e funções direcionadas à manipulação dos dados relacionados com seu escopo, dentre os quais:
 
+<div id='projimpl2'/>  
+
 ### 2.1.*typeTableHash*
+
+<div id='211'/>
 
 #### 2.1.1 Definição
 
 Este é o TAD de base, onde se implementa a estrutura de dados que será usada para administrar o uso das espécies de dicionários que serão úteis na aplicação computacional de que trata o presente trabalho. Neste tipo, tem-se a modelagem de uma tabela *hash* com parâmetros flexíveis a permitir a criação de uma tabela de dispersão com diferentes características, desde modelos mais estáticos, de tamanho fixos, a alternativas de crescimento dinâmico (*rehashing*) e com variação do fator de carga, a possibilitar eficiência de busca sempre superior a de um algoritmo
 de busca binária, sem a necessidade de ordenação completa.
 
+<div id='212'/>
+
 #### 2.1.2 Fator de carga
 
 Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *hash*. Dependendo a funcao de espalhamento, o tamanho das listas encadeadas podem se menores ou maiores que esse fator de carga.
+
+<div id='213'/>
 
 #### 2.1.3 Quando executar *rehashing*
 
@@ -77,44 +114,64 @@ Em nossa implementacao há duas metricas importante, metrica de dispersao na ta
 
     Esta avaliacao monitora o tamanho da maior lista encadeada, quando esse ultrapassa o fator de carga indica a necessidade de um eventual *rehashing*.
 
+<div id='214'/>
+
 #### 2.1.4 *Rehashing*
 
 A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao; l = i + 0.4 \* i + 0.1 \* n.
 
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
 
+<div id='22'/>
+
 ### 2.2.*typeStaticDictionary*
 
 Tipo Abstrato básico, de camada intermediária, que modela genericamente a implementação de uma estrutura de Dicionário com característica mais estática, contendo somente funções que permitem o carregamento (inserção dos elementos) e a consulta, portanto sem previsão para remoções. No contexto do presente trabalho, é o plano de fundo do *typeStopWords* e suas respectivas funções de manipulação de dados.
+
+<div id='23'/>
 
 ### 2.3.*typeStopWords*
 
 Tipo responsável pela criação do coadjuvante dicionário de *stop words*, com a implementação de uma função de pesquisa dessa espécie de dicionário de caráter mais estático, a fim de facilitar a identificação das palavras que não precisam ser consideradas na confecção do índice remissivo.
 
+<div id='24'/>
+
 ### 2.4.*typeDynamicDictionary*
 
 Também é um tipo básico de camada intermediária que implementa genericamente uma estrutura de Dicionário, porém com atributos e funções de um grau maior de flexibilidade quanto à manipulação dos dados, pois admite operações, não só de inserção e consulta, mas também de remoção eventual. Será útil para caracterizar a modelagem do Índice Remissivo propriamente dito.
+
+<div id='25'/>
 
 ### 2.5.*typeIndex*
 
 Contém o TAD de mais alto nível da aplicação, ao qual se vinculam todos os demais tipos abstratos intermediários, bem como um cojunto de funções auxiliares de manipulação de strings e outras utilidades, para tornar operável o sistema de montagem (processo de leitura e guarda de dados) e consulta do Índice Remissivo reclamado no projeto. Nele também estão previstos os processos de confecção dos arquivos contendo as avaliações de seu desempenho.
 
+<div id='26'/>
+
 ### 2.6.*tipoPalavra*
 
 Tipo Abstrato de importância central contendo a previsão da estrutura de guarda dos dados principais (palavras e seus atributos) que serão manipulados pelos dicionários e usados na modelagem do índice remissivo, bem como no processamento das avaliações estatísticas e comparativas. Contém também as funções de organização e ordenação das palavras conforme a relevância de suas ocorrências nas páginas.
+
+<div id='27'/>
 
 ### 2.7.*typeDocument*
 
 Documento, na esteira do presente trabalho, é cada página das obras literárias.
 O TAD em referência tem caráter auxiliar do tipoPalavra, pois objetiva primordialmente apoiar a manipulação dos dados com uma administração estratificada por documento, organizando o processo de leitura e guarda das palavras a partir de uma pauta da página com indicadores de seu início e fim, além de um contador de palavras, útil para o cálculo do fator de relevância da palavra em cada documento.
 
+<div id='28'/>
+
 ### 2.8.*typeLinkedList*
 
 Também é um tipo auxiliar, usado com fins organizativos para especializar as funções de montagem e manuseio dos dados guardados nas estruturas de listas que vão compor as entradas da tabela principal de guarda e busca dos dados contidos nos dicionários.
 
+<div id='29'/>
+
 ### 2.9.Fluxo da Aplicação
 
 ![Fluxo da aplicao](imgs/fluxo.png "Fluxo")
+
+<div id='discc'/>
 
 ## 3.Discussões e Resultados
 
@@ -448,9 +505,11 @@ Por outro lado, traçando um comparativo entre os resultados obtidos com as tabe
 
 A tabela do TIPO II, por sua vez, onde o redimensionamento ocorre pela simples superação do fator de carga por qualquer de suas entradas, promove naturalmente um número maior de *rehashings*, trazendo como resultado um menor número de colisões por entrada e, a partir daí, uma melhor performance na média de comparações por busca do que a do TIPO III, porém não otimiza muito bem a memória, pois, em alguns casos dos experimentos, a sua dimensão (tamanho do vetor) chegou a patamares relativamente próximos ao quantitativo total de chaves mapeadas, mas ainda assim com vantagens em relação ao vetor de tamanho fixo e dimensão superior (tabela do TIPO I).
 
+<div id='conclusion'/>
+
 ## 4.Conclusão
 
-## Referências
+## 5. Referências
 
 CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
 
