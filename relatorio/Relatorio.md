@@ -243,7 +243,7 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é, $$ O(n) $$ onde *n* é quantidade de nós da lista encadeada.
+A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é, $$O(n)$$ onde *n* é quantidade de nós da lista encadeada.
 
 Já o custo de esvaziamento de uma tabela é:
 
