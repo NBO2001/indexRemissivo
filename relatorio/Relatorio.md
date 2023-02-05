@@ -222,75 +222,33 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3.Análise Custo do *Rehashing*
 
-Para cada opereção de rehashing é necessário criar uma 
+Para cada opereção de rehashing é necessário criar uma nova tabela, após deve ser feita a remoção dos elementos da tabela atual e inserção na nova tabela, a seguir, pode-se observar o gra̍fico de remoções de NÓs dividido pelo número de redimencionamento realizados.
 
-![noPorRehashig](imgs/Nó por Rehashing.png "No X Rehahing")
+![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
 
-Nessa segunda abordagem, a tabela cresceria dinamicamente conforme as inserções, mas à razão de um fator de carga calculado para representar um valor inteiro menor que o log2 N (log de N na base 2), onde N seria o número de elementos inseridos. Com isso, a ideia era manter o tamanho da tabela em uma dimensão menor que o número de chaves mapeadas para *hash* obviamente, porém mantendo a propriedade de garantir um número médio de colisões, que significariam número de comparações, sempre, ou na maioria dos casos, abaixo do esperado para uma busca binária, que, por sua vez, já é considerada um modelo de busca bem eficiente.
+A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
-Foi, no entanto, aplicado, nesse segundo modelo de montagem das tabelas de dispersão, dois critérios diferentes para o redimensionamento da tabela ou *rehashing*. Em um caso, a reconstrução da tabela aconteceria bastando que uma das entradas da tabela passasse a ter uma lista de elementos (indicativo de colisões) com tamanho que superasse o fator de carga; e no outro caso, para tal redimensionamento, necessitaria também que o índice (C) que avalia o nível de agrupamento da tabela superasse, após uma dada inserção, o valor de 1.0 (um).
+![Custo de esvaziamento de uma lista encadeda](imgs/on.png "Custo de esvaziamento de uma lista encadeda")
 
-Esse mencionado índice que mede o nível de agrupamento é calculado pela fórmula: C = [ ∑ (Xi)2 / N ] - FC, onde Xi indica o número de colisões por entrada ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), demonstra que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing*.
+em que *n* é a quantidade de NÓs da lista.
 
-Dadas essas explicações, podemos resumir as análises e resultados contidos nos quadros abaixo em avaliações de três tipos específicos de tabelas de dispersão:
+Já o custo de esvaziamento de uma tabela é:
 
-* TIPO I - com dimensão fixa e superior ao quantitativo estimado de chaves a serem mapeadas;
-* TIPO II - com tamanho menor que o número de chaves, porém redimensionável a partir da superação do fator de carga;
-* TIPO III - com tamanho menor que o número de chaves, porém redimensionável a partir da avaliação do nível de agrupamento;
+![Custo de esvaziamento de uma tabela](imgs/sumOm.png "Custo de esvaziamento de uma lista tabela")
 
-------------------------
+Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
-### **QUADROS DE ESTATÍSTICA:**
+E por fim o custo de criação de uma tabela é:
 
-----------------------
+![Custo de esvaziamento de criacao](imgs/om.png "Custo de esvaziamento de uma lista criacao")
 
-### **TypeStopWord Dictionary:**
+Em que *m* é o tamanho da tabela.
 
-* **TIPO I** - Dicionário com um tamanho inicial de 400 (quatrocentos).
+Assim, temos que uma operacão de rehasing tem o seguinte custo:
 
+![Custo de rehashing](imgs/omPluSun.png "Custo de rehashing")
 
-* **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
-
-
-
-
-
-
-* **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
-
-
-### **Análise de Espalhamento**
-
-
-* **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
-
-
-* **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
-
-
-
-
-
-* **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
-
-
-
-
-* **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
-
-* **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
-
-
-* **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
-
-
-* **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
-
-
-* **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
-
-
-
+Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 A respeito das citadas modelagens da *hash* avaliadas, os quadros acima demonstram, em primeiro lugar, que o uso de tabelas do TIPO I não é suficiente para garantir um espalhamento adequado das chaves ou elementos do dicionário, pois observa-se que para todos os textos usados nos testes, e também para as *stop words*, a taxa de ocupação da tabela com dimensão superior, apesar do assumido custo de memória, figura sempre na faixa de cerca de 50% (cinquenta por cento), denotando subutilização, e com média de comparações por busca bem próxima de uma tabela do TIPO II, que otimiza o gasto de memória. O único fator de vantagem que pode ser extraído das análises para a tabela do TIPO I, seria a ausência de custo de *rehashing*.
 
