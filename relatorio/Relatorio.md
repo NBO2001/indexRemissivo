@@ -66,6 +66,13 @@
 
  5. [Referências](#ref)
 
+ 6. [Replicação dos Resultados](#repli)
+
+    6.1 [Estrutura de Pastas](#61)
+
+    6.2 [Diretivas de Compilação](#62)
+
+
 *******
 
 <div id='introducao'/>
@@ -364,3 +371,186 @@ Botelho, F. C. (2004). Estudo Comparativo do Uso de Hashing Perfeito Mínimo.
 Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
 
 Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
+
+<div id="repli">
+
+## 6. Replicação dos Resultados
+
+<div id="61">
+
+### 6.1 Estrutura de Pastas
+
+Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data contém as bases de dados, em analytics os dados utilizados neste relatório, em build o arquivo compilado pelo makefile, em outputs os resultados de testes, na pasta relatorio fica o relatorio da atividade, tablePy a versao do trabalho em python (usado apenas para testes) e por fim, a pasta test que fica armazenado todos os teste do projeto.
+
+```
+.
+├── analytics
+│   ├── Aventuras
+│   │   ├── DIC5201.md
+│   │   ├── newData
+│   │   │   └── DIC5201.md
+│   │   └── STOPWORD587.md
+│   ├── Guarani
+│   │   ├── DIC5201.md
+│   │   ├── newData
+│   │   │   └── DIC5201.md
+│   │   └── STOPWORD587.md
+│   └── Paralelismo
+│       ├── DIC5201.md
+│       ├── newData
+│       │   └── DIC5201.md
+│       └── STOPWORD587.md
+├── build
+│   └── indexRemissivo
+├── data
+│   ├── Aventuras.base
+│   ├── Guarani.base
+│   ├── Paral
+│   │   ├── p01
+│   │   ├── p02
+│   │   ├── p03
+│   │   ├── p04
+│   │   ├── p05
+│   │   ├── p06
+│   │   ├── p07
+│   │   ├── p08
+│   │   ├── p09
+│   │   └── p10
+│   ├── Paralelismo.base
+│   ├── README.md
+│   ├── stopwords_br.txt
+│   ├── testeP01
+│   ├── testeP02
+│   ├── testeP03
+│   ├── testePalava.base
+│   ├── V1.base
+│   ├── V2.base
+│   ├── V3.base
+│   └── wdTeste.txt
+├── indecesGerados
+│   ├── aventuras.md
+│   ├── guarani.md
+│   └── paralelismo.md
+├── job.n
+├── libs
+│   ├── analyticalData
+│   │   └── analyticalData.h
+│   ├── quick_sort_generico
+│   │   ├── quick_sort.c
+│   │   └── quick_sort.h
+│   ├── tipoPalavra
+│   │   ├── tipoPalavra.c
+│   │   └── tipoPalavra.h
+│   ├── typeDocument
+│   │   ├── typeDocument.c
+│   │   └── typeDocument.h
+│   ├── typeDynamicDictionary
+│   │   ├── typeDynamicDictionary.c
+│   │   └── typeDynamicDictionary.h
+│   ├── typeIndex
+│   │   ├── typeIndex.c
+│   │   └── typeIndex.h
+│   ├── typeLinkedList
+│   │   ├── linked_list.c
+│   │   └── linked_list.h
+│   ├── typeStaticDictionary
+│   │   ├── typeStaticDictionary.c
+│   │   └── typeStaticDictionary.h
+│   ├── typeStopWords
+│   │   ├── typeStopWords.c
+│   │   └── typeStopWords.h
+│   ├── typeTableHash
+│   │   ├── typeTableHash.c
+│   │   └── typeTableHash.h
+│   └── utils
+│       ├── utils.c
+│       └── utils.h
+├── main.c
+├── Makefile
+├── output
+│   ├── Aventuras.out
+│   ├── AventurasResul.out
+│   ├── Gari.out
+│   ├── IndexGara.out
+│   ├── Index.out
+│   ├── indexTeste.out
+│   ├── resul.out
+│   ├── testeP02.out
+│   ├── V1.out
+│   └── V2.out
+├── README.md
+├── relatorio
+│   ├── imgs
+│   │   ├── Aventuras.png
+│   │   ├── diagrama.png
+│   │   ├── equacao1.png
+│   │   ├── fatordecarga.png
+│   │   ├── fator.png
+│   │   ├── Fluxograma.png
+│   │   ├── Guarani.png
+│   │   ├── No_por_Rehashing.png
+│   │   ├── omPluSun.png
+│   │   ├── om.png
+│   │   ├── on.png
+│   │   ├── Paralelismo.png
+│   │   ├── RehashingvsComparaçõesGuarani.png
+│   │   ├── RehashingvsComparaçõesParalelismo.png
+│   │   ├── RehashingvsMediaComparaçãoAventuras.png
+│   │   └── sumOm.png
+│   └── Relatorio.md
+├── tablePy
+│   ├── app2.ipynb
+│   ├── Aventuras.csv
+│   ├── Guarani.csv
+│   └── Paralelismo.csv
+├── test
+│   ├── dicDynamicTeste_test
+│   │   └── test.c
+│   ├── hashTabele_test
+│   │   └── test.c
+│   ├── linkedlist_test
+│   │   └── test.c
+│   ├── linkedlist_with_numbs_test
+│   │   └── test.c
+│   ├── mappingPages_test
+│   │   └── test.c
+│   ├── onlytipoPalavra_test
+│   │   └── test.c
+│   ├── stopWordType_test
+│   │   └── test.c
+│   ├── testDe
+│   │   └── usade.c
+│   ├── tipoPalavraAndDoc_test
+│   │   └── test.c
+│   ├── tipoPalavra_test
+│   │   └── test.c
+│   ├── typeIdex_test
+│   │   └── test.c
+│   └── typeTuple_test
+│       ├── 1.in
+│       ├── 1.sol
+│       └── test.c
+├── testeParaPesquisa.c
+└── tr
+
+```
+
+<div id="62">
+
+### 6.2 Diretivas de Compilação
+
+Para processar todos os livros ao mesmo tempo use:
+
+```
+gcc libs/*/*.c testeParaPesquisa.c -lm -o job.n && ./job.n
+```
+
+E para testar um por vez use:
+
+```
+
+gcc libs/*/*.c main.c -lm -o job.n && ./job.n data/stopwords_br.txt data/Aventuras.base
+
+```
+
+Em que é necessário alterar o nome do livro.
