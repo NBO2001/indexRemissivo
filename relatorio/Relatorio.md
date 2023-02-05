@@ -24,6 +24,8 @@
 
     2.1.4. [Rehashing](#214)
 
+    2.1.5. [Funccão *hash*](#215)
+
     2.2. [TypeStaticDictionary](#22)
 
     2.3. [typeStopWords](#23)
@@ -41,7 +43,28 @@
     2.9. [Fluxo da Aplicação](#29)
 
  3. [Discussões e Resultados](#conclusion)
+
+    3.1 [Montagem](#31)
+
+    3.2 [Análise Média de Comparações X *Rehashing*](#32)
+
+    3.2.1 [Rehashing X Comparação (Aventuras)](#321)
+
+    3.2.2 [Rehashing X Comparação (Guarani)](#322)
+
+    3.2.3 [Rehashing X Comparação (Paralelismo)](#323)
+
+    3.2.4 [Análise dos gráficos](#324)
+
+    3.3 [Análise Custo do *Rehashing*](#33)
+
+    3.4 [Análise Fator de carga](#34)
+
+    3.5 [Análise da Ocupação dos Dicionários](#35)
+
  4. [Conclusão](#projimpl2)
+
+ 5. [Referências](#ref)
 
 *******
 
@@ -120,7 +143,7 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
 <div id='214'/>
 
-#### 2.1.4 *Rehashing*
+#### 2.1.4.*Rehashing*
 
 A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
 <span align="center">
@@ -129,6 +152,12 @@ A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
 </span>
 
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
+
+<div id='215'/>
+
+#### 2.1.5.Função *hash*
+
+Falar da mumurhash
 
 <div id='22'/>
 
@@ -183,6 +212,10 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 ## 3. Discussões e Resultados
 
+<div id="31" />
+
+### 3.1.Montagem
+
 Após a implementação do Índice Remissivo, conforme o modelo acima descrito, foi utilizada uma base de dados de teste fornecida pelo professor Cesar Melo, contendo os textos completos, em formato digital, de três obras literárias:
 
 * As Aventuras de Huckleberry Finn (1);
@@ -210,10 +243,11 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id="32" />
 
-### 3.2 Análise Média de Comparações X *Rehashing*
+### 3.2.Análise Média de Comparações X *Rehashing*
 
+<div id='321'/>
 
-#### 3.2.1 Rehashing X Comparação (Aventuras)
+#### 3.2.1.Rehashing X Comparação (Aventuras)
 
 <span align="center">
 
@@ -221,7 +255,9 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 </span>
 
-#### 3.2.2 Rehashing X Comparação (Guarani)
+<div id='322'/>
+
+#### 3.2.2.Rehashing X Comparação (Guarani)
 
 <span align="center">
 
@@ -229,7 +265,9 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 </span>
 
-#### 3.2.3 Rehashing X Comparação (Paralelismo)
+<div id='323'/>
+
+#### 3.2.3.Rehashing X Comparação (Paralelismo)
 
 <span align="center">
 
@@ -237,11 +275,15 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 </span>
 
-#### 3.2.4 Análise dos gráficos
+<div id='324'/>
+
+#### 3.2.4.Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
-### 3.3 Análise Custo do *Rehashing*
+<div id='33'/>
+
+### 3.3.Análise Custo do *Rehashing*
 
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é,
 $$
@@ -277,6 +319,8 @@ Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
+<div id='34'/>
+
 ### 3.4.Análise Fator de carga
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
@@ -299,6 +343,12 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 | Cenario 4 | 100.00% | 100.00% | 100.00%|
 | Cenario 5 | 99.88% | 99.81% | 99.90% |
 
+<div id='35'/>
+
+### 3.5.Análise da Ocupação dos Dicionários
+
+Escrever tambelinha
+
 <div id='conclusion'/>
 
 ## 4. Conclusão
@@ -306,6 +356,8 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
 
 Por fim, após estudar os tres livros, poderiamos iniciar o dicionário os seguintes parametros; tamanho do dicionário com 8335, fator de carga de 5 e fixando o fator de carga, para esse conjunto teriamos a inicialização ideal e com o menor custo possível.
+
+<div id='ref'/>
 
 ## 5. Referências
 
