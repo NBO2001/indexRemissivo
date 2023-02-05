@@ -244,14 +244,6 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-<<<<<<< HEAD
-<div align="center">
-=======
-O gráfico a seguir mostra uma média entre os nós removidos e a quantidades de rehashing realizadas.
-
-![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
->>>>>>> 77cd8abf081955723f4d43d122d12550e4c362a8
-
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
 
