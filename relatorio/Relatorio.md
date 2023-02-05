@@ -7,7 +7,7 @@
 * Marcello Cipriano
 * Natanael Oliveira
 
-## Sumario
+## Sumário
 
 *******
 
@@ -40,14 +40,14 @@
 
     2.9. [Fluxo da Aplicação](#29)
 
- 3. [Discussões e Resultados](#discc)
- 4. [Conclusão](#conclusion)
+ 3. [Discussões e Resultados](#conclusion)
+ 4. [Conclusão](#projimpl2)
 
 *******
 
 <div id='introducao'/>
 
-## 1.Introdução
+## 1. Introdução
 
 Um Índice Remissivo é uma lista de termos ou expressões presentes em uma obra escrita juntamente com suas respectivas páginas de referência. É uma ferramenta útil para ajudar o leitor a encontrar informações específicas dentro de um documento grande. O índice remissivo será mais eficiente quando conseguir direcionar o leitor para as ocorrências mais significativas de uma palavra no texto.
 
@@ -61,7 +61,7 @@ Este trabalho tem como objetivo criar um programa que gerará um índice remissi
 
 <div id='projimpl'/>  
 
-## 2.Projeto da implementação (Métodos)
+## 2. Projeto da implementação (Métodos)
 
 Uma das primeiras e mais importantes tarefas relacionadas com a ideia de construção de um índice remissivo de uma obra literária utilizando uma ferramenta computacional é, sobretudo, a escolha ou identificação dos tipos de estruturas de dados que permitiriam a manipulação mais eficiente dos dados relacionados com tal aplicação.
 
@@ -83,7 +83,7 @@ Para tanto, e como modelo de organização do projeto, foram desenvolvidos algun
 
 <div id='projimpl2'/>  
 
-### 2.1.*typeTableHash*
+### 2.1. *typeTableHash*
 
 <div id='211'/>
 
@@ -124,52 +124,51 @@ Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho a
 
 <div id='22'/>
 
-### 2.2.*typeStaticDictionary*
+### 2.2 *typeStaticDictionary*
 
 Tipo Abstrato básico, de camada intermediária, que modela genericamente a implementação de uma estrutura de Dicionário com característica mais estática, contendo somente funções que permitem o carregamento (inserção dos elementos) e a consulta, portanto sem previsão para remoções. No contexto do presente trabalho, é o plano de fundo do *typeStopWords* e suas respectivas funções de manipulação de dados.
 
 <div id='23'/>
 
-### 2.3.*typeStopWords*
+### 2.3. *typeStopWords*
 
 Tipo responsável pela criação do coadjuvante dicionário de *stop words*, com a implementação de uma função de pesquisa dessa espécie de dicionário de caráter mais estático, a fim de facilitar a identificação das palavras que não precisam ser consideradas na confecção do índice remissivo.
 
 <div id='24'/>
 
-### 2.4.*typeDynamicDictionary*
+### 2.4. *typeDynamicDictionary*
 
 Também é um tipo básico de camada intermediária que implementa genericamente uma estrutura de Dicionário, porém com atributos e funções de um grau maior de flexibilidade quanto à manipulação dos dados, pois admite operações, não só de inserção e consulta, mas também de remoção eventual. Será útil para caracterizar a modelagem do Índice Remissivo propriamente dito.
 
 <div id='25'/>
 
-### 2.5.*typeIndex*
+### 2.5. *typeIndex*
 
 Contém o TAD de mais alto nível da aplicação, ao qual se vinculam todos os demais tipos abstratos intermediários, bem como um cojunto de funções auxiliares de manipulação de strings e outras utilidades, para tornar operável o sistema de montagem (processo de leitura e guarda de dados) e consulta do Índice Remissivo reclamado no projeto. Nele também estão previstos os processos de confecção dos arquivos contendo as avaliações de seu desempenho.
 
 <div id='26'/>
 
-### 2.6.*tipoPalavra*
+### 2.6. *tipoPalavra*
 
 Tipo Abstrato de importância central contendo a previsão da estrutura de guarda dos dados principais (palavras e seus atributos) que serão manipulados pelos dicionários e usados na modelagem do índice remissivo, bem como no processamento das avaliações estatísticas e comparativas. Contém também as funções de organização e ordenação das palavras conforme a relevância de suas ocorrências nas páginas.
 
 <div id='27'/>
 
-### 2.7.*typeDocument*
+### 2.7. *typeDocument*
 
 Documento, na esteira do presente trabalho, é cada página das obras literárias.
 O TAD em referência tem caráter auxiliar do tipoPalavra, pois objetiva primordialmente apoiar a manipulação dos dados com uma administração estratificada por documento, organizando o processo de leitura e guarda das palavras a partir de uma pauta da página com indicadores de seu início e fim, além de um contador de palavras, útil para o cálculo do fator de relevância da palavra em cada documento.
 
 <div id='28'/>
 
-### 2.8.*typeLinkedList*
+### 2.8. *typeLinkedList*
 
 Também é um tipo auxiliar, usado com fins organizativos para especializar as funções de montagem e manuseio dos dados guardados nas estruturas de listas que vão compor as entradas da tabela principal de guarda e busca dos dados contidos nos dicionários.
 
 <div id='29'/>
 
 ### 2.9.Fluxo da Aplicação
-
-![Fluxo da aplicao](imgs/fluxo.png "Fluxo")
+![Fluxo da aplicao](imgs/fluxograma.png "Fluxo")
 
 <div id='discc'/>
 
@@ -189,42 +188,15 @@ Foram feitas cinto tipos de análise de performance do dicionário e do uso da t
 
 Foi, portanto, estudada a performance dos dicionários, usando os seguintes cenarios;
 
-- Cenário 1: Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
+- Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
 
-- Cenário 2: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
 
-- Cenário 3: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
 
-- Cenário 4: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
 
-- Cenário 5: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
-
-<div id="32" />
-
-### 3.2.Análise Média de Comparações X *Rehashing*
-
-
-#### 3.2.1.Rehashing X Comparação (Aventuras)
-
-![rehashingAventuras](imgs/RehashingvsMediaComparaçãoAventuras.png "Aventuras ComparacoesXRehashing")
-
-#### 3.2.2.Rehashing X Comparação (Guarani)
-
-![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
-
-#### 3.2.3.Rehashing X Comparação (Paralelismo)
-
-![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
-
-#### 3.2.4.Análise dos gráficos
-
-A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
-
-### 3.3.Análise Custo do *Rehashing*
-
-Para cada opereção de rehashing é necessário criar uma 
-
-![noPorRehashig](imgs/Nó por Rehashing.png "No X Rehahing")
+- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
 
 Nessa segunda abordagem, a tabela cresceria dinamicamente conforme as inserções, mas à razão de um fator de carga calculado para representar um valor inteiro menor que o log2 N (log de N na base 2), onde N seria o número de elementos inseridos. Com isso, a ideia era manter o tamanho da tabela em uma dimensão menor que o número de chaves mapeadas para *hash* obviamente, porém mantendo a propriedade de garantir um número médio de colisões, que significariam número de comparações, sempre, ou na maioria dos casos, abaixo do esperado para uma busca binária, que, por sua vez, já é considerada um modelo de busca bem eficiente.
 
