@@ -126,9 +126,9 @@ void calculatorPontuations(typeIndex * index, tipoPalavra * palavra, int tam){
 }
 
 typeElementIndex* consultWord(typeIndex * index, char * key){
-
+   
     cleaningWord((unsigned char*)key);
-
+    
     tipoPalavra* word = searchDynamicDictionary(index->words,key,strlen(key));
    
    
@@ -236,6 +236,26 @@ void createMarkDownIndex(typeIndex * index, char * fileName, char * title){
     analyticalData data = getAnalicalDataDynanDic(index->words);    
     fileAnalyticalData(.data=data,.title=TITLE,.outputName="DIC5201.md",.createNewFile=0);
     
+
+
+}
+
+void seeSearch(typeIndex * index, char * key){
+  
+    typeElementIndex * elem = consultWord(index,key);
+    
+    if(!elem){
+        printf("N achado\n");
+        return;
+    }
+
+    printf("%s",elem->word);
+    _addPoint(50 - strlen(elem->word));
+
+    int i;
+
+    for(i=0; i < elem->lenPages-1; i++) printf("%d, ", elem->pages[i].page+1);
+    printf("%d\n\n", elem->pages[i].page+1);
 
 
 }

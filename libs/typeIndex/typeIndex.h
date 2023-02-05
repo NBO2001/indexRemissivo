@@ -32,5 +32,6 @@ void showIndex(typeIndex * index);
 
 void createMarkDownIndex(typeIndex * index, char * fileName, char * title);
 
+void seeSearch(typeIndex * index, char * key);
 
 #endif
