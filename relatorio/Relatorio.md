@@ -349,7 +349,7 @@ A tabela a seguir mostra o ocupação do dicionário em cada cenário, pode-
 Após análise dos resultados, é possível perceber as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
 Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário. Nota-se também que ao váriar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdicio de memória.
 
-Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível. 
+Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
 ## 5. Referências
 
