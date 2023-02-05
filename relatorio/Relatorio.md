@@ -40,8 +40,8 @@
 
     2.9. [Fluxo da Aplicação](#29)
 
- 3. [Discussões e Resultados](#conclusion)
- 4. [Conclusão](#projimpl2)
+ 3. [Discussões e Resultados](#discc)
+ 4. [Conclusão](#conclusion)
 
 *******
 
@@ -189,15 +189,32 @@ Foram feitas cinto tipos de análise de performance do dicionário e do uso da t
 
 Foi, portanto, estudada a performance dos dicionários, usando os seguintes cenarios;
 
-- Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
+- Cenário 1: Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
+- Cenário 2: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
+- Cenário 3: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
+- Cenário 4: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 5.
 
-- Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
+- Cenário 5: *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão e levando em consideracao a maior lista encadeada. E com o tamanho inicial 2 e fator de carga fixo em 4.
+
+<div id="32" />
+
+### 3.2.Análise Média de Comparações X *Rehashing*
+
+
+#### 3.2.1.Rehashing X Comparação (Aventuras)
+
+![rehashingAventuras](imgs/RehashingvsMediaComparaçãoAventuras.png "Aventuras ComparacoesXRehashing")
+
+#### 3.2.2.Rehashing X Comparação (Guarani)
+
+![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
+
+#### 3.2.3.Rehashing X Comparação (Paralelismo)
+
+![rehashingParalelismo](imgs/RehashingeMediaComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
 
 Nessa segunda abordagem, a tabela cresceria dinamicamente conforme as inserções, mas à razão de um fator de carga calculado para representar um valor inteiro menor que o log2 N (log de N na base 2), onde N seria o número de elementos inseridos. Com isso, a ideia era manter o tamanho da tabela em uma dimensão menor que o número de chaves mapeadas para *hash* obviamente, porém mantendo a propriedade de garantir um número médio de colisões, que significariam número de comparações, sempre, ou na maioria dos casos, abaixo do esperado para uma busca binária, que, por sua vez, já é considerada um modelo de busca bem eficiente.
 
