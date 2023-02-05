@@ -243,14 +243,16 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é, $$ O(n) $$ onde *n* é quantidade de nós da lista encadeada.
+A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é: $$ O(n) $$ onde *n* é quantidade de nós da lista encadeada.
 
 Já o custo de esvaziamento de uma tabela é:
+
 $$O(\sum_{i=0}^{m} O (n_i))$$
 
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
+
 $$ O(m)$$
 
 
@@ -263,9 +265,9 @@ $$ O(m_1+\{m_0* [\sum_{i=0}^{m} O (n_i)] \})$$
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
-Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
+Nota-se que a operação de rehashing é bem custosa, e dependendo dos valores das variavéis pode ser inviável realizá-lo.
 
-### 3.4.Análise Fator de carga
+### 3.4 Análise Fator de carga
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
 
@@ -295,9 +297,11 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 ## 4. Conclusão
 
-Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
+Após análise dos resultados, é possível perceber as vantagens que a utilização dos dicionários proporcionam na implementação de um Índice Remissivo. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas. 
+Na implementação deste trabalho, observa-se 
+que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário.
 
-Por fim, após estudar os tres livros, poderiamos iniciar o dicionário.
+Por fim, após estudar os três livros, poderiamos iniciar o dicionário.
 
 ## 5. Referências
 
