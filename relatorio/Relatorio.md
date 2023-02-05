@@ -309,6 +309,8 @@ Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
+<div id='34'/>
+
 ### 3.4 Análise Fator de carga
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
@@ -352,7 +354,7 @@ A tabela a seguir mostra o ocupação
 Após análise dos resultados, é possível perceber as vantagens que a utilização dos dicionários proporcionam na implementação de um Índice Remissivo. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas. 
 Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário.
 
-Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível. 
+Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
 ## 5. Referências
 
