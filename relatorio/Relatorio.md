@@ -304,6 +304,10 @@ A tabela do TIPO II, por sua vez, onde o redimensionamento ocorre pela simples s
 
 ## 4. Conclusão
 
+Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
+
+Por fim, após estudar os tres livros, poderiamos iniciar o dicionário.
+
 ## 5. Referências
 
 CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
