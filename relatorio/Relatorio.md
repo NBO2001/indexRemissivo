@@ -186,9 +186,9 @@ Um dos principais objetivos do trabalho era permitir que fosse feita uma avalia�
 
 Foram feitas cinto tipos de análise de performance do dicionário e do uso da técnica de espalhamento próprias de tabela *hash* para cada uma das cinco obras e para o índice de *stop words*. Cada uma dessas cinco análises, envolvia a customização da técnica de dispersão usada na modelagem da tabela *hash* aplicada, para permitir a comparação entre os modelos a fim de identificar qual o que demonstraria maior aplicabilidade a certa atividade dependendo de suas características.
 
-Foi, portanto, estudada a performance dos dicionários, usando os seguintes cenarios;
+Portanto, as performances dos dicionários foram analisadas utilizando os seguintes cenários;
 
-- Tabela *hash* sem execultar *re-hashing* e com o tamanho 2.
+- Tabela *hash* sem executar *rehashing* e com o tamanho 2.
 
 - Tabela *hash* usando para execultar *re-hashing* a metrica de avalicacao de dispersão. E com o tamanho inicial 2.
 
