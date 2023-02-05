@@ -125,7 +125,8 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
 A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equancao:
 <div align="center">
-![fatordecarga](imgs/fatordecarga.png "fatordecarga")
+
+![fatordecarga](imgs/fator.png "fatordecarga")
 </div>
 Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho atual da tabela.
 
@@ -212,47 +213,60 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 
 #### 3.2.1 Rehashing X Comparação (Aventuras)
+<div align="center">
 
 ![rehashingAventuras](imgs/RehashingvsMediaComparaçãoAventuras.png "Aventuras ComparacoesXRehashing")
-
+</div>
 #### 3.2.2 Rehashing X Comparação (Guarani)
 
-![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
+<div align="center">
 
+![rehashingGuarani](imgs/RehashingvsComparaçõesGuarani.png "Gurani ComparacoesXRehashing")
+</div>
 #### 3.2.3 Rehashing X Comparação (Paralelismo)
 
-![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
+<div align="center">
 
+![rehashingParalelismo](imgs/RehashingvsComparaçõesParalelismo.png "Paralelismo ComparacoesXRehashing")
+</div>
 #### 3.2.4 Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
 ### 3.3 Análise Custo do *Rehashing*
 
-![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
+<div align="center">
 
+![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
+</div>
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
 
-![Custo de esvaziamento de uma lista encadeda](imgs/on.png "Custo de esvaziamento de uma lista encadeda")
 
+<div align="center">
+
+![Custo de esvaziamento de uma lista encadeda](imgs/on.png "Custo de esvaziamento de uma lista encadeda")
+</div>
 em que *n* é a quantidade de NÓs da lista.
 
 Já o custo de esvaziamento de uma tabela é:
+<div align="center">
 
 ![Custo de esvaziamento de uma tabela](imgs/sumOm.png "Custo de esvaziamento de uma lista tabela")
-
+</div>
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
+<div align="center">
 
 ![Custo de esvaziamento de criacao](imgs/om.png "Custo de esvaziamento de uma lista criacao")
-
+</div>
 Em que *m* é o tamanho da tabela.
 
 Assim, temos que uma operacão de rehasing tem o seguinte custo:
+<div align="center">
 
 ![Custo de rehashing](imgs/omPluSun.png "Custo de rehashing")
-
+</div>
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
 A respeito das citadas modelagens da *hash* avaliadas, os quadros acima demonstram, em primeiro lugar, que o uso de tabelas do TIPO I não é suficiente para garantir um espalhamento adequado das chaves ou elementos do dicionário, pois observa-se que para todos os textos usados nos testes, e também para as *stop words*, a taxa de ocupação da tabela com dimensão superior, apesar do assumido custo de memória, figura sempre na faixa de cerca de 50% (cinquenta por cento), denotando subutilização, e com média de comparações por busca bem próxima de uma tabela do TIPO II, que otimiza o gasto de memória. O único fator de vantagem que pode ser extraído das análises para a tabela do TIPO I, seria a ausência de custo de *rehashing*.
