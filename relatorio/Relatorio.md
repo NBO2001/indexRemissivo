@@ -151,277 +151,49 @@ Dadas essas explicações, podemos resumir as análises e resultados contidos no
 
 * **TIPO I** - Dicionário com um tamanho inicial de 400 (quatrocentos).
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 392    | 400    | 255 | 63.75% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 1    | 5 | 100 | 0 | 1.537255 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 0    | 0 | -nan |
-| 84469    | 132165 | 1.56 |
-|
 
 * **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
 
-### **Análise do Vetor**
 
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 392    | 293    | 219 | 74.74% |
-|
 
-### **Análise de Espalhamento**
 
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 6    | 6 | 0 | 12 | 1.789954 |
-|
 
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 0    | 0 | -nan |
-| 84469    | 159923 | 1.89 |
-|
--------
-
-### **OBRA No 1 - "As Aventuras de Huckleberry Finn" :**
 
 * **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 11558    | 14000    | 7841 | 56.01% |
-|
 
 ### **Análise de Espalhamento**
 
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 13    | 7 | 0 | 0 | 1.474047 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 39173    | 46648 | 1.19 |
-| 50731    | 109716 | 2.16 |
-|
 
 * **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------:|
-| 11556    | 9907    | 6876 | 69.41% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 11    | 8 | 0 | 5 | 1.680628 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 39147    | 32313 | 0.83 |
-| 50703    | 82854 | 1.63 |
-|
 
 * **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
 
-### **Análise do Vetor**
 
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupacao do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 11558    | 6421    | 5388 | 83.91% |
-|
 
-### **Análise de Espalhamento**
 
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 11    | 9 | 0 | 18 | 2.145137 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 39173    | 54439 | 1.39 |
-| 50731    | 130653 | 2.58 |
-|
---------
-
-### **OBRA No 2 - "O Guarani" :**
 
 * **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
 
-### **Análise do Vetor**
 
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 11769    | 14000    | 7900 | 56.43% |
-|
 
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 13    | 6 | 0 | 0 | 1.489747 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 51717    | 63166 | 1.22 |
-| 63486    | 143172 | 2.26 |
-|
 
 * **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupacao do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 11770    | 7079    | 5709 | 80.65% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 11    | 8 | 0 | 13 | 2.061657 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 51717    | 71895 | 1.39 |
-| 63487    | 165550 | 2.61 |
-|
-
 * **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------:|
-| 11773    | 2591    | 2561 | 98.84% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 9    | 15 | 53 | 5 | 4.597032 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 51682    | 161752 | 3.13 |
-| 63455    | 362239 | 5.71 |
-|
---------
-
-### **OBRA No 3 - "Paralelismo em visão natural e artificial" :**
 
 * **TIPO I** - Dicionário com um tamanho inicial de 14.000 (quatorze mil).
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 8466    | 14000    | 6363 | 45.45% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 13    | 5 | 0 | 0 | 1.330504 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 57145    | 67838 | 1.19 |
-| 65611    | 146727 | 2.24 |
-|
 
 * **TIPO II** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do tamanho de uma entrada (lista) maior que o fator de carga.
 
-### **Análise do Vetor**
-
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupacao do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------: |
-| 8465    | 4643    | 3921 | 84.45% |
-|
-
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 10    | 9 | 0 | 14 | 2.158888 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 57145    | 80888 | 1.42 |
-| 65610    | 177811 | 2.71 |
-|
 
 * **TIPO III** - Dicionário com um tamanho inicial de 2 (dois) e critério de avaliação do *rehashing* usando a métrica que avalia a qualidade da tabela *hash* construída, a partir do nível de agrupamento de chaves nas entradas.
 
-### **Análise do Vetor**
 
-| Total de Elementos | Tamanho Vetor Final      | Total de Posições Ocupadas | Ocupação do Vetor (%) |
-| :-----------: | :-----------: | :-----------: | :-----------:|
-| 8460    | 2333    | 2270 | 97.30% |
-|
 
-### **Análise de Espalhamento**
-
-| Fator de Carga | Maior Lista Encadeada | Listas > Fator Carga | Re-hashing Realizados | Media de Nó por Lista |
-| :-----------: | :-----------: | :-----------: | :-----------: | :-----------: |
-| 9    | 10 | 6 | 5 | 3.726872 |
-|
-
-### **Buscas e Comparações**
-
-| Total de Buscas      | Total de Comparações | Média comparações/busca |
-| :-----------: | :-----------: | :-----------: |
-| 57142    | 143680 | 2.51 |
-| 65602    | 311227 | 4.74 |
-|
---------
 
 A respeito das citadas modelagens da *hash* avaliadas, os quadros acima demonstram, em primeiro lugar, que o uso de tabelas do TIPO I não é suficiente para garantir um espalhamento adequado das chaves ou elementos do dicionário, pois observa-se que para todos os textos usados nos testes, e também para as *stop words*, a taxa de ocupação da tabela com dimensão superior, apesar do assumido custo de memória, figura sempre na faixa de cerca de 50% (cinquenta por cento), denotando subutilização, e com média de comparações por busca bem próxima de uma tabela do TIPO II, que otimiza o gasto de memória. O único fator de vantagem que pode ser extraído das análises para a tabela do TIPO I, seria a ausência de custo de *rehashing*.
 
