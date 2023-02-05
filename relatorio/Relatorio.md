@@ -243,24 +243,34 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3 Análise Custo do *Rehashing*
 
-A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é, $$O(n)$$ onde *n* é quantidade de nós da lista encadeada.
+A operação de remoção de um elemento da lista é O(1), isto é, não há relevância no custo, entretanto, o custo para se esvaziar uma lista encadeada é,
+$$
+O(n)
+$$
+ onde *n* é quantidade de nós da lista encadeada.
 
 Já o custo de esvaziamento de uma tabela é:
 
-$$O(\sum_{i=0}^{m} O (n_i))$$
+$$
+O(\sum_{i=0}^{m} O (n_i))
+$$
 
 Em que *m* é o tamanho da tabela, *ni* é o tamanho da lista na posiçao *i*.
 
 E por fim o custo de criação de uma tabela é:
 
-$$ O(m)$$
+$$
+O(m)
+$$
 
 
 Em que *m* é o tamanho da tabela.
 
 Assim, temos que uma operacão de rehasing tem o seguinte custo:
 
-$$ O(m_1+\{m_0* [\sum_{i=0}^{m} O (n_i)] \})$$
+$$
+O(m_1+\{m_0* [\sum_{i=0}^{m} O (n_i)] \})
+$$
 
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
@@ -271,17 +281,13 @@ Nota-se que a operação de rehashing é bem custosa, que dependendo dos valo
 
 A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
 
-
-
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
 | Cenario 1 | 100.00% | 100.00% | 100.00% |
 | Cenario 2 | 0.00% | 0.00% | 0.34% |
 | Cenario 3 | 0.00% | 0.00% | 0.00% |
 | Cenario 4 | 0.00% | 0.00% | 0.00% |
-| Cenario 5 | 0.12% | 0.19% | 0.10% | 
-
-
+| Cenario 5 | 0.12% | 0.19% | 0.10% |
 
 Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario teve um baixissimo número de listas acima do fator de carga. Isso fica mais claro quando análisamos a tabela de listas abaixo do fator de carga.
 
