@@ -168,6 +168,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 <div id='29'/>
 
 ### 2.9.Fluxo da Aplicação
+
 ![Fluxo da aplicao](imgs/Fluxograma.png "Fluxo")
 
 <div id='discc'/>
@@ -221,6 +222,8 @@ A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing
 
 ### 3.3.Análise Custo do *Rehashing*
 
+O gráfico a seguir mostra uma média entre os nós removidos e a quantidades de rehashing realizadas.
+
 ![noPorRehashig](imgs/No_por_Rehashing.png "No X Rehahing")
 
 A operação de remoção de um elemento da lista é O(1), isto é, não há relevancia no custo, entretanto, o custo para se esvaziar uma lista encadeada é:
@@ -247,9 +250,29 @@ Assim, temos que uma operacão de rehasing tem o seguinte custo:
 
 Em que m1 é o tamanho da nova tabela e m0 o tamanho da tabela atual.
 
-A respeito das citadas modelagens da *hash* avaliadas, os quadros acima demonstram, em primeiro lugar, que o uso de tabelas do TIPO I não é suficiente para garantir um espalhamento adequado das chaves ou elementos do dicionário, pois observa-se que para todos os textos usados nos testes, e também para as *stop words*, a taxa de ocupação da tabela com dimensão superior, apesar do assumido custo de memória, figura sempre na faixa de cerca de 50% (cinquenta por cento), denotando subutilização, e com média de comparações por busca bem próxima de uma tabela do TIPO II, que otimiza o gasto de memória. O único fator de vantagem que pode ser extraído das análises para a tabela do TIPO I, seria a ausência de custo de *rehashing*.
+Nota-se que a operação de rehashing é bem custosa, que dependendo dos valores das variavéis pode inviável.
 
-É possível, no entanto, admitir que estas implementações podem se adequar melhor a aplicações que, pela natureza dos dados manipulados, não exijam muito espaço de memória, sendo necessário, porém, a utilização de uma função de *hashing* e técnica de tratamento de colisões, que, em conjunto, ofereçam uma melhor performance de espalhamento.
+### 3.4.Análise Fator de carga
+
+A tabela a seguir mostra a porcentagem (%) de quantas lista ultrapassaram o fator de carga para cada cenário.
+
+|   | Aventura      | Gurani | Paralelismo |
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| Cenario 1 | 100.00% | 100.00% | 100.00% |
+| Cenario 2 | 0.00% | 0.00% | 0.34% |
+| Cenario 3 | 0.00% | 0.00% | 0.00% |
+| Cenario 4 | 0.00% | 0.00% | 0.00% |
+| Cenario 5 | 0.12% | 0.19% | 0.10% |
+
+Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario teve um baixissimo número de listas acima do fator de carga. Isso fica mais claro quando análisamos a tabela de listas abaixo do fator de carga.
+
+|   | Aventura      | Gurani | Paralelismo |
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| Cenario 1 | 0.00% | 0.00% | 0.00% |
+| Cenario 2 | 100.00% |100.00% | 99.66% |
+| Cenario 3 | 100.00% | 100.00% | 100.00%|
+| Cenario 4 | 100.00% | 100.00% | 100.00%|
+| Cenario 5 | 99.88% | 99.81% | 99.90% |
 
 No tocante às análises feitas com as tabelas do TIPO II e III, que comumente operam com dimensão menor do que o número de chaves mapeadas, nota-se que ambas conseguiram desenvolver um nível de espalhamento das chaves bem siginificativo, com taxas de ocupação do vetor em patamares médios acima de 80% (oitenta por cento) para as do TIPO II, e acima de 90% (noventa por cento) para as do TIPO III, mesmo com uma dimensão inferior a 50% (cinquenta por cento) em relação à quantidade de elementos. Em alguns casos, conseguindo tal performance de dispersão, mesmo com uma dimensão próxima ao impressionante patamar de cerca de apenas 30% (trinta por cento) do número de chaves mapeadas, para casos das tabelas do TIPO III. Tal dado, pode ser explicado certamente pelo grau de eficiência da função de *hashing* usada.
 
