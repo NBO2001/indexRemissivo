@@ -318,7 +318,7 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 Após análisar os resultados é inegavél a vantagem da utilização do dicionários para a implementação do index remisso. Entretato, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de rehasing e fator de carga, pois as opereções de rehashing são muito custosas. Em nossa implementação podemos observar que tivemos um ótimo desempenho em todos os cenários, muito devido a função hash utilizada, que gerou poquissimos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing* contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionario.
 
-Por fim, após estudar os tres livros, poderiamos iniciar o dicionário.
+Por fim, após estudar os tres livros, poderiamos iniciar o dicionário os seguintes parametros; tamanho do dicionário com 8335, fator de carga de 5 e fixando o fator de carga, para esse conjunto teriamos a inicialização ideal e com o menor custo possível.
 
 ## 5. Referências
 
