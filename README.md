@@ -16,7 +16,7 @@
 
     2.1. [*typeTableHash*](#projimpl2)
 
-    2.1.1. [Defificao](#211)
+    2.1.1. [Definição](#211)
 
     2.1.2. [Fator de carga](#212)
 
@@ -24,7 +24,7 @@
 
     2.1.4. [Rehashing](#214)
 
-    2.1.5. [Funccão *hash*](#215)
+    2.1.5. [Função *hash*](#215)
 
     2.2. [TypeStaticDictionary](#22)
 
@@ -60,17 +60,19 @@
 
     3.4 [Análise Fator de carga](#34)
 
-    3.5 [Análise da Ocupação dos Dicionários](#35)
+    3.5 [Análise da Ocupação dos Dicionários Estáticos](#35)
 
- 4. [Conclusão](#projimpl2)
+    3.6 [Análise da Ocupação dos Dicionários](#36)
 
- 5. [Referências](#ref)
+ 4. [Conclusão](#conclusion)
 
- 6. [Replicação dos Resultados](#repli)
+ 5. [Replicação dos Resultados](#repli)
 
-    6.1 [Estrutura de Pastas](#61)
+    5.1 [Estrutura de Pastas](#61)
 
-    6.2 [Diretivas de Compilação](#62)
+    5.2 [Diretivas de Compilação](#62)
+
+6. [Referências](#ref)
 
 
 *******
@@ -133,7 +135,7 @@ Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *
 
 Na implementação do trabalho, foram considerados duas métricas: métrica de dispersão da tabela e métrica de maior lista encadeada no conjunto
 
-* Métrica de dispersão na tabela:
+* **Métrica de dispersão na tabela:**
     Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
 
     $$ 
@@ -142,14 +144,14 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
     Na fórmula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
-* Maior lista encadeada:
+* **Maior lista encadeada:**
     Esta avaliação monitora o tamanho da maior lista encadeada. Quando esse tamanho utrapassa o fator de carga, isso significa que será necessário realizar o *rehashing*.
 
 <div id='214'/>
 
 #### 2.1.4 *Rehashing*
 
-A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equação:
+A função de *rehashing* aumenta o tamanho da tabela usando a seguinte equação:
 
 $$
 l = i * 0,4 * i + 0,1 * n
@@ -161,7 +163,7 @@ Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho a
 <div id='215'/>
 
 #### 2.1.5 Função *hash*
-Função de *hash* mapeia dados grande e de tamanhos variáveis para dados menores com tamanho fixo. No contexto desse trabalho, a função *hash* irá mapear uma palavra para um índice da tabela *hash*.
+Uma função de *hash* mapeia dados grande e de tamanhos variáveis para dados menores com tamanho fixo. No contexto desse trabalho, a função *hash* irá mapear uma palavra para um índice da tabela *hash*.
 A função que está sendo utilizada nesse trabalho é a MurmurHash. Ela funciona da seguinte maneira: é passado um valor para função, que no caso é uma chave do livro, esse valor é convertido para um unsigned char e defini-se  de forma aleatória um h, esse valor é utilizado nas operações binárias que serão realizadas. Com isso, são efetuadas operações de manipulações binárias de quatro em quatro bits gerando um valor final. Esse resultado é convertido e será utilizado como índice da tabela *hash*.
 
 <span align="center">
@@ -215,7 +217,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 <div id='29'/>
 
-### 2.9.Fluxo da Aplicação
+### 2.9 Fluxo da Aplicação
 
 ![Fluxo da aplicao](imgs/Fluxograma.png "Fluxo")
 
@@ -225,7 +227,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 <div id="31" />
 
-### 3.1.Montagem
+### 3.1 Montagem
 
 Após a implementação do Índice Remissivo, conforme o modelo acima descrito, foi utilizada uma base de dados de teste fornecida pelo professor Cesar Melo, contendo os textos completos, em formato digital, de três obras literárias:
 
@@ -241,24 +243,23 @@ Foram feitas cinto tipos de análise de performance do dicionário e do uso da t
 
 Portanto, as performances dos dicionários foram analisadas utilizando os seguintes cenários:
 
-- cenário 1: sem executar *rehashing* e com o tamanho inicial igual a 2.
+- **cenário 1:** sem executar *rehashing* e com o tamanho inicial igual a 2.
 
-- cenário 2: executando *rehashing* utilizando a métrica de avaliação de dispersão, com tamanho inicial igual a 2.
+- **cenário 2:** executando *rehashing* utilizando a métrica de avaliação de dispersão, com tamanho inicial igual a 2.
 
-- cenário 3: executando *rehashing* utilizando a 
-métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2.
+- **cenário 3:** executando *rehashing* utilizando a  métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2.
 
-- cenário 4: executando *rehashing* utilizando a métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor 5.
+- **cenário 4:** executando *rehashing* utilizando a métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor 5.
 
-- cenário 5: executando *avaliação* utilizando a métrica de avalicacao de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor igual a 4.
+- **cenário 5:** executando *avaliação* utilizando a métrica de avalicacao de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor igual a 4.
 
 <div id="32" />
 
-### 3.2.Análise Média de Comparações X *Rehashing*
+### 3.2 Análise Média de Comparações X *Rehashing*
 
 <div id='321'/>
 
-#### 3.2.1.Rehashing X Comparação (Aventuras)
+#### 3.2.1 Rehashing X Comparação (Aventuras)
 
 <span align="center">
 
@@ -268,7 +269,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='322'/>
 
-#### 3.2.2.Rehashing X Comparação (Guarani)
+#### 3.2.2 Rehashing X Comparação (Guarani)
 
 <span align="center">
 
@@ -278,7 +279,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='323'/>
 
-#### 3.2.3.Rehashing X Comparação (Paralelismo)
+#### 3.2.3 Rehashing X Comparação (Paralelismo)
 
 <span align="center">
 
@@ -288,7 +289,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='324'/>
 
-#### 3.2.4.Análise dos gráficos
+#### 3.2.4 Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
@@ -334,53 +335,67 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| Cenario 1 | 0.00% | 0.00% | 0.00% |
-| Cenario 2 | 100.00% |100.00% | 99.66% |
-| Cenario 3 | 100.00% | 100.00% | 100.00%|
-| Cenario 4 | 100.00% | 100.00% | 100.00%|
-| Cenario 5 | 99.88% | 99.81% | 99.90% |
+| Cenário 1 | 0.00% | 0.00% | 0.00% |
+| Cenário 2 | 100.00% |100.00% | 99.66% |
+| Cenário 3 | 100.00% | 100.00% | 100.00%|
+| Cenário 4 | 100.00% | 100.00% | 100.00%|
+| Cenário 5 | 99.88% | 99.81% | 99.90% |
 
 <div id='35'/>
 
-### 3.5.Análise da Ocupação dos Dicionários
+### 3.5 Análise da Ocupação dos Dicionários Estáticos
 
-A tabela a seguir mostra o ocupação do dicionário em cada cenário, pode-se observar que os cenários em que o fator de carga é variável a ocupação do dicionário é melhor que em cenários que o fator de carga é fixo.
+Executamos o programa até encontrarmos os resultados dispostos na tabela abaixo:
+
+|Posições Ocupadas|Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
+| :-----------: | :-----------: |:-----------: | :-----------: |:-----------: |
+| 230    | 69.49% | 6| 9|1.82
+
+Esse resultado foi considerado ideal, pois atravéis dele etabelecemos os valores necessários para que não fosse necessário realizar o *rehashing*, como podemos ver na tabela abaixo:
+
+| Posições Ocupadas |Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
+| :-----------: | :-----------: |:-----------: | :-----------: |:-----------: |
+| 230    | 69.49% | 6| 0|1.85
+
+Analisando as tabelas de desempenho, é possível observar que o conhecimento do conjunto de chaves é fundamental para a inicialização de um dicionário de forma eficiente. Ao trabalharmos com um dicionário estático, onde os valores são fixos, podemos utilizar esse conhecimento para minimizar o número de *rehashings*. Isto resulta em um desempenho superior e mais otimizado. Em resumo, o conhecimento do conjunto de chaves é importante para a otimização do desempenho de um dicionário estático.
+
+### 3.6 Análise da Ocupação dos Dicionários Dinâmicos 
+
+A tabela a seguir, mostra o ocupação do dicionário dinâmico em cada cenário, é possível observar  que quando o fator de carga é variável a ocupação do dicionário é melhor do que quando o fator de carga é fixo.
+
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| Cenario 1 | 100% | 100% | 100% |
-| Cenario 2 | 78.09% | 95.76% | 96.53% |
-| Cenario 3 | 75.09% | 63.07% | 83.67% |
-| Cenario 4 | 53.52% | 51.77% | 52.73% |
-| Cenario 5 | 50.18% | 49.96% | 50.13%|
+| Cenário 1 | 100% | 100% | 100% |
+| Cenário 2 | 78.09% | 95.76% | 96.53% |
+| Cenário 3 | 75.09% | 63.07% | 83.67% |
+| Cenário 4 | 53.52% | 51.77% | 52.73% |
+| Cenário 5 | 50.18% | 49.96% | 50.13%|
+
+
 
 <div id='conclusion'/>
 
 ## 4. Conclusão
 
-Após análise dos resultados, é possível perceber as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
-Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário. Nota-se também que ao váriar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdicio de memória.
+Após análise dos resultados, percebemos as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
+Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, possibilitou a diminuição de operacações necessárias até a estabilização do dicionário. Nota-se também que ao variar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdício de memória.
 
-Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
+Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335 e fator de carga igual a 5. Fixando o valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
-## 5. Referências
-
-CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
-
-Botelho, F. C. (2004). Estudo Comparativo do Uso de Hashing Perfeito Mínimo.
-Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
-
-Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
 
 <div id="repli">
 
-## 6. Replicação dos Resultados
+## 5. Replicação dos Resultados
+
+
+
+### 5.1 Estrutura de Pastas
 
 <div id="61">
 
-### 6.1 Estrutura de Pastas
 
-Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data contém as bases de dados, em analytics os dados utilizados neste relatório, em build o arquivo compilado pelo makefile, em outputs os resultados de testes, na pasta relatorio fica o relatorio da atividade, tablePy a versao do trabalho em python (usado apenas para testes) e por fim, a pasta test que fica armazenado todos os teste do projeto.
+Na pasta libs fica guardado todas as estruturas de dados e TADs, na pasta *data* contém as bases de dados, em *analytics* os dados utilizados neste relatório, em *build* o arquivo compilado pelo markefile, em outputs os resultados de testes, na pasta *relatório* está o relatório da atividade, *tablePy* a versão do trabalho em python (usado apenas para testes) e por fim, na pasta *test*  fica armazenado todos os teste do projeto.
 
 ```
 .
@@ -537,7 +552,7 @@ Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data con
 
 <div id="62">
 
-### 6.2 Diretivas de Compilação
+### 5.2 Diretivas de Compilação
 
 Para processar todos os livros ao mesmo tempo use:
 
@@ -554,3 +569,15 @@ gcc libs/*/*.c main.c -lm -o job.n && ./job.n data/stopwords_br.txt data/Aventur
 ```
 
 Em que é necessário alterar o nome do livro.
+
+
+## 6. Referências
+
+CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
+
+Botelho, F. C. (2004). Estudo Comparativo do Uso de Hashing Perfeito Mínimo.
+Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
+
+Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
+
+<div id="ref">
