@@ -363,22 +363,13 @@ Na implementação deste trabalho, observa-se que foi possível alcançar um ót
 
 Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
-## 5. Referências
 
-CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
 
-Botelho, F. C. (2004). Estudo Comparativo do Uso de Hashing Perfeito Mínimo.
-Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
-
-Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
-
-<div id="repli">
-
-## 6. Replicação dos Resultados
+## 5. Replicação dos Resultados
 
 <div id="61">
 
-### 6.1 Estrutura de Pastas
+### 5.1 Estrutura de Pastas
 
 Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data contém as bases de dados, em analytics os dados utilizados neste relatório, em build o arquivo compilado pelo makefile, em outputs os resultados de testes, na pasta relatorio fica o relatorio da atividade, tablePy a versao do trabalho em python (usado apenas para testes) e por fim, a pasta test que fica armazenado todos os teste do projeto.
 
@@ -537,7 +528,7 @@ Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data con
 
 <div id="62">
 
-### 6.2 Diretivas de Compilação
+### 5.2 Diretivas de Compilação
 
 Para processar todos os livros ao mesmo tempo use:
 
@@ -554,3 +545,15 @@ gcc libs/*/*.c main.c -lm -o job.n && ./job.n data/stopwords_br.txt data/Aventur
 ```
 
 Em que é necessário alterar o nome do livro.
+
+
+## 6. Referências
+
+CRIAR e Atualizar um Índice Remissivo. [S. l.], 2 fev. 2023. Disponível em: <https://support.microsoft.com/pt-pt/office/criar-e-atualizar-um-%C3%ADndice-remissivo-cc502c71-a605-41fd-9a02-cda9d14bf073>. Acesso em: 2 fev. 2023.
+
+Botelho, F. C. (2004). Estudo Comparativo do Uso de Hashing Perfeito Mínimo.
+Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
+
+Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
+
+<div id="repli">
