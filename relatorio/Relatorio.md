@@ -358,7 +358,7 @@ Esse resultado foi considerado ideal, pois atravéis dele etabelecemos os valore
 
 | Posições Ocupadas |Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
 | :-----------: | :-----------: |:-----------: | :-----------: |:-----------: |
-| 230    | 69.49% | 0| 6|1.85
+| 230    | 69.49% | 6| 0|1.85
 
 Analisando as tabelas de desempenho, é possível observar que o conhecimento do conjunto de chaves é fundamental para a inicialização de um dicionário de forma eficiente. Ao trabalharmos com um dicionário estático, onde os valores são fixos, podemos utilizar esse conhecimento para minimizar o número de *rehashings*. Isto resulta em um desempenho superior e mais otimizado. Em resumo, o conhecimento do conjunto de chaves é importante para a otimização do desempenho de um dicionário estático.
 
