@@ -347,7 +347,8 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 <div id='35'/>
 
-### 3.5 Análise da Ocupação dos Dicionários Estáticos 
+### 3.5 Análise da Ocupação dos Dicionários Estáticos
+
 Executamos o programa até encontrarmos os resultados dispostos na tabela abaixo:
 
 |Posições Ocupadas|Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
