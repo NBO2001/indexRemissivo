@@ -133,7 +133,7 @@ Fator de carga é a expectativa de desempenho no pior caso de busca da tabela *
 
 Na implementação do trabalho, foram considerados duas métricas: métrica de dispersão da tabela e métrica de maior lista encadeada no conjunto
 
-* Métrica de dispersão na tabela:
+* **Métrica de dispersão na tabela:**
     Essa métrica mede o nível de agrupameto na tabela. Para realizar o seu cálculo foi utilizado a seguinte fórmula:
 
     $$ 
@@ -142,14 +142,14 @@ Na implementação do trabalho, foram considerados duas métricas: métrica de d
 
     Na fórmula acima, Xi indica o número de colisões ou o tamanho da lista formada a partir de uma entrada da tabela. Dessa forma, o nível de agrupamento da *hash* é dado pelo somatório do quadrado do tamanho de cada entrada, dividido pelo número de elementos da tabela ou de chaves mapeadas, menos o fator de carga aplicado. Caso o índice supere 1.0 (um), significa que o espalhamento não está eficiente e indica a necessidade de um eventual *rehashing* .
 
-* Maior lista encadeada:
+* **Maior lista encadeada:**
     Esta avaliação monitora o tamanho da maior lista encadeada. Quando esse tamanho utrapassa o fator de carga, isso significa que será necessário realizar o *rehashing*.
 
 <div id='214'/>
 
 #### 2.1.4 *Rehashing*
 
-A funcao de *rehashing* aumenta o tamanho da tabela usando a seguinte equação:
+A função de *rehashing* aumenta o tamanho da tabela usando a seguinte equação:
 
 $$
 l = i * 0,4 * i + 0,1 * n
@@ -161,7 +161,7 @@ Em que *l* é o novo tamanho, *i* é o total de chaves atual e *n* o tamanho a
 <div id='215'/>
 
 #### 2.1.5 Função *hash*
-Função de *hash* mapeia dados grande e de tamanhos variáveis para dados menores com tamanho fixo. No contexto desse trabalho, a função *hash* irá mapear uma palavra para um índice da tabela *hash*.
+Uma função de *hash* mapeia dados grande e de tamanhos variáveis para dados menores com tamanho fixo. No contexto desse trabalho, a função *hash* irá mapear uma palavra para um índice da tabela *hash*.
 A função que está sendo utilizada nesse trabalho é a MurmurHash. Ela funciona da seguinte maneira: é passado um valor para função, que no caso é uma chave do livro, esse valor é convertido para um unsigned char e defini-se  de forma aleatória um h, esse valor é utilizado nas operações binárias que serão realizadas. Com isso, são efetuadas operações de manipulações binárias de quatro em quatro bits gerando um valor final. Esse resultado é convertido e será utilizado como índice da tabela *hash*.
 
 <span align="center">
@@ -215,7 +215,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 <div id='29'/>
 
-### 2.9.Fluxo da Aplicação
+### 2.9 Fluxo da Aplicação
 
 ![Fluxo da aplicao](imgs/Fluxograma.png "Fluxo")
 
@@ -225,7 +225,7 @@ Também é um tipo auxiliar, usado com fins organizativos para especializar as f
 
 <div id="31" />
 
-### 3.1.Montagem
+### 3.1 Montagem
 
 Após a implementação do Índice Remissivo, conforme o modelo acima descrito, foi utilizada uma base de dados de teste fornecida pelo professor Cesar Melo, contendo os textos completos, em formato digital, de três obras literárias:
 
@@ -241,24 +241,24 @@ Foram feitas cinto tipos de análise de performance do dicionário e do uso da t
 
 Portanto, as performances dos dicionários foram analisadas utilizando os seguintes cenários:
 
-- cenário 1: sem executar *rehashing* e com o tamanho inicial igual a 2.
+- **cenário 1:** sem executar *rehashing* e com o tamanho inicial igual a 2.
 
-- cenário 2: executando *rehashing* utilizando a métrica de avaliação de dispersão, com tamanho inicial igual a 2.
+- **cenário 2:** executando *rehashing* utilizando a métrica de avaliação de dispersão, com tamanho inicial igual a 2.
 
-- cenário 3: executando *rehashing* utilizando a 
+- **cenário 3:** executando *rehashing* utilizando a 
 métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2.
 
-- cenário 4: executando *rehashing* utilizando a métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor 5.
+- **cenário 4:** executando *rehashing* utilizando a métrica de avaliação de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor 5.
 
-- cenário 5: executando *avaliação* utilizando a métrica de avalicacao de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor igual a 4.
+- **cenário 5:** executando *avaliação* utilizando a métrica de avalicacao de dispersão e levando em consideração a maior lista encadeada, com o tamanho inicial igual a 2 e fator de carga fixo com valor igual a 4.
 
 <div id="32" />
 
-### 3.2.Análise Média de Comparações X *Rehashing*
+### 3.2 Análise Média de Comparações X *Rehashing*
 
 <div id='321'/>
 
-#### 3.2.1.Rehashing X Comparação (Aventuras)
+#### 3.2.1 Rehashing X Comparação (Aventuras)
 
 <span align="center">
 
@@ -268,7 +268,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='322'/>
 
-#### 3.2.2.Rehashing X Comparação (Guarani)
+#### 3.2.2 Rehashing X Comparação (Guarani)
 
 <span align="center">
 
@@ -278,7 +278,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='323'/>
 
-#### 3.2.3.Rehashing X Comparação (Paralelismo)
+#### 3.2.3 Rehashing X Comparação (Paralelismo)
 
 <span align="center">
 
@@ -288,7 +288,7 @@ métrica de avaliação de dispersão e levando em consideração a maior lista 
 
 <div id='324'/>
 
-#### 3.2.4.Análise dos gráficos
+#### 3.2.4 Análise dos gráficos
 
 A partir dos gráficos, pode-se observar que conforme a quantidade de rehashing aumenta, a quantidade de comparações realizadas diminui.
 
@@ -342,17 +342,17 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 <div id='35'/>
 
-### 3.5.Análise da Ocupação dos Dicionários
+### 3.5 Análise da Ocupação dos Dicionários
 
 A tabela a seguir mostra o ocupação do dicionário em cada cenário, pode-se observar que os cenários em que o fator de carga é variável a ocupação do dicionário é melhor que em cenários que o fator de carga é fixo.
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| Cenario 1 | 100% | 100% | 100% |
-| Cenario 2 | 78.09% | 95.76% | 96.53% |
-| Cenario 3 | 75.09% | 63.07% | 83.67% |
-| Cenario 4 | 53.52% | 51.77% | 52.73% |
-| Cenario 5 | 50.18% | 49.96% | 50.13%|
+| Cenário 1 | 100% | 100% | 100% |
+| Cenário 2 | 78.09% | 95.76% | 96.53% |
+| Cenário 3 | 75.09% | 63.07% | 83.67% |
+| Cenário 4 | 53.52% | 51.77% | 52.73% |
+| Cenário 5 | 50.18% | 49.96% | 50.13%|
 
 <div id='conclusion'/>
 
