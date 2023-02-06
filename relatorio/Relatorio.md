@@ -64,11 +64,7 @@
 
     3.6 [Análise da Ocupação dos Dicionários](#36)
 
-
-
  4. [Conclusão](#conclusion)
-
- 
 
  5. [Replicação dos Resultados](#repli)
 
