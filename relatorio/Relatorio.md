@@ -334,11 +334,11 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| Cenario 1 | 0.00% | 0.00% | 0.00% |
-| Cenario 2 | 100.00% |100.00% | 99.66% |
-| Cenario 3 | 100.00% | 100.00% | 100.00%|
-| Cenario 4 | 100.00% | 100.00% | 100.00%|
-| Cenario 5 | 99.88% | 99.81% | 99.90% |
+| Cenário 1 | 0.00% | 0.00% | 0.00% |
+| Cenário 2 | 100.00% |100.00% | 99.66% |
+| Cenário 3 | 100.00% | 100.00% | 100.00%|
+| Cenário 4 | 100.00% | 100.00% | 100.00%|
+| Cenário 5 | 99.88% | 99.81% | 99.90% |
 
 <div id='35'/>
 
