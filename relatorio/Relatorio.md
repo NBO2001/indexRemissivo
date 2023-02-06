@@ -16,7 +16,7 @@
 
     2.1. [*typeTableHash*](#projimpl2)
 
-    2.1.1. [Defificao](#211)
+    2.1.1. [Definição](#211)
 
     2.1.2. [Fator de carga](#212)
 
@@ -24,7 +24,7 @@
 
     2.1.4. [Rehashing](#214)
 
-    2.1.5. [Funccão *hash*](#215)
+    2.1.5. [Função *hash*](#215)
 
     2.2. [TypeStaticDictionary](#22)
 
@@ -60,17 +60,23 @@
 
     3.4 [Análise Fator de carga](#34)
 
-    3.5 [Análise da Ocupação dos Dicionários](#35)
+    3.5 [Análise da Ocupação dos Dicionários Estáticos](#35)
 
- 4. [Conclusão](#projimpl2)
+    3.6 [Análise da Ocupação dos Dicionários](#36)
 
- 5. [Referências](#ref)
 
- 6. [Replicação dos Resultados](#repli)
 
-    6.1 [Estrutura de Pastas](#61)
+ 4. [Conclusão](#conclusion)
 
-    6.2 [Diretivas de Compilação](#62)
+ 
+
+ 5. [Replicação dos Resultados](#repli)
+
+    5.1 [Estrutura de Pastas](#61)
+
+    5.2 [Diretivas de Compilação](#62)
+
+6. [Referências](#ref)
 
 
 *******
@@ -342,23 +348,24 @@ Isso mostra que em todos os cenários (exceto o primeiro) o nosso dicionario te
 <div id='35'/>
 
 ### 3.5 Análise da Ocupação dos Dicionários Estáticos 
-Inicializando o vetor com o tamanho 400, obtemos os seguintes dados:
+Executamos o programa até encontrarmos os resultados dispostos na tabela abaixo:
 
 |Posições Ocupadas|Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
 | :-----------: | :-----------: |:-----------: | :-----------: |:-----------: |
-| 278    | 58.04% | 7| 5|1.37
+| 230    | 69.49% | 6| 9|1.82
 
-Inicializando o vetor com tamanho 278, obtemos os seguintes dados:
+Esse resultado foi considerado ideal, pois atravéis dele etabelecemos os valores necessários para que não fosse necessário realizar o *rehashing*, como podemos ver na tabela abaixo:
 
 | Posições Ocupadas |Ocupação do vetor(%)|Fator de Carga| Rehashing Realizados| Media de Comparações|
 | :-----------: | :-----------: |:-----------: | :-----------: |:-----------: |
-| 224    | 79.15% | 6| 4|1.99
+| 230    | 69.49% | 0| 6|1.85
 
 Analisando as tabelas de desempenho, é possível observar que o conhecimento do conjunto de chaves é fundamental para a inicialização de um dicionário de forma eficiente. Ao trabalharmos com um dicionário estático, onde os valores são fixos, podemos utilizar esse conhecimento para minimizar o número de *rehashings*. Isto resulta em um desempenho superior e mais otimizado. Em resumo, o conhecimento do conjunto de chaves é importante para a otimização do desempenho de um dicionário estático.
 
 ### 3.6 Análise da Ocupação dos Dicionários Dinâmicos 
 
-A tabela a seguir mostra o ocupação do dicionário dinâmico em cada cenário, pode-se observar que os cenários em que o fator de carga é variável a ocupação do dicionário é melhor que em cenários que o fator de carga é fixo.
+A tabela a seguir, mostra o ocupação do dicionário dinâmico em cada cenário, é possível observar  que quando o fator de carga é variável a ocupação do dicionário é melhor do que quando o fator de carga é fixo.
+
 
 |   | Aventura      | Gurani | Paralelismo |
 | :-----------: | :-----------: | :-----------: | :-----------: |
@@ -374,20 +381,24 @@ A tabela a seguir mostra o ocupação do dicionário dinâmico em cada cená
 
 ## 4. Conclusão
 
-Após análise dos resultados, é possível perceber as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
-Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, contribuiu para diminuir a quantidade de operacações necessárias até a estabilização do dicionário. Nota-se também que ao váriar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdicio de memória.
+Após análise dos resultados, percebemos as vantagens na utilização dos dicionários para implementação de um Índice Remissivo, podendo destacar o ótimo tempo de busca das imformações. Entretanto, há a necessidade de estudar o conjuntos de chaves para encontrar um meio termo entre quantidade de *rehashing* e o fator de carga, pois as operações de *rehashing* são muito custosas.
+Na implementação deste trabalho, observa-se que foi possível alcançar um ótimo desempenhos nos cenários propostos, isso por conta da função de *hash* que foi utilizada, que diminuiu o número de conflitos conflitos. O cálculo do tamanho do novo dicionário ao realizar o *rehashing*, possibilitou a diminuição de operacações necessárias até a estabilização do dicionário. Nota-se também que ao variar o fator de carga ao longo das inserções, nossa implementação consegue distribuir os elementos no vetor de forma a ter uma ótima utilizacão do dicionário, evitando o desperdício de memória.
 
-Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335, fator de carga igual a 5. Fixando esse valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
+Por fim, após estudar os três livros, foi possível iniciar o dicionário como os seguintes parâmetros: tamanho do dicionário igual a 8335 e fator de carga igual a 5. Fixando o valor do fator de carga para esse conjunto, obtêm-se a inicialização considerada ideal e com menor custo possível.
 
 
+<div id="repli">
 
 ## 5. Replicação dos Resultados
 
-<div id="61">
+
 
 ### 5.1 Estrutura de Pastas
 
-Na pasta libs fica guardado todas as estruturas e dados e TADs, na para data contém as bases de dados, em analytics os dados utilizados neste relatório, em build o arquivo compilado pelo makefile, em outputs os resultados de testes, na pasta relatorio fica o relatorio da atividade, tablePy a versao do trabalho em python (usado apenas para testes) e por fim, a pasta test que fica armazenado todos os teste do projeto.
+<div id="61">
+
+
+Na pasta libs fica guardado todas as estruturas de dados e TADs, na pasta *data* contém as bases de dados, em *analytics* os dados utilizados neste relatório, em *build* o arquivo compilado pelo markefile, em outputs os resultados de testes, na pasta *relatório* está o relatório da atividade, *tablePy* a versão do trabalho em python (usado apenas para testes) e por fim, na pasta *test*  fica armazenado todos os teste do projeto.
 
 ```
 .
@@ -572,4 +583,4 @@ Dissertação de Mestrado. Belo Horizonte: Universidade Federal de Minas Gerais
 
 Maurer, W. D., & Lewis, T. G. (1975). Hash table methods. ACM Computing Surveys (CSUR), 7(1), 5-19.
 
-<div id="repli">
+<div id="ref">
