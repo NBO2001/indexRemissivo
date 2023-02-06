@@ -9,12 +9,12 @@ struct typeStaticDictionary{
     unsigned int tam;
 };
 
-typeStaticDictionary* createStaticDic(int tam){
+typeStaticDictionary* _createStaticDic(inDic in){
 
     typeStaticDictionary * dictionary = malloc(sizeof(typeStaticDictionary));
 
-    dictionary->table = createTableHash(.tam=tam);
-    dictionary->tam = tam;
+    dictionary->table = createTableHash(.tam=in.tam,.fixedChargeFactor=in.fixedChargeFactor,.factorCharge=in.chargeFactor);
+    dictionary->tam = in.tam;
 
     return dictionary;
 }

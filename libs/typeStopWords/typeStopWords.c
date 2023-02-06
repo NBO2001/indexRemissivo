@@ -16,7 +16,7 @@ typeStopWord * newTypeStopWord(char * fileName){
 
     typeStopWord * stopWords = malloc(sizeof(typeStopWord));
 
-    stopWords->dictionary = createStaticDic(279);
+    stopWords->dictionary = createStaticDic(.tam=331,.chargeFactor=6,.fixedChargeFactor=1);
 
     FILE * wordsFile = fopen(fileName, "r");
 
