@@ -25,7 +25,7 @@ typeIndex * newTypeIndex(char * documentName, void * stopWordsData);
 
 typeElementIndex* consultWord(typeIndex * index, char * key);
 
-
+// Return linked list
 void* getWordsSeach(typeIndex * index);
 
 void showIndex(typeIndex * index);

@@ -24,4 +24,8 @@ testa:
 clean:
 	echo "Limpando.."
 	-@rm -f $(PRJ) *.o *~
+	-@rm *.n
+	-@rm S*.md
+	-@rm D*.md
+	-@rm *.html
 

@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <assert.h>
 #include "libs/typeIndex/typeIndex.h"
 #include "libs/typeStopWords/typeStopWords.h"
 
 int main(int argc, char * argv[]){
     //make run st=data/stopwords_br.txt fl=data/Paralelismo.base
-
+    srand(time(NULL));   // Initialization, should only be called once.
+    double r;
 
     typeStopWord * stWord = newTypeStopWord("data/stopwords_br.txt");
 
@@ -26,6 +28,8 @@ int main(int argc, char * argv[]){
         seeSearch(indiceRemissivoPalelismo, key);
     }
     
+    
+    r = (rand()%10)*1.0;
 
     createMarkDownIndex(indiceRemissivoAventura, "aventura.md", "Aventura Indice");
     createMarkDownIndex(indiceRemissivoGurani, "guarani.md", "Guarani Indice");
